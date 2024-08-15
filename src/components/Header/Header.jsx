@@ -8,6 +8,11 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
+        <img
+          src=""
+          alt="Logo"
+          className="logo"
+        />
         <SearchBar />
         <CartButton />
       </div>
