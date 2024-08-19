@@ -9,8 +9,8 @@ function Header() {
     <header className="header">
       <div className="container">
         <img
-          src=""
-          alt="Logo"
+          src="https://play-lh.googleusercontent.com/qAmR2IkN3bUCRdraBkQkyWfR4qRT9z6QBWPd5tOJ6PoRBY0oUcbbW5-4Fpeq0r_-G5o"
+          alt="Mercado Livre Logo"
           className="logo"
         />
         <SearchBar />

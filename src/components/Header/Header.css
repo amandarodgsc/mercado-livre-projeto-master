@@ -1,13 +1,38 @@
 .header {
-    background-color: #fff159;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-  }
-  
-  .header > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-  }
+  background-color: #ffea00;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.header > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.search-bar-container {
+  flex-grow: 1; 
+  display: flex;
+  justify-content: center; 
+  margin-left: 100px; 
+  margin-right: 100px; 
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 800px;
+  padding: 5px 10px; 
+  border-radius: 30px;
+  border: 1px solid #ddd; 
+  outline: none;
+}
+
+.logo {
+  width: 80px; 
+  height: auto;
+  position: absolute;
+  left: 40px; 
+}
+

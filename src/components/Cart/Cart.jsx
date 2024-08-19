@@ -15,9 +15,17 @@ function Cart() {
     console.log(`Cupom aplicado: ${coupon}`);
   };
 
+  // Função para fechar o carrinho
+  const handleCloseCart = () => {
+    setIsCartVisible(false);
+  };
+
   return (
     <div className={`cart ${isCartVisible ? 'cart--active' : ''}`}>
       <div className="cart-header">
+        <button onClick={handleCloseCart} className="close-cart-button">
+          &#x2190; {/* Código HTML para uma seta para a esquerda */}
+        </button>
         <h2 className="cart-title">Carrinho de compra</h2>
       </div>
 
