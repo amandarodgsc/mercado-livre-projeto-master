@@ -11,7 +11,7 @@ function Products() {
 
   useEffect(() => {
     setLoading(true); // Ensure loading is set to true before fetching data
-    fetchProducts('iphone').then((response) => {
+    fetchProducts('tecnologia').then((response) => {
       setProducts(response);
       setLoading(false);
     });

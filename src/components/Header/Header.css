@@ -1,15 +1,17 @@
+/* Header.css */
 .header {
-  background-color: #ffea00;
+  background-color: #ffea00; /* Cor de fundo do header */
   position: fixed;
   width: 100%;
   z-index: 1;
 }
 
-.header > div {
+.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  position: relative; 
 }
 
 .search-bar-container {
@@ -33,6 +35,16 @@
   width: 80px; 
   height: auto;
   position: absolute;
-  left: 40px; 
+  left: -150px; 
 }
 
+.nav-area {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-image {
+  height: 40px; /* Ajuste conforme necessário */
+  margin-left: 60px; /* Espaço entre a imagem e o botão do carrinho */
+}
