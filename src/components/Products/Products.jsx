@@ -31,7 +31,7 @@ function Products() {
               <ProductCard key={product.id} data={product} />
             ))}
           </section>
-          <SiteShoppingInfo /> {/* Adiciona o componente SiteShoppingInfo aqui */}
+          <SiteShoppingInfo /> 
         </div>
       )}
     </>
