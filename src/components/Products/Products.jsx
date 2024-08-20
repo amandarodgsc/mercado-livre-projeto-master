@@ -4,7 +4,6 @@ import fetchProducts from '../../api/fetchProducts';
 import ProductCard from '../ProductCard/ProductCard';
 import Loading from '../Loading/Loading';
 import AppContext from '../../context/AppContext';
-import SiteShoppingInfo from '../SiteShoppingInfo/SiteShoppingInfo'; // Importa o componente SiteShoppingInfo
 
 function Products() {
   const { products, setProducts, loading, setLoading } = useContext(AppContext);
@@ -23,9 +22,7 @@ function Products() {
         <Loading />
       ) : (
         <div>
-          <div className="banner">
-            <img src="https://http2.mlstatic.com/D_NQ_938152-MLA78305091572_082024-OO.webp" alt="Product Banner" />
-          </div>
+          
           <section className="products container">
             {products.map((product) => (
               <ProductCard key={product.id} data={product} />

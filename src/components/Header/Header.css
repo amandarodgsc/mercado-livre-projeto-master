@@ -1,9 +1,7 @@
 /* Header.css */
 .header {
   background-color: #ffea00; /* Cor de fundo do header */
-  position: fixed;
   width: 100%;
-  z-index: 1;
 }
 
 .container {
