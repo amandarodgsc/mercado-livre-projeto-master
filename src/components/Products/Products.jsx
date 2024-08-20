@@ -4,6 +4,7 @@ import fetchProducts from '../../api/fetchProducts';
 import ProductCard from '../ProductCard/ProductCard';
 import Loading from '../Loading/Loading';
 import AppContext from '../../context/AppContext';
+import SiteShoppingInfo from '../SiteShoppingInfo/SiteShoppingInfo'; // Importa o componente SiteShoppingInfo
 
 function Products() {
   const { products, setProducts, loading, setLoading } = useContext(AppContext);
@@ -30,6 +31,7 @@ function Products() {
               <ProductCard key={product.id} data={product} />
             ))}
           </section>
+          <SiteShoppingInfo /> {/* Adiciona o componente SiteShoppingInfo aqui */}
         </div>
       )}
     </>
