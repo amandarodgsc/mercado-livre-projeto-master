@@ -1,60 +1,58 @@
 /* SiteShoppingInfo.css */
 .site-shopping-info {
-    background-color: #f8f9fa; 
-    padding: 40px 0; 
-    border-top: 1px solid #dee2e6; 
-  }
-  
-  .site-shopping-info .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px; 
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px; 
-  }
-  
-  .info-slide {
-    flex: 1 1 300px; 
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    gap: 25px; 
-    box-sizing: border-box; 
-  }
-  
-  .info-slide .img-container {
-    align-self: center; 
-  }
-  
-  .info-slide .img-container img {
-    max-width: 60px; 
-    height: auto;
-  }
-  
-  .info-slide h2 {
-    font-size: 1.2rem; 
-    margin: 0; 
-    color: #333; 
-  }
-  
-  .info-slide p {
-    font-size: 1rem; 
-    margin: 0 0 10px; 
-    color: #555; 
-  }
-  
-  .info-slide a {
-    font-size: 0.875rem;
-    color: #007bff; 
-    text-decoration: none; 
-  }
-  
-  .info-slide a:hover {
-    text-decoration: underline; 
-  }
-  
+  background-color: #e7eaee; /* Cor de fundo leve */
+  padding: 40px 0; /* Espaçamento vertical */
+  border-top: 1px solid #e6dee1; /* Linha de separação no topo */
+}
+
+.site-shopping-info .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* Espaçamento horizontal */
+  display: flex;
+  flex-wrap: wrap; /* Permite que os slides envolvam-se em várias linhas se necessário */
+  gap: 20px; /* Espaçamento entre os slides */
+}
+
+.info-slide {
+  flex: 300px; /* Flexível para se ajustar à largura disponível, com largura mínima de 300px */
+  display: flex;
+  flex-direction: column; /* Organiza a imagem, título e texto verticalmente */
+  align-items: center; /* Alinha os itens à esquerda */
+  background-color: #ffffff; /* Cor de fundo dos slides */
+  border-radius: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+  padding: 30px;
+  box-sizing: border-box; /* Inclui padding e border no cálculo da largura e altura */
+}
+
+.info-slide .img-container {
+  align-self: center; /* Centraliza a imagem horizontalmente dentro do slide */
+}
+
+.info-slide .img-container img {
+  max-width: 60px; /* Define um tamanho máximo para as imagens */
+  height: auto;
+}
+
+.info-slide h2 {
+  font-size: 1.25rem; /* Tamanho da fonte para o título */
+  margin: 0; /* Margem abaixo do título */
+  color: #333; /* Cor do texto */
+}
+
+.info-slide p {
+  font-size: 1rem; /* Tamanho da fonte para o texto */
+  margin: 0 0 10px; /* Margem abaixo do parágrafo */
+  color: #555; /* Cor do texto */
+}
+
+.info-slide a {
+  font-size: 0.875rem; /* Tamanho da fonte para o link */
+  color: #007bff; /* Cor do link */
+  text-decoration: none; /* Remove o sublinhado padrão do link */
+}
+
+.info-slide a:hover {
+  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+}

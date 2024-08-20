@@ -11,7 +11,7 @@ function Products() {
 
   useEffect(() => {
     setLoading(true); // Ensure loading is set to true before fetching data
-    fetchProducts('tecnologia').then((response) => {
+    fetchProducts('variados').then((response) => {
       setProducts(response);
       setLoading(false);
     });
@@ -31,7 +31,6 @@ function Products() {
               <ProductCard key={product.id} data={product} />
             ))}
           </section>
-          <SiteShoppingInfo /> 
         </div>
       )}
     </>
