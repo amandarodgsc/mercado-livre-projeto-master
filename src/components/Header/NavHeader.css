@@ -1,0 +1,19 @@
+.letraloc {
+    font-family: navigation;
+    position: relative;
+    top: -10px;
+    bottom: 0;
+    left: 20px;
+    text-decoration: none;
+}
+
+.divloc{
+    text-decoration: none;
+}
+
+.nav-menu-cp .nav-menu-cp-guest{
+text-decoration: none;
+}
+
+.nav-menu-item {
+    text-decoration: none; }

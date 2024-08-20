@@ -2,6 +2,7 @@
 import React from 'react';
 import CartButton from '../CartButton/CartButton';
 import SearchBar from '../SearchBar/SearchBar';
+import NavHeader from '../Header/NavHeader'; // Importa o novo componente
 import './Header.css';
 
 function Header() {
@@ -23,6 +24,7 @@ function Header() {
           />
         </div>
       </div>
+      <NavHeader/>
     </header>
   );
 }
