@@ -5,7 +5,7 @@ const NavHeader = () => {
   return (
     <div className="nav-header">
       <div className="nav-section">
-        <a className="nav-link" href="" aria-expanded="false" aria-haspopup="true">
+        <a className="nav-link" href='./PaginaCep' aria-expanded="false" aria-haspopup="true">
           <span className="nav-text">Informe seu </span>
           <span className="nav-arrow">CEP</span>
         </a>
