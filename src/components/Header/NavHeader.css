@@ -1,19 +1,43 @@
-.letraloc {
-    font-family: navigation;
+.nav-header {
+    display: flex;
+    align-items: center;
+    background-color: #ffe600;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+    flex-wrap: wrap; 
+  }
+  
+  .nav-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-categories {
+    margin-left: 10%; 
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #010305;
+    font-size: 14px;
+    margin-right: 40px;
     position: relative;
-    top: -10px;
-    bottom: 0;
-    left: 20px;
-    text-decoration: none;
-}
-
-.divloc{
-    text-decoration: none;
-}
-
-.nav-menu-cp .nav-menu-cp-guest{
-text-decoration: none;
-}
-
-.nav-menu-item {
-    text-decoration: none; }
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  .nav-arrow {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    margin-left: 5px;
+    transition: transform 0.3s;
+  }
+  
+  .nav-link:hover .nav-arrow {
+    transform: rotate(180deg);
+  }
+  

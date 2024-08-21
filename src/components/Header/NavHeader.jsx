@@ -1,30 +1,22 @@
-// NavHeader.js
 import React from 'react';
 import './NavHeader.css';
 
 const NavHeader = () => {
   return (
-    <div className="divloc">
-      <a
-        className="linkloc"
-        data-js="cp"
-        href=""
-        data-modal-action="true"
-        role="button"
-      >
-        <span className="letraloc">Digite seu endereço</span>
-      </a>
-      <div className="nav-menu-item">
-        <a
-          className="nav-menu-cp nav-menu-cp-guest"
-          data-js="cp"
-          href="https://www.mercadolivre.com.br/navigation/addresses-hub?go=https%3A%2F%2Fwww.mercadolivre.com.br%2F%3Fmsockid%3D1af7317858a963a60cf225a159c2629f"
-          data-modal-action="true"
-          role="button"
-          aria-expanded="false"
-          aria-haspopup="true"
-        >
+    <div className="nav-header">
+      <div className="nav-section">
+        <a className="nav-link" href="" aria-expanded="false" aria-haspopup="true">
+          <span className="nav-text">Informe seu </span>
+          <span className="nav-arrow">CEP</span>
         </a>
+      </div>
+      <div className="nav-section nav-categories">
+        <a className="nav-link" href="#categories">Categorias</a>
+        <a className="nav-link" href="#offers">Ofertas</a>
+        <a className="nav-link" href="#history">Histórico</a>
+        <a className="nav-link" href="#supermarket">Supermercado</a>
+        <a className="nav-link" href="#fashion">Moda</a>
+        <a className="nav-link" href="#sell">Vender</a>
       </div>
     </div>
   );

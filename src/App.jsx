@@ -5,6 +5,7 @@ import Provider from './context/Provider';
 import Cart from './components/Cart/Cart';
 import SiteShoppingInfo from './components/SiteShoppingInfo/SiteShoppingInfo';
 import Banner from './components/Banner/Banner';
+import VideoBanner from './components/Banner/VideoBanner';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Banner />
       <Products />
       <Cart />
+      <VideoBanner/>
       <SiteShoppingInfo/>
     </Provider>
   );
