@@ -3,10 +3,13 @@ import './Cart.css';
 import CartItem from '../CartItem/CartItem';
 import AppContext from '../../context/AppContext';
 import formatCurrency from '../../utils/formatCurrency';
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
   const { cartItems, isCartVisible, setIsCartVisible } = useContext(AppContext);
   const [coupon, setCoupon] = useState('');
+  const navigate = useNavigate();
+
 
   const totalPrice = cartItems.reduce((acc, item) => item.price + acc, 0);
   const totalQuantity = cartItems.length;
@@ -19,6 +22,8 @@ function Cart() {
   const handleCloseCart = () => {
     setIsCartVisible(false);
   };
+
+  const handleCheckout = () => {navigate('/pagamento', {state: { totalPrice} } )}
 
   return (
     <div className={`cart ${isCartVisible ? 'cart--active' : ''}`}>
@@ -54,7 +59,7 @@ function Cart() {
         </div>
       </div>
 
-      <button className="finalize-button">Finalizar Compra</button>
+      <button className="finalize-button">Continuar a Compra</button>
     </div>
   );
 }

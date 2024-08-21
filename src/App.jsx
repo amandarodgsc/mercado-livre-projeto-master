@@ -6,19 +6,26 @@ import Cart from './components/Cart/Cart';
 import SiteShoppingInfo from './components/SiteShoppingInfo/SiteShoppingInfo';
 import Banner from './components/Banner/Banner';
 import VideoBanner from './components/Banner/VideoBanner';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Pagamento from './components/Pagamento/pagamento'
 
 function App() {
 
   return (
     <Provider>
-      <Header />
-      <Banner />
+    <Router>
+         <Header />
+         <Banner />
+   <Routes>
+             <Route path="/pagamento" element={<Pagamento />} />
+           </Routes>
       <Products />
-      <Cart />
-      <VideoBanner/>
-      <SiteShoppingInfo/>
-    </Provider>
-  );
+         <Cart />
+         <VideoBanner/>
+         <SiteShoppingInfo/>
+      </Router>
+       </Provider>
+  )
 }
 
 export default App;
