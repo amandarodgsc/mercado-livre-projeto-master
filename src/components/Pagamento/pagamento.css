@@ -1,49 +1,104 @@
-/* Pagamento.css */
-
-.container {
-  padding: 20px;
-  max-width: 600px;
+.checkout-container {
+  max-width: 800px;
   margin: 0 auto;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
 }
 
-.header {
+.checkout-header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.header h1 {
-  font-size: 24px;
-  color: #333;
-}
-
-.total-price {
-  font-size: 20px;
-  color: #333;
+.checkout-content {
+  flex: 1; /* Faz o conteúdo principal crescer para ocupar o espaço disponível */
   margin-bottom: 20px;
-  text-align: center;
 }
 
-.button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #28a745;
-  border: none;
-  border-radius: 4px;
+.order-summary {
+  margin-bottom: 20px;
+}
+
+.order-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.order-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.order-item-details {
+  flex: 1;
+}
+
+.order-item-name {
+  font-weight: bold;
+}
+
+.order-summary-total {
+  font-weight: bold;
+}
+
+.payment-methods {
+  margin-bottom: 20px;
+}
+
+.payment-method-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.payment-method {
+  flex: 1;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
-.button:hover {
-  background-color: #218838;
+.payment-method img {
+  width: 50px;
+  height: 30px;
+  margin-right: 10px;
 }
 
-.button:active {
-  background-color: #1e7e34;
+.selected {
+  border-color: #00a859;
+}
+
+.select-button {
+  background: none;
+  border: none;
+  color: #00a859;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.payment-info, .debit-card-info, .pix-code, .boleto-info {
+  margin-top: 20px;
+}
+
+.checkout-footer {
+  text-align: center;
+  margin-top: auto; /* Garante que o rodapé vá para o fundo se necessário */
+}
+
+.checkout-button {
+  background-color: #00a859;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
