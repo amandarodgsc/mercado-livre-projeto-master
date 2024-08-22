@@ -50,7 +50,6 @@ const VideoBanner = () => {
                     allow="autoplay"
                     title="Advertisement"
                   ></iframe>
-              {/* Aqui você pode adicionar outros elementos do vídeo se necessário */}
             </div>
           </div>
         </div>

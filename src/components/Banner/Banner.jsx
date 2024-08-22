@@ -35,6 +35,7 @@ const Banner = () => {
         </div>
       </Slider>
     </div>
+    
   );
 };
 

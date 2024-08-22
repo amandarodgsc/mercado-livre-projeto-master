@@ -16,14 +16,16 @@ function App() {
     <Router>
          <Header />
          <Banner />
-   <Routes>
-             <Route path="/pagamento" element={<Pagamento />} />
-           </Routes>
+         
       <Products />
          <Cart />
          <VideoBanner/>
          <SiteShoppingInfo/>
-      </Router>
+         <Routes>
+             <Route path="/pagamento" element={<Pagamento />} />
+           </Routes>
+      </Router> 
+      
        </Provider>
   )
 }
