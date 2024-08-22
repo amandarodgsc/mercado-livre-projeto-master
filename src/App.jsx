@@ -9,6 +9,7 @@ import VideoBanner from './components/Banner/VideoBanner';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Pagamento from './components/Pagamento/pagamento';
 
+
 function App() {
   return (
     <Router>
