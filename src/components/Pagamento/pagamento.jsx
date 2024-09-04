@@ -1,7 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './pagamento.css';
 
 function Pagamento() {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const handlePaymentChange = (event) => {
+    setSelectedPaymentMethod(event.target.id);
+    setIsFormVisible(true); // Mostra o formulário quando um método é selecionado
+  };
+
+  const closeForm = () => {
+    setIsFormVisible(false); // Fecha o formulário
+  };
+
+  const renderPaymentForm = () => {
+    if (selectedPaymentMethod === 'pix') {
+      // Renderiza o QR code para o Pix
+      return (
+        <div className="payment-form-overlay">
+          <div className="payment-form">
+            <button className="close-button" onClick={closeForm}>X</button>
+            <h3>QR Code do Pix</h3>
+            <div className="qr-code-container">
+              <img 
+                src="" 
+                alt="QR Code do Pix" 
+                className="qr-code"
+              />
+              <p>Por favor, escaneie o QR code para realizar o pagamento.</p>
+            </div>
+            <div className="button-container">
+              <button className="finalize-button">Finalizar a Compra</button>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="payment-form-overlay">
+          <div className="payment-form">
+            <button className="close-button" onClick={closeForm}>X</button>
+            <h3>Informações de Pagamento</h3>
+            <form>
+              <div className="form-group">
+                <label htmlFor="card-number">Número do Cartão:</label>
+                <input type="text" id="card-number" name="card-number" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="card-name">Nome no Cartão:</label>
+                <input type="text" id="card-name" name="card-name" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="expiry-date">Validade:</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" />
+              </div>
+              <div className="button-container">
+                <button className="finalize-button">Finalizar a Compra</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="payment-page">
       <header className="yellow-header">
@@ -17,7 +84,7 @@ function Pagamento() {
           <h2>Escolha como pagar</h2>
           <div className="combine-methods"></div>
           <div className="payment-option recommended">
-            <input type="radio" name="payment-method" id="mercado-pago" />
+            <input type="radio" name="payment-method" id="mercado-pago" onChange={handlePaymentChange} />
             <label htmlFor="mercado-pago">
               <div className="payment-logo">VISA</div>
               <span>Cartão Mercado Pago</span>
@@ -25,7 +92,7 @@ function Pagamento() {
             </label>
           </div>
           <div className="payment-option">
-            <input type="radio" name="payment-method" id="mercado-credito" />
+            <input type="radio" name="payment-method" id="mercado-credito" onChange={handlePaymentChange} />
             <label htmlFor="mercado-credito">
               <div className="payment-logo">MC</div>
               <span>Mercado Crédito</span>
@@ -33,7 +100,7 @@ function Pagamento() {
             </label>
           </div>
           <div className="payment-option">
-            <input type="radio" name="payment-method" id="cartao-credito" />
+            <input type="radio" name="payment-method" id="cartao-credito" onChange={handlePaymentChange} />
             <label htmlFor="cartao-credito">
               <div className="payment-logo">CC</div>
               <span>Cartão de Crédito</span>
@@ -41,7 +108,7 @@ function Pagamento() {
             </label>
           </div>
           <div className="payment-option">
-            <input type="radio" name="payment-method" id="cartao-debito" />
+            <input type="radio" name="payment-method" id="cartao-debito" onChange={handlePaymentChange} />
             <label htmlFor="cartao-debito">
               <div className="payment-logo">CB</div>
               <span>Cartão de Débito</span>
@@ -49,7 +116,7 @@ function Pagamento() {
             </label>
           </div>
           <div className="payment-option">
-            <input type="radio" name="payment-method" id="boleto" />
+            <input type="radio" name="payment-method" id="boleto" onChange={handlePaymentChange} />
             <label htmlFor="boleto">
               <div className="payment-logo">IIIIII</div>
               <span>Boleto</span>
@@ -57,7 +124,7 @@ function Pagamento() {
             </label>
           </div>
           <div className="payment-option">
-            <input type="radio" name="payment-method" id="pix" />
+            <input type="radio" name="payment-method" id="pix" onChange={handlePaymentChange} />
             <label htmlFor="pix">
               <div className="payment-logo">Pix</div>
               <span>Pix</span>
@@ -82,11 +149,9 @@ function Pagamento() {
             <span>Você pagará</span>
             <span>R$ 77,88</span>
           </div>
-          <div className="continue-button-container">
-            <button className="continue-button">Continuar</button>
-          </div>
         </div>
       </div>
+      {isFormVisible && renderPaymentForm()}
       <footer className="footer">
         <div className="footer-content">
           <a href="/trabalhe-conosco">Trabalhe conosco</a>
