@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Importando useNavigate
-import fetchProductDetails from '../../api/fetchProductDetails'; // Função para buscar detalhes do produto
+import { useParams, useNavigate } from 'react-router-dom';
+import fetchProductDetails from '../../api/fetchProductDetails';
 import Loading from '../Loading/Loading';
 import './ProductDetail.css';
 import formatCurrency from '../../utils/formatCurrency';
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // Inicializando useNavigate
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    fetchProductDetails(id).then((data) => {
-      setProduct(data);
-      setLoading(false);
-    });
+    const getProductDetails = async () => {
+      setLoading(true);
+      try {
+        const data = await fetchProductDetails(id);
+        setProduct(data);
+      } catch (error) {
+        console.error('Erro ao buscar detalhes do produto:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getProductDetails();
   }, [id]);
 
   if (loading) {
@@ -29,28 +36,26 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail">
-      <button 
-        className="back-button" 
-        onClick={() => navigate(-1)} // Navega de volta para a página anterior
-      >
-        Voltar
-      </button>
+      <button className="back-button" onClick={() => navigate(-1)}>Voltar</button>
       <div className="detail-container">
         <div className="image-section">
           <img src={product.thumbnail} alt={product.title} className="product-image" />
+          <div className="image-gallery">
+            {Array.isArray(product.images) && product.images.map((img, index) => (
+              <img key={index} src={img} alt={`imagem-${index}`} className="gallery-image" />
+            ))}
+          </div>
         </div>
         <div className="info-section">
           <h2 className="product-title">{product.title}</h2>
           <h2 className="product-price">{formatCurrency(product.price, 'BRL')}</h2>
-          <h3>Cor: {product.color}</h3>
-          <h3>Tamanho: {product.sizes}</h3>
+          <p>Cor: <span>{product.color || 'Não disponível'}</span></p>
+          <p>Tamanho: <span>{Array.isArray(product.sizes) ? product.sizes.join(', ') : 'Não disponível'}</span></p>
           <div className="product-description">
             <h3>Descrição</h3>
-            <p>{product.description}</p>
+            <p>{product.description || 'Descrição não disponível.'}</p>
           </div>
-          <button type="button" className="add-to-cart-button">
-            Adicionar ao Carrinho
-          </button>
+          <button type="button" className="add-to-cart-button">Adicionar ao Carrinho</button>
         </div>
       </div>
     </div>

@@ -16,7 +16,20 @@
 
 .product-image {
   width: 100%;
-  max-width: 500px; /* Limite máximo da largura da imagem */
+  max-width: 500px;
+}
+
+.image-gallery {
+  display: flex;
+  margin-top: 10px;
+}
+
+.gallery-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
 }
 
 .info-section {
@@ -30,19 +43,19 @@
 
 .product-price {
   font-size: 20px;
-  color: #e20000; /* Cor do preço */
+  color: #e20000;
   margin: 10px 0;
 }
 
 .add-to-cart-button {
   padding: 10px 20px;
-  background-color: #00a650; /* Cor do botão */
+  background-color: #00a650;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 20px; /* Espaço acima do botão */
+  margin-top: 20px;
 }
 
 .product-description {
@@ -54,20 +67,17 @@
   margin-bottom: 10px;
 }
 
-.product-description p {
-  line-height: 1.5; /* Melhora a legibilidade do texto */
-}
-
 .back-button {
-  background-color: #007BFF; /* Cor de fundo */
-  color: white; /* Cor do texto */
-  border: none; /* Sem borda */
-  padding: 10px 15px; /* Espaçamento interno */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Muda o cursor ao passar por cima */
-  margin: 20px 0; /* Margem para espaçamento */
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px 0;
 }
 
 .back-button:hover {
-  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  background-color: #0056b3;
 }
+
