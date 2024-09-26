@@ -1,0 +1,73 @@
+/* src/components/ProductDetail/ProductDetail.css */
+
+.product-detail {
+  padding: 20px;
+}
+
+.detail-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.image-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 500px; /* Limite máximo da largura da imagem */
+}
+
+.info-section {
+  flex: 2;
+}
+
+.product-title {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.product-price {
+  font-size: 20px;
+  color: #e20000; /* Cor do preço */
+  margin: 10px 0;
+}
+
+.add-to-cart-button {
+  padding: 10px 20px;
+  background-color: #00a650; /* Cor do botão */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px; /* Espaço acima do botão */
+}
+
+.product-description {
+  margin-top: 20px;
+}
+
+.product-description h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.product-description p {
+  line-height: 1.5; /* Melhora a legibilidade do texto */
+}
+
+.back-button {
+  background-color: #007BFF; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Sem borda */
+  padding: 10px 15px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Muda o cursor ao passar por cima */
+  margin: 20px 0; /* Margem para espaçamento */
+}
+
+.back-button:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}

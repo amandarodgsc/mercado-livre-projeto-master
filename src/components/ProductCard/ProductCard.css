@@ -57,3 +57,18 @@
 .product-card:hover .button__add-cart {
   display: flex;
 }
+
+.icon-container {
+  position: absolute;
+  bottom: 10px; /* Posiciona a lupa na parte inferior */
+  left: 10px; /* Posiciona a lupa à esquerda */
+  background: rgba(255, 255, 255, 0.7); /* Fundo semi-transparente, se desejado */
+  border-radius: 5px; /* Bordas arredondadas para o fundo */
+  padding: 5px; /* Espaçamento interno */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+.icon {
+  font-size: 24px; /* Ajuste o tamanho da lupa */
+  color: #000; /* Cor do ícone, você pode mudar conforme necessário */
+}
