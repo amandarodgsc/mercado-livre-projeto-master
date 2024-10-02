@@ -21,7 +21,9 @@ function Cart() {
     setIsCartVisible(false);
   };
 
-  const handleCheckout = () => {navigate('/pagamento', {state: { totalPrice} } )}
+  const handleCheckout = () => {
+    navigate('/pagamento', { state: { totalPrice } });
+  };
 
   return (
     <div className={`cart ${isCartVisible ? 'cart--active' : ''}`}>
@@ -61,7 +63,7 @@ function Cart() {
         </div>
       </div>
 
-      <button className="finalize-button">Continuar a Compra</button>
+      <button onClick={handleCheckout} className="finalize-button">Continuar a Compra</button>
     </div>
   );
 }

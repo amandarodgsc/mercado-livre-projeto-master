@@ -7,6 +7,7 @@ import SiteShoppingInfo from './components/SiteShoppingInfo/SiteShoppingInfo';
 import Pagamento from './components/Pagamento/pagamento';
 import CadastroVendedor from './components/CadastroVendedor/Cadastrovendedor';
 import CadastrarProduto from './components/CadastrarProduto/CadastrarProduto'; // Importação do novo componente
+import Vendedor from './components/Vendedor/Vendedor';
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/pagamento" element={<Pagamento />} />
         <Route path="/produtos" element={<Products />} />
         <Route path="/carrinho" element={<Cart />} />
+        <Route path="/Vendedor" element={<Vendedor />} />
+
       </Routes>
     </Router>
   );

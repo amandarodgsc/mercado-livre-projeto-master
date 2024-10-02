@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importação para navegação
-import '../CadastroVendedor/Cadastrovendedor.css'; // Certifique-se de criar este arquivo CSS
+import './Cadastrovendedor.css'; // Certifique-se de que este arquivo CSS está presente
 
 function CadastroVendedor() {
   const [formData, setFormData] = useState({
