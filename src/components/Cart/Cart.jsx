@@ -21,45 +21,47 @@ function Cart() {
     setIsCartVisible(false);
   };
 
-  const handleCheckout = () => {
-    navigate('/pagamento', { state: { totalPrice } });
-  };
+  const handleCheckout = () => {navigate('/pagamento', {state: { totalPrice} } )}
 
   return (
     <div className={`cart ${isCartVisible ? 'cart--active' : ''}`}>
       <div className="cart-header">
         <button onClick={handleCloseCart} className="close-cart-button">
-          &#x2190; {/* Código HTML para uma seta para a esquerda */}
+          &#x2190;
         </button>
-        <h2 className="cart-title">Carrinho de compra</h2>
+        <h2 className="cart-title">Carrinho de compras</h2>
       </div>
 
       <div className="cart-items">
         {cartItems.length > 0 ? (
-          cartItems.map((cartItem) => <CartItem key={cartItem.id} data={cartItem} />)
+          cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} data={cartItem} />
+          ))
         ) : (
           <p className="cart-empty">Seu carrinho está vazio</p>
         )}
       </div>
 
       <div className="cart-summary">
-        <p className="total-quantity"> Produtos: {totalQuantity}</p>
+        <p className="total-quantity">Produtos: {totalQuantity}</p>
         <div className="coupon-container">
-          <input 
-            type="text" 
-            value={coupon} 
-            onChange={(e) => setCoupon(e.target.value)} 
+          <input
+            type="text"
+            value={coupon}
+            onChange={(e) => setCoupon(e.target.value)}
             placeholder="Insira o cupom"
             className="coupon-input"
           />
-          <button onClick={handleApplyCoupon} className="apply-coupon-button">Aplicar Cupom</button>
+          <button onClick={handleApplyCoupon} className="apply-coupon-button">
+            Aplicar Cupom
+          </button>
         </div>
         <div className="cart-resume">
           <span className="total-label">Total:</span> {formatCurrency(totalPrice, 'BRL')}
         </div>
       </div>
 
-      <button className="finalize-button" onClick={handleCheckout}>Continuar a Compra</button>
+      <button className="finalize-button">Continuar a Compra</button>
     </div>
   );
 }

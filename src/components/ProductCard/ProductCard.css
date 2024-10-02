@@ -73,3 +73,7 @@
 .button__add-cart:hover {
   background-color: #008c7a;
 }
+
+.product-card:hover .button__add-cart {
+  display: flex;
+}

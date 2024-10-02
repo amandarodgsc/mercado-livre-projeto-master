@@ -1,5 +1,16 @@
-.pagamento-container {
+/* Pagamento.css */
+
+.container {
   padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.header {
   text-align: center;
 }
 
@@ -7,11 +18,35 @@
   margin-bottom: 20px;
 }
 
-.pagamento-title {
+.header h1 {
   font-size: 24px;
-  margin-bottom: 20px;
+  color: #333;
 }
 
-.pagamento-content {
-  font-size: 18px;
+.total-price {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #218838;
+}
+
+.button:active {
+  background-color: #1e7e34;
 }

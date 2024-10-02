@@ -1,19 +1,10 @@
-import React from 'react';
-import './pagamento.css';
+import { useLocation } from 'react-router-dom';
 
-function Pagamento() {
-  return (
-    <div className="pagamento-container">
-      <header className="pagamento-header">
-        <h1 className="pagamento-title">Pagamento</h1>
-      </header>
-      <div className="pagamento-content">
-        <p>Obrigado pela sua compra!</p>
-        <p>Aqui estão os detalhes do seu pagamento:</p>
-        {/* Adicione mais detalhes e campos conforme necessário */}
-      </div>
-    </div>
-  );
+
+
+function Pagamento (){
+  const location = useLocation();
+  const { totalPrice } = location.state || { totalPrice: 0 };
+
 }
-
-export default Pagamento;
+export default Pagamento; 
