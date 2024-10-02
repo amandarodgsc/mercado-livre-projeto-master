@@ -1,0 +1,84 @@
+/* CadastrarProduto.css */
+
+.nav-header {
+    background-color: #fbff00; /* Fundo do cabeçalho */
+    padding: 10px 20px; /* Espaçamento interno */
+  }
+  
+  .nav-bounds {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-logo {
+    font-size: 18px;
+    color: #007bff; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado do link */
+  }
+  
+  .nav-header-menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  .option-help {
+    color: #007bff; /* Cor do link de ajuda */
+    text-decoration: none; /* Remove o sublinhado do link */
+    margin-left: 20px; /* Espaço à esquerda do link de ajuda */
+  }
+  
+  .nav-icon-help {
+    margin-right: 5px; /* Espaço à direita do ícone de ajuda */
+  }
+  
+  /* Estilos adicionais do formulário */
+  .cadastro-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto; /* Espaçamento vertical */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fundo claro */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cadastro-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .cadastro-button {
+    padding: 10px;
+    background-color: #007bff; /* Cor do botão */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cadastro-button:hover {
+    background-color: #0056b3; /* Efeito hover */
+  }
+  
