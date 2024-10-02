@@ -8,7 +8,7 @@
 .site-shopping-info .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Espaçamento horizontal */
+  padding: 120px; /* Espaçamento horizontal */
   display: flex;
   flex-wrap: wrap; /* Permite que os slides envolvam-se em várias linhas se necessário */
   gap: 20px; /* Espaçamento entre os slides */

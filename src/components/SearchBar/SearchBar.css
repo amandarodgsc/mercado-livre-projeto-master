@@ -1,30 +1,32 @@
-.search-bar {
-    display: flex;
-    background-color: white;
-    width: 100%;
-    max-width: 500px;
-    justify-content: space-between;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-    gap: 13px;
-    padding-right: 13px;
+.custom-search-bar {
+    display: flex; /* Para alinhar os itens horizontalmente */
+    align-items: center; /* Para centralizar verticalmente */
+    margin: 20px 0; /* Ajuste a margem conforme necessário */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
   }
   
-  .search__input {
-    padding: 13px;
-    flex-grow: 1;
-    border: none;
-    outline: none;
-    font-size: 0.8rem;
-    font-weight: 500px;
-    border-right: 1px solid #ddd;
+  .custom-search-input {
+    flex: 1; /* Para ocupar o espaço restante */
+    width: 300px; /* Ajuste conforme necessário */
+    min-width: 200px; /* Define uma largura mínima */
+    border: none; /* Remova a borda padrão */
+    padding: 10px 20px; /* Aumente o padding lateral */
+    border-radius: 4px; /* Ajuste o raio da borda */
+    outline: none; /* Remove o contorno padrão */
+    font-size: 16px; /* Ajuste o tamanho da fonte */
   }
   
-  .search__button {
-    background: none;
-    border: none;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #333;
+  .custom-search-button {
+    background-color: #0078ff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Ajuste o raio da borda */
+    padding: 10px 15px; /* Ajuste o padding do botão */
+    cursor: pointer; /* Adiciona o cursor de ponteiro */
+    transition: background-color 0.3s; /* Adiciona uma transição ao passar o mouse */
   }
+  
+  .custom-search-button:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  }
+  

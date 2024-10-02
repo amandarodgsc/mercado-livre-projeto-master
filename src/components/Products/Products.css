@@ -1,8 +1,100 @@
-.products {
-    padding: 120px 20px 50px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-  }
+/* Container principal da seção de produtos */
+.products-container {
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
 
-  
+/* Título da seção de produtos */
+.products-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Grid de produtos */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Mensagem quando não há produtos */
+.no-products {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Estilo do cartão de produto */
+.product-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de hover do cartão */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do produto */
+.card__image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+/* Efeito de hover na imagem */
+.card__image:hover {
+  opacity: 0.8;
+}
+
+/* Informações do cartão */
+.card__infos {
+  padding: 15px;
+  text-align: center;
+}
+
+/* Preço do produto */
+.card__price {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Título do produto */
+.card__title {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Botão de adicionar ao carrinho */
+.button__add-cart {
+  background-color: #f8f8f8;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efeito de hover no botão */
+.button__add-cart:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+/* Estilo do ícone no botão */
+.button__add-cart svg {
+  vertical-align: middle;
+}

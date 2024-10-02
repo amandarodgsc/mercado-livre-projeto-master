@@ -9,28 +9,36 @@ function Products() {
   const { products, setProducts, loading, setLoading } = useContext(AppContext);
 
   useEffect(() => {
-    setLoading(true); // Ensure loading is set to true before fetching data
-    fetchProducts('variados').then((response) => {
-      setProducts(response);
-      setLoading(false);
-    });
+    const getProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetchProducts('variados');
+        setProducts(response);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    getProducts();
   }, [setProducts, setLoading]);
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
-    <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div>
-          
-          <section className="products container">
-            {products.map((product) => (
-              <ProductCard key={product.id} data={product} />
-            ))}
-          </section>
-        </div>
-      )}
-    </>
+    <section className="products-container">
+      <h1 className="products-title">Explore nossos produtos</h1>
+      <div className="products-grid">
+        {products.length > 0 ? (
+          products.map((product) => <ProductCard key={product.id} data={product} />)
+        ) : (
+          <p className="no-products">Nenhum produto disponível</p>
+        )}
+      </div>
+    </section>
   );
 }
 

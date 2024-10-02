@@ -10,7 +10,6 @@ function Cart() {
   const [coupon, setCoupon] = useState('');
   const navigate = useNavigate();
 
-
   const totalPrice = cartItems.reduce((acc, item) => item.price + acc, 0);
   const totalQuantity = cartItems.length;
 
@@ -18,12 +17,13 @@ function Cart() {
     console.log(`Cupom aplicado: ${coupon}`);
   };
 
-  // Função para fechar o carrinho
   const handleCloseCart = () => {
     setIsCartVisible(false);
   };
 
-  const handleCheckout = () => {navigate('/pagamento', {state: { totalPrice} } )}
+  const handleCheckout = () => {
+    navigate('/pagamento', { state: { totalPrice } });
+  };
 
   return (
     <div className={`cart ${isCartVisible ? 'cart--active' : ''}`}>
@@ -59,7 +59,7 @@ function Cart() {
         </div>
       </div>
 
-      <button className="finalize-button">Continuar a Compra</button>
+      <button className="finalize-button" onClick={handleCheckout}>Continuar a Compra</button>
     </div>
   );
 }

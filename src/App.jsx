@@ -1,31 +1,27 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Products from './components/Products/Products';
-import Provider from './context/Provider';
 import Cart from './components/Cart/Cart';
+import Pagamento from './components/Pagamento/pagamento';
 import SiteShoppingInfo from './components/SiteShoppingInfo/SiteShoppingInfo';
-import Banner from './components/Banner/Banner';
-import VideoBanner from './components/Banner/VideoBanner';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Pagamento from './components/Pagamento/pagamento'
+import Provider from './context/Provider';
 
 function App() {
-
   return (
     <Provider>
-    <Router>
-         <Header />
-         <Banner />
-   <Routes>
-             <Route path="/pagamento" element={<Pagamento />} />
-           </Routes>
-      <Products />
-         <Cart />
-         <VideoBanner/>
-         <SiteShoppingInfo/>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/pagamento" element={<Pagamento />} />
+          <Route path="/" element={<Products />} />
+        </Routes>
+        <Cart />
+     
+        <SiteShoppingInfo />
       </Router>
-       </Provider>
-  )
+    </Provider>
+  );
 }
 
 export default App;
