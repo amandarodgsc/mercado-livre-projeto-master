@@ -6,21 +6,19 @@ import AppContext from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 
 function Vendedor() {
-  const [productData, setProductData] = useState(null);
+  const [productData, setProductData] = useState([]);
   const { cartItems, addToCart, removeFromCart, isCartVisible, setIsCartVisible } = useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedProductData = localStorage.getItem('productData');
-    if (storedProductData) {
-      setProductData(JSON.parse(storedProductData));
+    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+    if (storedProducts.length > 0) {
+      setProductData(storedProducts);
     }
   }, []);
 
-  const handleAddToCart = () => {
-    if (productData) {
-      addToCart(productData);
-    }
+  const handleAddToCart = (product) => {
+    addToCart(product);
   };
 
   const handleRemoveFromCart = (id) => {
@@ -31,27 +29,29 @@ function Vendedor() {
     setIsCartVisible(!isCartVisible);
   };
 
-  if (!productData) {
-    return <p>Não há produto cadastrado.</p>;
+  if (productData.length === 0) {
+    return <p>Não há produtos cadastrados.</p>;
   }
 
   return (
     <div className="products">
-      <div className="product-card">
-        {productData.image && (
-          <img src={productData.image} alt="Produto" className="card__image" />
-        )}
-        <div className="card__infos">
-          <h2 className="card__title">{productData.name}</h2>
-          <p className="card__price">R$ {productData.price}</p>
-          <p>Quantidade: {productData.quantity}</p>
-          <p>Categoria: {productData.category}</p>
-          <p>{productData.description}</p>
+      {productData.map((product) => (
+        <div key={product.id} className="product-card">
+          {product.image && (
+            <img src={product.image} alt={product.name} className="card__image" />
+          )}
+          <div className="card__infos">
+            <h2 className="card__title">{product.name}</h2>
+            <p className="card__price">R$ {product.price.toFixed(2)}</p>
+            <p>Quantidade: {product.quantity}</p>
+            <p>Categoria: {product.category}</p>
+            <p>{product.description}</p>
+          </div>
+          <button className="button__add-cart" onClick={() => handleAddToCart(product)}>
+            Adicionar ao carrinho
+          </button>
         </div>
-        <button className="button__add-cart" onClick={handleAddToCart}>
-          Adicionar ao carrinho
-        </button>
-      </div>
+      ))}
 
       <div className="cart-icon" onClick={toggleCartVisibility}>
         <FaShoppingCart size={30} />
@@ -71,9 +71,8 @@ function Vendedor() {
                   <img src={item.image} alt={item.name} className="cart-item-image" />
                   <div>
                     <p>{item.name}</p>
-                    <p>R$ {item.price}</p>
+                    <p>R$ {item.price.toFixed(2)}</p>
                     <p>Quantidade: {item.quantity}</p>
-                    {/* Botão para remover o item do carrinho */}
                     <button onClick={() => handleRemoveFromCart(item.id)} className="remove-item-button">
                       Remover
                     </button>
