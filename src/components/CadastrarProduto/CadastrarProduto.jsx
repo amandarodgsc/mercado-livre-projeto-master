@@ -36,7 +36,7 @@ function CadastrarProduto() {
     localStorage.setItem('products', JSON.stringify(existingProducts));
 
     // Redireciona para a página do vendedor
-    navigate('/vendedor');
+    navigate('/produtos-cadastrados');
   };
 
   return (

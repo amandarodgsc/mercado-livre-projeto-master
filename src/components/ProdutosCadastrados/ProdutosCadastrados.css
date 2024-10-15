@@ -1,0 +1,104 @@
+/* ProdutosCadastrados.css */
+
+.produtos-container {
+  display: flex; /* Usar flexbox para alinhar os filtros e os cards */
+}
+
+.filter-container {
+  flex: 0 0 200px; /* Largura fixa para a área dos filtros */
+  padding: 20px; /* Espaçamento interno */
+  border-right: 1px solid #ddd; /* Borda à direita */
+}
+
+.produtos-grid {
+  flex: 1; /* Os cards ocuparão o restante do espaço */
+  display: flex;
+  flex-wrap: wrap; /* Permitir que os cards envolvam */
+  justify-content: center; /* Centralizar os cards */
+}
+
+.produto-item {
+  background-color: #f9f9f9; /* Fundo claro para os cards */
+  border: 1px solid #ddd; /* Borda do card */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombreamento do card */
+  margin: 10px; /* Espaçamento entre os cards */
+  padding: 20px; /* Espaçamento interno do card */
+  width: 250px; /* Largura padrão dos cards */
+  transition: box-shadow 0.3s ease; /* Efeito de transição para o sombreamento */
+}
+
+.produto-item img {
+  width: 100%; /* Imagem ocupa toda a largura do card */
+  height: auto; /* Altura automática para manter a proporção */
+  border-radius: 4px; /* Bordas arredondadas na imagem */
+}
+
+.produto-item h2 {
+  font-size: 18px; /* Tamanho do título do produto */
+  margin: 10px 0; /* Margem acima e abaixo do título */
+}
+
+.produto-item p {
+  margin: 5px 0; /* Margem entre os parágrafos */
+}
+
+.produto-item:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Efeito de sombreamento ao passar o mouse */
+}
+
+.filter-button {
+  display: block; /* Exibe os botões como bloco */
+  margin-bottom: 10px; /* Espaçamento entre os botões */
+  padding: 10px;
+  background-color: #007bff; /* Cor do botão */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; /* Botão ocupa toda a largura */
+  text-align: center; /* Centraliza o texto do botão */
+}
+
+.filter-button:hover {
+  background-color: #0056b3; /* Efeito hover */
+}
+
+.cart-button {
+  position: fixed; /* Fixa o botão na tela */
+  bottom: 20px; /* Distância do fundo */
+  right: 20px; /* Distância da direita */
+  background-color: #007bff; /* Cor do botão */
+  color: white;
+  border: none;
+  border-radius: 50%; /* Botão circular */
+  width: 50px; /* Tamanho do botão */
+  height: 50px; /* Tamanho do botão */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombreamento do botão */
+  transition: background-color 0.3s ease; /* Transição para hover */
+}
+
+.cart-button:hover {
+  background-color: #0056b3; /* Efeito hover */
+}
+
+.cart-modal {
+  position: fixed; /* Fixa a modal na tela */
+  top: 50%; /* Centraliza verticalmente */
+  left: 100; /* Fica totalmente à esquerda */
+  transform: translateY(-50%); /* Ajusta a posição verticalmente */
+  background-color: white; /* Fundo da modal */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombreamento da modal */
+  z-index: 1000; /* Fixa a modal acima dos outros elementos */
+}
+
+
+.cart-item {
+  margin-bottom: 10px; /* Espaçamento entre os itens do carrinho */
+}

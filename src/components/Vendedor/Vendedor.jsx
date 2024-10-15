@@ -29,6 +29,15 @@ function Vendedor() {
     setIsCartVisible(!isCartVisible);
   };
 
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  const handlePayment = () => {
+    const totalPrice = calculateTotalPrice();
+    navigate('/pagamento', { state: { totalPrice } });
+  };
+
   if (productData.length === 0) {
     return <p>Não há produtos cadastrados.</p>;
   }
@@ -83,6 +92,14 @@ function Vendedor() {
               <p>O carrinho está vazio</p>
             )}
           </div>
+          {cartItems.length > 0 && (
+            <div className="cart-total">
+              <p>Total: R$ {calculateTotalPrice().toFixed(2)}</p>
+              <button onClick={handlePayment} className="button__pay">
+                Ir para Pagamento
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>

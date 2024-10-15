@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import Provider from './context/Provider'; // Verifique o caminho correto
+import 'font-awesome/css/font-awesome.min.css';
 
 import './index.css';
 
