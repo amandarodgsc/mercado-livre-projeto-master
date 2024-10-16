@@ -1,52 +1,96 @@
-/* Pagamento.css */
-
-.container {
-  padding: 20px;
-  max-width: 600px;
+.pagamento-container {
+  max-width: 800px;
   margin: 0 auto;
-  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.header {
+h1 {
+  font-size: 2rem;
+  color: #333;
   text-align: center;
 }
 
-.pagamento-header {
-  margin-bottom: 20px;
+.payment-options {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
 }
 
-.header h1 {
-  font-size: 24px;
-  color: #333;
-}
-
-.total-price {
-  font-size: 20px;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #28a745;
+.payment-options button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #ffcf00;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.button:hover {
-  background-color: #218838;
+.payment-options button:hover {
+  background-color: #ffd800;
 }
 
-.button:active {
-  background-color: #1e7e34;
+.payment-details {
+  margin-top: 20px;
+}
+
+.payment-form {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.payment-form h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.payment-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.payment-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.payment-form button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #00a650;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.payment-form button:hover {
+  background-color: #00b160;
+}
+
+.qrcode {
+  display: block;
+  margin: 20px auto;
+  width: 200px;
+  height: 200px;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
 }

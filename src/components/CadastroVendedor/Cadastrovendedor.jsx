@@ -30,11 +30,11 @@ function CadastroVendedor() {
       {/* Cabeçalho */}
       <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
         <div className="nav-bounds">
-          <img
-            src="../assets/mercado-livre-88.png" // Corrigido para 'src'
-            alt="mercadolivre"
-            className="logo"
-          />
+        <a href="./" className="nav-logo" tabIndex="0">
+            <div className="nav-logo-title">
+              <span>Mercado Livre</span>
+            </div>
+          </a>
           <div className="nav-header-menu-wrapper">
             <nav id="nav-header-menu" className="nav-header-menu">
               <a

@@ -3,18 +3,20 @@
 .nav-header {
   background-color: #fbff00; /* Fundo do cabeçalho */
   padding: 10px 20px; /* Espaçamento interno */
+  position: relative; /* Para que z-index funcione */
+  z-index: 1; /* Garante que o cabeçalho fique em cima */
 }
 
 .nav-bounds {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Permite que os elementos quebrem em linha em telas menores */
 }
 
-.nav-logo {
-  font-size: 18px;
-  color: #007bff; /* Cor do texto */
-  text-decoration: none; /* Remove o sublinhado do link */
+.logo {
+  max-width: 100px; /* Defina uma largura máxima para a logo, se necessário */
+  height: auto; /* Mantém a proporção */
 }
 
 .nav-header-menu {
@@ -26,10 +28,6 @@
   color: #007bff; /* Cor do link de ajuda */
   text-decoration: none; /* Remove o sublinhado do link */
   margin-left: 20px; /* Espaço à esquerda do link de ajuda */
-}
-
-.nav-icon-help {
-  margin-right: 5px; /* Espaço à direita do ícone de ajuda */
 }
 
 /* Estilos adicionais do formulário */

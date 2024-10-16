@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importe useNavigate para navegação
 import './ProdutosCadastrados.css';
 
 function ProdutosCadastrados() {
@@ -7,6 +8,8 @@ function ProdutosCadastrados() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [cart, setCart] = useState([]);
   const [cartVisible, setCartVisible] = useState(false);
+
+  const navigate = useNavigate(); // Inicialize useNavigate
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -32,16 +35,57 @@ function ProdutosCadastrados() {
     setCartVisible(!cartVisible);
   };
 
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+  };
+
+  const handleRemoveProduct = (productId) => {
+    const updatedProducts = products.filter(product => product.id !== productId);
+    setProducts(updatedProducts);
+    setFilteredProducts(updatedProducts);
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  };
+
   return (
     <div className="produtos-container">
       <div className="filter-container">
         <h2>Categorias</h2>
-        <button onClick={() => handleCategoryClick('')} className="filter-button">Todos</button>
-        <button onClick={() => handleCategoryClick('eletrônicos')} className="filter-button">Eletrônicos</button>
-        <button onClick={() => handleCategoryClick('roupas')} className="filter-button">Roupas</button>
-        <button onClick={() => handleCategoryClick('brinquedos')} className="filter-button">Brinquedos</button>
-        <button onClick={() => handleCategoryClick('casa')} className="filter-button">Casa</button>
-        <button onClick={() => handleCategoryClick('esportes')} className="filter-button">Esportes</button>
+        <button
+          onClick={() => handleCategoryClick('')}
+          className={`filter-button ${selectedCategory === '' ? 'active' : ''}`}
+        >
+          Todos
+        </button>
+        <button
+          onClick={() => handleCategoryClick('eletrônicos')}
+          className={`filter-button ${selectedCategory === 'eletrônicos' ? 'active' : ''}`}
+        >
+          Eletrônicos
+        </button>
+        <button
+          onClick={() => handleCategoryClick('roupas')}
+          className={`filter-button ${selectedCategory === 'roupas' ? 'active' : ''}`}
+        >
+          Roupas
+        </button>
+        <button
+          onClick={() => handleCategoryClick('brinquedos')}
+          className={`filter-button ${selectedCategory === 'brinquedos' ? 'active' : ''}`}
+        >
+          Brinquedos
+        </button>
+        <button
+          onClick={() => handleCategoryClick('casa')}
+          className={`filter-button ${selectedCategory === 'casa' ? 'active' : ''}`}
+        >
+          Casa
+        </button>
+        <button
+          onClick={() => handleCategoryClick('esportes')}
+          className={`filter-button ${selectedCategory === 'esportes' ? 'active' : ''}`}
+        >
+          Esportes
+        </button>
       </div>
       <div className="produtos-grid">
         {filteredProducts.map((product) => (
@@ -53,6 +97,7 @@ function ProdutosCadastrados() {
             <p>Categoria: {product.category}</p>
             <p>{product.description}</p>
             <button onClick={() => handleAddToCart(product)} className="filter-button">Adicionar ao Carrinho</button>
+            <button onClick={() => handleRemoveProduct(product.id)} className="remove-product-button">Remover Produto</button>
           </div>
         ))}
       </div>
@@ -65,16 +110,43 @@ function ProdutosCadastrados() {
           {cart.length === 0 ? (
             <p>O carrinho está vazio.</p>
           ) : (
-            cart.map(item => (
-              <div key={item.id} className="cart-item">
-                <h3>{item.name}</h3>
-                <button onClick={() => handleRemoveFromCart(item.id)}>Remover</button>
+            <>
+              {cart.map(item => (
+                <div key={item.id} className="cart-item">
+                  <h3>{item.name}</h3>
+                  <p>R$ {item.price.toFixed(2)}</p>
+                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-button">Remover</button>
+                </div>
+              ))}
+              <div className="total-container">
+                <h3>Total: R$ {calculateTotal()}</h3>
               </div>
-            ))
+            </>
           )}
-          <button onClick={toggleCart}>Fechar</button>
+          <button onClick={toggleCart} className="close-cart-button">Fechar</button>
+          {cart.length > 0 && (
+            <button
+              onClick={() => navigate('/pagamento', { 
+                state: { 
+                  totalPrice: calculateTotal(), 
+                  cartItems: cart 
+                } 
+              })}
+              className="checkout-button"
+            >
+              Ir para Pagamento
+            </button>
+          )}
         </div>
       )}
+
+      {/* Botão para redirecionar para a página de cadastro */}
+      <button 
+        onClick={() => navigate('/cadastrar-produto')} 
+        className="new-product-button"
+      >
+        Cadastrar Novo Produto
+      </button>
     </div>
   );
 }

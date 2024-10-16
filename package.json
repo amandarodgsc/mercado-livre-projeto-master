@@ -44,5 +44,9 @@
   "homepage": "https://amandarodgsc.github.io/mercado-livre-projeto-master",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  }
+  },
+  "description": "Este é um projeto de carrinho de compras desenvolvido com React JS. Ele permite listar produtos na tela, buscar produtos consumindo a API do Mercado Livre, adicionar produtos e remover produtos do carrinho.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

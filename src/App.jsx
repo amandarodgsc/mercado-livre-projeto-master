@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={
+        <Route path="/mercado-livre-projeto-master" element={
           <>
             <Header />
             <SiteShoppingInfo />
