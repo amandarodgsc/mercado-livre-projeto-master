@@ -7,6 +7,7 @@ import CadastroVendedor from './components/CadastroVendedor/Cadastrovendedor';
 import CadastrarProduto from './components/CadastrarProduto/CadastrarProduto'; 
 import Vendedor from './components/Vendedor/Vendedor';
 import ProdutosCadastrados from './components/ProdutosCadastrados/ProdutosCadastrados';
+import CadastrarCep from './components/CadastrarCep/Cadastrarcep';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/cadastrovendedor" element={<CadastroVendedor />} />
         <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
         <Route path="/produtos-cadastrados" element={<ProdutosCadastrados />} />
+        <Route path="/cadastrar-cep" element={<CadastrarCep />} />
         <Route path="/pagamento" element={<Pagamento />} />
         <Route path="/vendedor" element={<Vendedor />} />
       </Routes>
