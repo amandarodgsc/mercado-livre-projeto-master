@@ -94,3 +94,24 @@ p {
   font-size: 1rem;
   color: #333;
 }
+
+/* Estilo para responsividade */
+@media (max-width: 600px) {
+  .pagamento-container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .payment-options button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .payment-form input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}

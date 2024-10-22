@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Cadastrarcep.css';
 
@@ -11,7 +11,14 @@ function CadastrarCep() {
     estado: '',
     cidade: '',
   });
+  const [cart, setCart] = useState([]);
   const navigate = useNavigate();
+
+  // Carregar dados do carrinho do localStorage
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCart(storedCart);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,13 +29,22 @@ function CadastrarCep() {
     e.preventDefault();
     // Armazenar dados no localStorage
     localStorage.setItem('enderecoData', JSON.stringify(formData));
-    // Redirecionar para a próxima página
-    navigate('/Pagamento'); // Substitua pela rota desejada
+    
+    // Redirecionar para a página de pagamento com os dados do carrinho e do endereço
+    navigate('/pagamento', { 
+      state: { 
+        cartItems: cart,
+        endereco: formData
+      } 
+    });
+  };
+
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
   };
 
   return (
     <div>
-      {/* Cabeçalho */}
       <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
         <div className="nav-bounds">
           <a href="./" className="nav-logo" tabIndex="0">
@@ -36,27 +52,13 @@ function CadastrarCep() {
               <span>Mercado Livre</span>
             </div>
           </a>
-          <div className="nav-header-menu-wrapper">
-            <nav id="nav-header-menu" className="nav-header-menu">
-              <a
-                href="https://www.mercadolivre.com.br/ajuda"
-                className="option-help"
-                rel="nofollow"
-                aria-labelledby="help-text"
-              >
-                <i className="nav-icon-help">
-                  <span id="help-text">Contato</span>
-                </i>
-              </a>
-            </nav>
-          </div>
         </div>
       </header>
 
-      {/* Conteúdo do Cadastro de Endereço */}
       <div className="cadastro-cep-container">
         <h1>Endereço para entrega do produto</h1>
         <form className="cadastro-cep-form" onSubmit={handleSubmit}>
+          {/* Campos do formulário de endereço */}
           <div className="form-group">
             <label htmlFor="endereco">Endereço</label>
             <input
@@ -69,7 +71,6 @@ function CadastrarCep() {
               onChange={handleChange}
             />
           </div>
-
           <div className="form-group">
             <label htmlFor="numero">Número</label>
             <input
@@ -82,7 +83,6 @@ function CadastrarCep() {
               onChange={handleChange}
             />
           </div>
-
           <div className="form-group">
             <label htmlFor="complemento">Complemento</label>
             <input
@@ -94,7 +94,6 @@ function CadastrarCep() {
               onChange={handleChange}
             />
           </div>
-
           <div className="form-group">
             <label htmlFor="cep">CEP</label>
             <input
@@ -107,7 +106,6 @@ function CadastrarCep() {
               onChange={handleChange}
             />
           </div>
-
           <div className="form-group">
             <label htmlFor="estado">Estado</label>
             <input
@@ -120,7 +118,6 @@ function CadastrarCep() {
               onChange={handleChange}
             />
           </div>
-
           <div className="form-group">
             <label htmlFor="cidade">Cidade</label>
             <input
@@ -134,7 +131,25 @@ function CadastrarCep() {
             />
           </div>
 
-          <button type="submit" className="cadastro-cep-button">Cadastrar</button>
+          <div className="carrinho-container">
+            <h2>Carrinho</h2>
+            {cart.length === 0 ? (
+              <p>O carrinho está vazio.</p>
+            ) : (
+              <>
+                {cart.map(item => (
+                  <div key={item.id} className="cart-item">
+                    <h3>{item.name}</h3>
+                    <p>R$ {item.price.toFixed(2)}</p>
+                  </div>
+                ))}
+                <div className="total-container">
+                  <h3>Total: R$ {calculateTotal()}</h3>
+                </div>
+                <button type="submit" className="finalizar-pagamento-button">Finalizar Pagamento</button>
+              </>
+            )}
+          </div>
         </form>
       </div>
     </div>

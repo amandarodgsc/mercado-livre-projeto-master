@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Importação para navegação
+import InputMask from 'react-input-mask'; // Importação para máscara de input
 import './Cadastrovendedor.css'; // Certifique-se de que este arquivo CSS está presente
 
 function CadastroVendedor() {
@@ -7,6 +8,7 @@ function CadastroVendedor() {
     email: '',
     name: '',
     phone: '',
+    cpf: '',
     password: '',
   });
 
@@ -30,7 +32,7 @@ function CadastroVendedor() {
       {/* Cabeçalho */}
       <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
         <div className="nav-bounds">
-        <a href="./" className="nav-logo" tabIndex="0">
+          <a href="./" className="nav-logo" tabIndex="0">
             <div className="nav-logo-title">
               <span>Mercado Livre</span>
             </div>
@@ -84,14 +86,29 @@ function CadastroVendedor() {
 
           <div className="form-group">
             <label htmlFor="phone">Valide seu telefone</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              name="phone" // Adicione o nome para o controle
-              required 
-              placeholder="Digite seu telefone" 
-              value={formData.phone} 
-              onChange={handleChange} 
+            <InputMask
+              mask="(99) 99999-9999" // Máscara para telefone
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              placeholder="Digite seu telefone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="cpf">Informe seu CPF</label>
+            <InputMask
+              mask="999.999.999-99" // Máscara para CPF
+              type="text"
+              id="cpf"
+              name="cpf"
+              required
+              placeholder="Digite seu CPF"
+              value={formData.cpf}
+              onChange={handleChange}
             />
           </div>
 
@@ -100,7 +117,7 @@ function CadastroVendedor() {
             <input 
               type="password" 
               id="password" 
-              name="password" // Adicione o nome para o controle
+              name="password" 
               required 
               placeholder="Digite sua senha" 
               value={formData.password} 

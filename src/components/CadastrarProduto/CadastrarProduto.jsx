@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CadastrarProduto.css';
+import InputMask from 'react-input-mask';
 
 function CadastrarProduto() {
   const [productName, setProductName] = useState('');
@@ -15,27 +16,29 @@ function CadastrarProduto() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Cria um novo objeto de produto
+    // Valida se a imagem selecionada é válida
+    if (!productImage || !['image/jpeg', 'image/png', 'image/gif'].includes(productImage.type)) {
+      alert('Por favor, selecione uma imagem válida (JPEG, PNG ou GIF).');
+      return;
+    }
+
+    // Remove pontos e vírgulas da string de preço para convertê-lo em float corretamente
+    const formattedPrice = parseFloat(productPrice.replace(/[R$\.,]/g, '') / 100);
+
     const newProduct = {
-      id: Date.now(), // Gerar um ID único usando a data atual
+      id: Date.now(),
       name: productName,
-      price: parseFloat(productPrice),
+      price: formattedPrice,
       quantity: parseInt(productQuantity),
       category: productCategory,
       description: productDescription,
       image: productImage ? URL.createObjectURL(productImage) : null,
     };
 
-    // Obtém os produtos existentes do localStorage ou inicializa um array vazio
     const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
-
-    // Adiciona o novo produto à lista de produtos existentes
     existingProducts.push(newProduct);
-
-    // Armazena a lista atualizada no localStorage
     localStorage.setItem('products', JSON.stringify(existingProducts));
 
-    // Redireciona para a página do vendedor
     navigate('/produtos-cadastrados');
   };
 
@@ -47,7 +50,6 @@ function CadastrarProduto() {
         </div>
       </header>
 
-      {/* Conteúdo do Cadastro */}
       <div className="cadastro-container">
         <h1>Cadastro de Produto</h1>
         <form className="cadastro-form" onSubmit={handleSubmit}>
@@ -65,8 +67,8 @@ function CadastrarProduto() {
 
           <div className="form-group">
             <label htmlFor="product-price">Preço:</label>
-            <input
-              type="number"
+            <InputMask
+              mask="R$ 999,99"
               id="product-price"
               required
               placeholder="Digite o preço do produto"
@@ -81,6 +83,7 @@ function CadastrarProduto() {
               type="number"
               id="product-quantity"
               required
+              min="1"
               placeholder="Digite a quantidade do produto"
               value={productQuantity}
               onChange={(e) => setProductQuantity(e.target.value)}

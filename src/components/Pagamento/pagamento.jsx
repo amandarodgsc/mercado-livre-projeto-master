@@ -1,25 +1,52 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'; // Certifique-se de importar useNavigate
 import './pagamento.css';
 
 function Pagamento() {
   const location = useLocation();
-  const { totalPrice } = location.state || { totalPrice: 0 };
+  const navigate = useNavigate(); // Defina a constante navigate
+  const { cartItems, endereco } = location.state || { cartItems: [], endereco: {} };
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
 
-  // Função para gerar uma chave Pix aleatória
   const generatePixKey = () => {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   };
-  // Função para renderizar o formulário de acordo com o método de pagamento selecionado
+
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Armazena os dados no Async Storage
+    const venda = {
+      id: Date.now(), // ID único para cada venda
+      produto: cartItems.map(item => item.name).join(', '), // Exemplo de produtos
+      preco: parseFloat(calculateTotal()), // Garante que preco seja um número
+      endereco: endereco,
+      metodoPagamento: selectedPaymentMethod,
+    };
+
+    // Recupera vendas existentes do Async Storage
+    const vendasExistentes = JSON.parse(localStorage.getItem('vendas')) || [];
+    vendasExistentes.push(venda); // Adiciona nova venda
+
+    // Salva as vendas atualizadas no Async Storage
+    localStorage.setItem('vendas', JSON.stringify(vendasExistentes));
+
+    // Redireciona para a página de Relatório de Vendas
+    navigate('/relatorio-vendas');
+  };
+
   const renderPaymentForm = () => {
     switch (selectedPaymentMethod) {
       case 'cartao':
         return (
           <div className="payment-form">
             <h3>Pagamento com Cartão de Crédito</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
               <label>Número do Cartão</label>
               <input type="text" placeholder="0000 0000 0000 0000" maxLength={16} />
               <label>Nome no Cartão</label>
@@ -46,11 +73,12 @@ function Pagamento() {
             <h3>Pagamento com Pix</h3>
             <p>Chave Pix: {pixKey}</p>
             <img
-              src="https://pixabay.com/pt/vectors/c%C3%B3digo-qr-c%C3%B3digo-de-resposta-r%C3%A1pida-148732/"
+              src="../path/to/your/qr-code-image.png" // Coloque o caminho da sua imagem de QR Code aqui
               alt="QR Code Pix"
               className="qrcode"
             />
             <p>Escaneie o QR code para efetuar o pagamento.</p>
+            <button onClick={handleSubmit}>Confirmar Pagamento</button>
           </div>
         );
       default:
@@ -61,7 +89,9 @@ function Pagamento() {
   return (
     <div className="pagamento-container">
       <h1>Página de Pagamento</h1>
-      <p>Total a Pagar: R$ {totalPrice.toFixed(2)}</p>
+      <p>Total a Pagar: R$ {calculateTotal()}</p>
+      <h2>Endereço para entrega</h2>
+      <p>{`${endereco.endereco}, ${endereco.numero}, ${endereco.complemento || ''}, ${endereco.cep}, ${endereco.cidade}, ${endereco.estado}`}</p>
 
       <div className="payment-options">
         <h3>Escolha a forma de pagamento:</h3>

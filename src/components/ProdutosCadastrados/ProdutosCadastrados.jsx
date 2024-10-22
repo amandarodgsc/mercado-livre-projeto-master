@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importe useNavigate para navegação
+import { useNavigate } from 'react-router-dom';
 import './ProdutosCadastrados.css';
 
 function ProdutosCadastrados() {
@@ -9,12 +9,14 @@ function ProdutosCadastrados() {
   const [cart, setCart] = useState([]);
   const [cartVisible, setCartVisible] = useState(false);
 
-  const navigate = useNavigate(); // Inicialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
     setProducts(storedProducts);
     setFilteredProducts(storedProducts);
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCart(storedCart);
   }, []);
 
   const handleCategoryClick = (category) => {
@@ -24,11 +26,15 @@ function ProdutosCadastrados() {
   };
 
   const handleAddToCart = (product) => {
-    setCart([...cart, product]);
+    const updatedCart = [...cart, product];
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart)); // Armazena o carrinho no localStorage
   };
 
   const handleRemoveFromCart = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
+    const updatedCart = cart.filter(item => item.id !== productId);
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart)); // Atualiza o carrinho no localStorage
   };
 
   const toggleCart = () => {
@@ -123,30 +129,18 @@ function ProdutosCadastrados() {
               </div>
             </>
           )}
+          {/* Botão para redirecionar para a página de cadastro de endereço */}
+      <button 
+        onClick={() => navigate('/cadastrar-cep')} 
+        className="new-product-button"
+      >
+        Adicione o Endereço
+      </button>
           <button onClick={toggleCart} className="close-cart-button">Fechar</button>
-          {cart.length > 0 && (
-            <button
-              onClick={() => navigate('/pagamento', { 
-                state: { 
-                  totalPrice: calculateTotal(), 
-                  cartItems: cart 
-                } 
-              })}
-              className="checkout-button"
-            >
-              Ir para Pagamento
-            </button>
-          )}
         </div>
       )}
 
-      {/* Botão para redirecionar para a página de cadastro */}
-      <button 
-        onClick={() => navigate('/cadastrar-produto')} 
-        className="new-product-button"
-      >
-        Cadastrar Novo Produto
-      </button>
+      
     </div>
   );
 }
