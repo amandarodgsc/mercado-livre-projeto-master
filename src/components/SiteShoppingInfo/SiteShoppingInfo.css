@@ -1,33 +1,34 @@
 /* SiteShoppingInfo.css */
 .site-shopping-info {
   background-color: #e7eaee; /* Cor de fundo leve */
-  padding: 40px 0; /* Espaçamento vertical */
-  border-top: 1px solid #e6dee1; /* Linha de separação no topo */
+  border-top: 0.1px solid #e6dee1; /* Linha de separação no topo */
 }
 
 .site-shopping-info .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 120px; /* Espaçamento horizontal */
+  margin: 0 auto; /* Centraliza o container */
+  padding: 20px; /* Espaçamento horizontal */
   display: flex;
   flex-wrap: wrap; /* Permite que os slides envolvam-se em várias linhas se necessário */
   gap: 20px; /* Espaçamento entre os slides */
 }
 
 .info-slide {
-  flex: 300px; /* Flexível para se ajustar à largura disponível, com largura mínima de 300px */
+  flex: 1 1 300px; /* Permite que o slide se ajuste à largura disponível, com largura mínima de 300px */
   display: flex;
   flex-direction: column; /* Organiza a imagem, título e texto verticalmente */
-  align-items: center; /* Alinha os itens à esquerda */
+  align-items: center; /* Alinha os itens ao centro */
   background-color: #ffffff; /* Cor de fundo dos slides */
   border-radius: 40px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
   padding: 30px;
   box-sizing: border-box; /* Inclui padding e border no cálculo da largura e altura */
+  
 }
 
 .info-slide .img-container {
   align-self: center; /* Centraliza a imagem horizontalmente dentro do slide */
+  
 }
 
 .info-slide .img-container img {
@@ -54,5 +55,83 @@
 }
 
 .info-slide a:hover {
+  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+  
+}
+
+.business-info-image img {
+  max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-top: -140px; /* Ajuste o valor negativo para mover a imagem para cima */
+}
+
+.info-card {
+  display: flex;
+  align-items: center; /* Alinha verticalmente o conteúdo */
+  background-color: #fff; /* Cor de fundo do card */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra do card */
+  padding: 30px; /* Espaçamento interno */
+  margin: 20px auto; /* Centraliza o card horizontalmente com margem automática */
+  width: 100%; /* Largura total */
+  max-width: 1000px; /* Largura máxima do card */
+  margin-top: -140px; /* Ajuste o valor negativo para mover a imagem para cima */
+
+}
+
+.rocket-img {
+  width: 50px; /* Ajuste conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-right: 15px; /* Espaço à direita da imagem */
+}
+
+.info-card h3 {
+  margin: 0; /* Remove margem padrão do título */
+  flex-grow: 1; /* Faz o título ocupar o espaço restante */
+  font-size: 18px;
+  }
+
+  .business-info-image h1 {
+    margin-top: 100px; /* Ajuste o valor negativo para mover a imagem para cima */
+  }
+  
+.login-button {
+  background-color: blue; /* Cor do botão */
+  color: white; /* Cor do texto do botão */
+  border: none;
+  border-radius: 20px; /* Bordas arredondadas */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 15px; /* Espaço à esquerda do botão */
+  transition: background-color 0.3s; /* Efeito de transição */
+}
+
+.login-button:hover {
+  background-color: darkblue; /* Cor ao passar o mouse */
+}
+
+.site-footer {
+  background-color: #e7eaee; /* Cor de fundo leve */
+  padding: 20px 0; /* Espaçamento vertical */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.footer-container {
+  max-width: 1200px; /* Largura máxima */
+  margin: 0 auto; /* Centraliza o container */
+  display: flex; /* Flexbox para alinhar itens na mesma linha */
+  flex-direction: row; /* Alinhamento em linha */
+  justify-content: center; /* Centraliza o conteúdo */
+  align-items: center; /* Alinha verticalmente no centro */
+  gap: 15px; /* Espaçamento entre os itens */
+}
+
+.footer-link {
+  color: #007bff; /* Cor do link */
+  text-decoration: none; /* Remove o sublinhado */
+}
+
+.footer-link:hover {
   text-decoration: underline; /* Sublinha o link ao passar o mouse */
 }

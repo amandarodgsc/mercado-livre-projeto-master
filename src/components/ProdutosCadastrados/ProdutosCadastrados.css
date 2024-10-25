@@ -53,7 +53,7 @@ body {
 
 .filter-button.active {
   background-color: #333;
-  color: #fff;
+  color: #ffdb15;
 }
 
 /* Grid de produtos */
@@ -241,3 +241,14 @@ body {
     width: 100%;
   }
 }
+
+.business-info-image {
+  text-align: center; /* Centraliza a imagem horizontalmente */
+  margin-top: 0.1px; /* Adiciona um espaçamento entre os cards e a imagem */
+}
+
+.business-info-image img {
+  max-width: 90%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+}
+
