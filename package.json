@@ -22,8 +22,10 @@
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.2",
+    "remask": "^1.2.2",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "predeploy": "npm run build",
