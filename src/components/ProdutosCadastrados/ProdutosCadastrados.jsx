@@ -42,7 +42,8 @@ function ProdutosCadastrados() {
   };
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+    const total = cart.reduce((acc, item) => acc + (item.price || 0), 0);
+    return total.toFixed(2);
   };
 
   const handleRemoveProduct = (productId) => {
@@ -56,41 +57,27 @@ function ProdutosCadastrados() {
     <div className="produtos-container">
       <div className="filter-container">
         <h2>Categorias</h2>
-        <button onClick={() => handleCategoryClick('')} className={`filter-button ${selectedCategory === '' ? 'active' : ''}`}>
-          Todos
-        </button>
-        <button onClick={() => handleCategoryClick('eletrônicos')} className={`filter-button ${selectedCategory === 'eletrônicos' ? 'active' : ''}`}>
-          Eletrônicos
-        </button>
-        <button onClick={() => handleCategoryClick('roupas')} className={`filter-button ${selectedCategory === 'roupas' ? 'active' : ''}`}>
-          Roupas
-        </button>
-        <button onClick={() => handleCategoryClick('brinquedos')} className={`filter-button ${selectedCategory === 'brinquedos' ? 'active' : ''}`}>
-          Brinquedos
-        </button>
-        <button onClick={() => handleCategoryClick('casa')} className={`filter-button ${selectedCategory === 'casa' ? 'active' : ''}`}>
-          Casa
-        </button>
-        <button onClick={() => handleCategoryClick('esportes')} className={`filter-button ${selectedCategory === 'esportes' ? 'active' : ''}`}>
-          Esportes
-        </button>
+        {['Todos', 'eletrônicos', 'roupas', 'brinquedos', 'casa', 'esportes'].map(category => (
+          <button
+            key={category}
+            onClick={() => handleCategoryClick(category === 'Todos' ? '' : category)}
+            className={`filter-button ${selectedCategory === (category === 'Todos' ? '' : category) ? 'active' : ''}`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
-
       <div className="produtos-grid">
         {filteredProducts.map((product) => (
-          <div className="produto-item" key={product.id}>
+          <div className="produto-item" key={product.id} onClick={() => navigate(`/produtos/${product.id}`)}>
             <img src={product.image} alt={product.name} />
             <h2>{product.name}</h2>
-            <p>R$ {product.price.toFixed(2)}</p>
+            <p>R$ {(product.price || 0).toFixed(2)}</p>
             <p>Quantidade: {product.quantity}</p>
             <p>Categoria: {product.category}</p>
             <p>{product.description}</p>
-            <button onClick={() => handleAddToCart(product)} className="filter-button">Adicionar ao Carrinho</button>
-            <button onClick={() => handleRemoveProduct(product.id)} className="remove-product-button">Remover Produto</button>
-            {/* Botão para acessar a página de comentários e feedback */}
-            <button onClick={() => navigate(`/produtos/${product.id}/feedback`)} className="feedback-button">
-              Ver Comentários
-            </button>
+            <button onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }} className="filter-button">Adicionar ao Carrinho</button>
+            <button onClick={(e) => { e.stopPropagation(); handleRemoveProduct(product.id); }} className="remove-product-button">Remover Produto</button>
           </div>
         ))}
       </div>
@@ -107,7 +94,7 @@ function ProdutosCadastrados() {
               {cart.map(item => (
                 <div key={item.id} className="cart-item">
                   <h3>{item.name}</h3>
-                  <p>R$ {item.price.toFixed(2)}</p>
+                  <p>R$ {(item.price || 0).toFixed(2)}</p>
                   <button onClick={() => handleRemoveFromCart(item.id)} className="remove-button">Remover</button>
                 </div>
               ))}
@@ -116,7 +103,9 @@ function ProdutosCadastrados() {
               </div>
             </>
           )}
-          <button onClick={() => navigate('/cadastrar-cep')} className="new-product-button">Adicione o Endereço</button>
+          <button onClick={() => navigate('/cadastrar-cep')} className="new-product-button">
+            Adicione o Endereço
+          </button>
           <button onClick={toggleCart} className="close-cart-button">Fechar</button>
         </div>
       )}

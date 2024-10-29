@@ -26,7 +26,7 @@ function CadastrarProduto() {
     const formattedPrice = parseFloat(productPrice.replace(/[R$\.,]/g, '') / 100);
 
     const newProduct = {
-      id: Date.now(),
+      id: Date.now().toString(), // Garantindo que o ID seja uma string
       name: productName,
       price: formattedPrice,
       quantity: parseInt(productQuantity),
@@ -34,6 +34,7 @@ function CadastrarProduto() {
       description: productDescription,
       image: productImage ? URL.createObjectURL(productImage) : null,
     };
+    
 
     const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
     existingProducts.push(newProduct);

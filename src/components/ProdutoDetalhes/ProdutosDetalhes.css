@@ -1,0 +1,25 @@
+/* src/components/ProdutoDetalhes/ProdutoDetalhes.css */
+
+.produto-detalhes {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .produto-detalhes img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .produto-detalhes h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .produto-detalhes p {
+    margin: 5px 0;
+  }
+  
