@@ -30,8 +30,8 @@ function App() {
         <Route path="/relatorio-vendas" element={<RelatorioVendas />} />
         <Route path="/vendedor" element={<Vendedor />} />
         <Route path="/produtos/:id" element={<ProdutoDetalhes />} /> {/* Rota para detalhes do produto */}
-        <Route path="/produtos/:productId/feedback" element={<FeedbackProduto />} /> {/* Rota para feedback do produto */}
-      </Routes>
+        <Route path="/produtos/:productId/feedback" element={<FeedbackProduto />} />
+        </Routes>
     </Router>
   );
 }

@@ -68,3 +68,19 @@
     font-size: 16px;
   }
   
+  .avaliar-produto {
+    background-color: #f7d708;
+    color: #696967;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .avaliar-produto:hover {
+    background-color: #e6b800;
+  }
+  

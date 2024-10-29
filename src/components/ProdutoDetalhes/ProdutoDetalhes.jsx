@@ -1,10 +1,10 @@
-// src/components/ProdutoDetalhes/ProdutoDetalhes.js
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './ProdutosDetalhes.css';
 
 function ProdutoDetalhes() {
   const { id } = useParams(); // Acessa o ID do produto da URL
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -16,6 +16,11 @@ function ProdutoDetalhes() {
   if (!product) {
     return <div>Produto não encontrado.</div>; // Mensagem caso o produto não seja encontrado
   }
+
+  const handleReviewClick = () => {
+    navigate(`/produtos/${id}/feedback`); // Use o ID correto aqui
+  };
+  
 
   return (
     <div className="produto-detalhes">
@@ -30,6 +35,7 @@ function ProdutoDetalhes() {
         <p className="produto-descricao">{product.description}</p>
         <button className="comprar-agora">Comprar agora</button>
         <button className="adicionar-carrinho">Adicionar ao carrinho</button>
+        <button className="avaliar-produto" onClick={handleReviewClick}>Avaliar Produto</button> {/* Botão Avaliar Produto */}
       </div>
     </div>
   );
