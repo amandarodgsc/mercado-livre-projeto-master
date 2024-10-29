@@ -9,6 +9,7 @@ import Vendedor from './components/Vendedor/Vendedor';
 import ProdutosCadastrados from './components/ProdutosCadastrados/ProdutosCadastrados';
 import CadastrarCep from './components/CadastrarCep/Cadastrarcep';
 import RelatorioVendas from './components/RelatoriodeVenda/RelatorioVendas';
+import FeedbackProduto from './components/FeedbackProduto/FeedbackProduto'; // Importando o novo componente de feedback
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
         <Route path="/pagamento" element={<Pagamento />} />
         <Route path="/relatorio-vendas" element={<RelatorioVendas />} />
         <Route path="/vendedor" element={<Vendedor />} />
+        {/* Rota para a página de comentários e feedback para cada produto */}
+        <Route path="/produtos/:productId/feedback" element={<FeedbackProduto />} />
       </Routes>
     </Router>
   );
