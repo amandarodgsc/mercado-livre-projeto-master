@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import * as Yup from 'yup';
@@ -25,9 +25,12 @@ function CadastrarCep() {
   const [errors, setErrors] = useState({});
   const [selectedEndereco, setSelectedEndereco] = useState(null);
   const [isAddressSaved, setIsAddressSaved] = useState(false);
+  const [frete, setFrete] = useState(null);
+  const [error, setError] = useState('');
+  const [mostrarFrete, setMostrarFrete] = useState(false);
   const navigate = useNavigate();
 
-  // Exemplo: array de itens do carrinho (substitua isso pela sua lógica real)
+  // Exemplo: array de itens do carrinho
   const seuArrayDeItems = [
     { name: 'Produto 1', price: 100 },
     { name: 'Produto 2', price: 200 }
@@ -80,14 +83,50 @@ function CadastrarCep() {
     setEnderecos(updatedEnderecos);
     localStorage.setItem('enderecos', JSON.stringify(updatedEnderecos));
     setFormData({ endereco: '', numero: '', complemento: '', cep: '', estado: '', cidade: '' });
+    setMostrarFrete(false); // Esconde o frete ao cadastrar
   };
 
-  const handleDelete = (index) => {
-    if (window.confirm("Tem certeza que deseja excluir?")) {
-      const updatedEnderecos = enderecos.filter((_, i) => i !== index);
-      setEnderecos(updatedEnderecos);
-      localStorage.setItem('enderecos', JSON.stringify(updatedEnderecos));
+  const buscarEndereco = async () => {
+    const cepFormatado = formData.cep.replace(/[-.]/g, '');
+    if (cepFormatado.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cepFormatado}/json/`);
+        const data = await response.json();
+
+        if (!data.erro) {
+          setFormData(prevData => ({
+            ...prevData,
+            endereco: data.logradouro,
+            estado: data.uf,
+            cidade: data.localidade,
+          }));
+          calcularFrete(); // Chama a função para calcular o frete
+          setMostrarFrete(true); // Mostra o frete
+          setError('');
+        } else {
+          setError('CEP inválido!');
+          setFrete(null);
+          setMostrarFrete(false); // Esconde o frete se o CEP for inválido
+        }
+      } catch (error) {
+        setError('Erro ao buscar o CEP. Tente novamente.');
+        setFrete(null);
+        setMostrarFrete(false); // Esconde o frete se ocorrer erro
+      }
+    } else {
+      setError('Por favor, insira um CEP válido.');
+      setMostrarFrete(false); // Esconde o frete se o CEP for inválido
     }
+  };
+
+  const calcularFrete = () => {
+    const valorFrete = 10.00; // Valor fixo de frete
+    setFrete(valorFrete);
+  };
+
+  const handleSelectEndereco = (e) => {
+    const selected = enderecos[e.target.value];
+    setSelectedEndereco(selected);
   };
 
   const handleEdit = (index) => {
@@ -96,9 +135,12 @@ function CadastrarCep() {
     setEditIndex(index);
   };
 
-  const handleSelectEndereco = (e) => {
-    const selected = enderecos[e.target.value];
-    setSelectedEndereco(selected);
+  const handleDelete = (index) => {
+    if (window.confirm("Tem certeza que deseja excluir?")) {
+      const updatedEnderecos = enderecos.filter((_, i) => i !== index);
+      setEnderecos(updatedEnderecos);
+      localStorage.setItem('enderecos', JSON.stringify(updatedEnderecos));
+    }
   };
 
   return (
@@ -173,6 +215,13 @@ function CadastrarCep() {
                   className={errors.cep ? 'input-error' : ''}
                 />
                 {errors.cep && <p className="error">{errors.cep}</p>}
+                <button
+                  type="button" // Altera para button para evitar submit
+                  className="btn-buscar"
+                  onClick={buscarEndereco}
+                >
+                  Buscar Endereço
+                </button>
               </div>
 
               <div className="form-group">
@@ -205,8 +254,12 @@ function CadastrarCep() {
                 {errors.cidade && <p className="error">{errors.cidade}</p>}
               </div>
 
-              <button type="submit" className="button">{isEditing ? "Salvar" : "Cadastrar"}</button>
+              {mostrarFrete && frete !== null && (
+                <p>Valor do Frete: R$ {frete.toFixed(2)}</p>
+              )}
+              {error && <p className="error">{error}</p>}
 
+              <button type="submit" className="button">{isEditing ? "Salvar" : "Cadastrar"}</button>
             </form>
           </div>
 
@@ -224,11 +277,11 @@ function CadastrarCep() {
             <button
               onClick={() => {
                 if (selectedEndereco) {
-                  navigate('/pagamento', { state: { cartItems: seuArrayDeItems, endereco: selectedEndereco } }); // Passa o endereço selecionado e os itens do carrinho
+                  navigate('/pagamento', { state: { cartItems: seuArrayDeItems, endereco: selectedEndereco } });
                 }
               }}
               className="button"
-              disabled={!selectedEndereco} // Desabilita o botão se nenhum endereço for selecionado
+              disabled={!selectedEndereco}
             >
               Ir para Pagamento
             </button>

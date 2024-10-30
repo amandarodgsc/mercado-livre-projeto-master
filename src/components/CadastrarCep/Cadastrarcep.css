@@ -114,3 +114,10 @@ button {
 .error {
   color: red; /* Mensagens de erro em vermelho */
 }
+
+/* Adicione no seu arquivo Cadastrarcep.css */
+.btn-buscar {
+  padding: 5px 10px; /* Ajuste o padding conforme necessário */
+  font-size: 12px; /* Altere o tamanho da fonte */
+}
+
