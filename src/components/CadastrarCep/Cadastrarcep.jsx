@@ -207,15 +207,6 @@ function CadastrarCep() {
 
               <button type="submit" className="button">{isEditing ? "Salvar" : "Cadastrar"}</button>
 
-              {/* Botão para ir para pagamento */}
-              {isAddressSaved && (
-                <button
-                  onClick={() => navigate('/pagamento', { state: { cartItems: seuArrayDeItems, endereco: formData } })} // Passa o endereço atual e os itens do carrinho para a página de pagamento
-                  className="button"
-                >
-                  Ir para Pagamento
-                </button>
-              )}
             </form>
           </div>
 
