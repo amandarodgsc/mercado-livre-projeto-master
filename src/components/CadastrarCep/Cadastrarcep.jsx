@@ -124,7 +124,13 @@ function CadastrarCep() {
   };
 
   const calcularFrete = () => {
-    const valorFrete = 10.00; // Valor fixo de frete
+    // Baseia o valor do frete no estado do endereço, por exemplo:
+    let valorFrete = 10.00; // Valor base
+    if (formData.estado === "SP") {
+      valorFrete = 15.00; // Ajusta o frete conforme a localidade
+    } else if (formData.estado === "RJ") {
+      valorFrete = 12.00;
+    }
     setFrete(valorFrete);
   };
 
