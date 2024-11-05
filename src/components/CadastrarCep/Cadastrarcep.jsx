@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'; 
-import { useNavigate } from 'react-router-dom';
-import InputMask from 'react-input-mask';
-import * as Yup from 'yup';
-import './Cadastrarcep.css';
+import { useNavigate } from 'react-router-dom'; 
+import InputMask from 'react-input-mask'; 
+import * as Yup from 'yup'; 
+import './Cadastrarcep.css'; 
 import CepValidator from '../validators/CepValidator';
 
 const validationSchema = Yup.object().shape({
@@ -30,16 +30,20 @@ function CadastrarCep() {
   const [mostrarFrete, setMostrarFrete] = useState(false);
   const navigate = useNavigate();
 
-  // Exemplo: array de itens do carrinho
-  const seuArrayDeItems = [
-    { name: 'Produto 1', price: 100 },
-    { name: 'Produto 2', price: 200 }
-  ];
+  // Buscar os itens do carrinho do localStorage
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const storedEnderecos = JSON.parse(localStorage.getItem('enderecos')) || [];
     setEnderecos(storedEnderecos);
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartItems(storedCart); // Carrega o carrinho do localStorage
   }, []);
+
+  // Função para calcular o total do carrinho
+  const calculateTotal = (cartItems) => {
+    return cartItems.reduce((acc, item) => acc + (item.price || 0), 0).toFixed(2);
+  };
 
   const validateForm = async () => {
     try {
@@ -277,7 +281,13 @@ function CadastrarCep() {
             <button
               onClick={() => {
                 if (selectedEndereco) {
-                  navigate('/pagamento', { state: { cartItems: seuArrayDeItems, endereco: selectedEndereco } });
+                  navigate('/pagamento', { 
+                    state: { 
+                      cartItems: cartItems, 
+                      endereco: selectedEndereco, 
+                      total: calculateTotal(cartItems) 
+                    }
+                  });
                 }
               }}
               className="button"
