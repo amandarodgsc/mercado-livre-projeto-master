@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReCAPTCHA from "react-google-recaptcha"; // Importe o ReCAPTCHA
+import ReCAPTCHA from "react-google-recaptcha"; // Importe o reCAPTCHA
 import './Login.css';
 
 const Login = () => {
@@ -12,39 +12,11 @@ const Login = () => {
 
   const siteKey = "6Leb0XYqAAAAAGMa41IvgRRmW084cUH2jSJwiWJa"; // Substitua com sua chave pública do reCAPTCHA
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Verifica se o captcha foi validado
-    if (!captchaVerified) {
-      alert('Por favor, complete o reCAPTCHA!');
-      return;
-    }
-
-    console.log('E-mail enviado:', email);
-    console.log('Senha enviada:', password);
-
-    // Enviar token do captcha para o backend para validação
-    const response = await fetch('http://localhost:3001/verify-captcha', { // URL do seu backend
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: captchaToken,  // O token que você obteve do reCAPTCHA
-        email,
-        password
-      })
-    });
-
-    const data = await response.json();
-    console.log('Resposta do backend:', data);
-
-    if (data.success) {
-      navigate('/Produtos-Cadastrados'); // Se o captcha for validado no backend, redireciona
-    } else {
-      alert('Falha na verificação do reCAPTCHA!');
-    }
+    // Redireciona diretamente para a página de Produtos Cadastrados
+    navigate('/Produtos-Cadastrados');
   };
 
   const onCaptchaChange = (value) => {
