@@ -31,7 +31,7 @@ const SiteShoppingInfo = () => {
             Como pagar com Mercado Pago
           </a>
         </div>
-        
+
         <div className="info-slide">
           <div className="img-container">
             <img 
