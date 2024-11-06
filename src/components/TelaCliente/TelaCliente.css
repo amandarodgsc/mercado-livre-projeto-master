@@ -1,0 +1,275 @@
+/* Container geral */
+.tela-cliente-container {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #ffdf28;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.logo {
+    height: 50px;
+    cursor: pointer;
+}
+
+.cep-info {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.geo-icon {
+    color: black;
+    margin-right: 8px;
+}
+
+.cep-info span {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Barra de Pesquisa */
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    position: relative;
+}
+
+.search__input {
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.search__button {
+    position: absolute;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search__button svg {
+    width: 20px;
+    height: 20px;
+    color: rgb(0, 0, 0);
+}
+
+/* Imagem de Promoção no Canto Direito */
+.promo-banner {
+    margin-left: 20px;
+}
+
+.promo-banner-img {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffdf28 !important; /* Apliquei o !important para garantir que essa cor prevaleça */
+    padding: 10px 20px; /* Ajuste o padding conforme necessário */
+}
+
+.navbar .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #202020; /* Cor do texto da marca */
+    text-decoration: none;
+}
+
+.navbar .navbar-brand:hover {
+    color: #f0c420;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+}
+
+.navbar .navbar-nav .nav-item {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.navbar .navbar-nav .nav-link {
+    font-size: 15px;
+    color: #202020; /* Cor do texto do link */
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #ffdf28; /* Cor do texto ao passar o mouse */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+/* Navbar Responsiva */
+.navbar-toggler {
+    border-color: #ffdf28;
+}
+
+.navbar-toggler-icon {
+    background-color: #ffdf28;
+}
+
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 20px;
+    }
+}
+
+/* Banner Principal */
+.main-banner {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    background-color: #333;
+    text-align: center;
+}
+
+.main-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Categorias */
+.categories {
+    margin-top: 40px;
+}
+
+.categories h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.categories-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.category-button {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.category-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Produtos */
+.produtos {
+    margin-top: 40px;
+}
+
+.produtos h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.produto-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.produto-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.produto-item h3 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.produto-item p {
+    font-size: 16px;
+    color: #333;
+}
+
+.produto-item:hover {
+    transform: scale(1.05);
+}
+
+.carousel-section {
+    margin: 0px 0;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 500px;
+    border-radius: 0px;
+}
+
+/* Rodapé */
+.footer {
+    margin-top: 40px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}

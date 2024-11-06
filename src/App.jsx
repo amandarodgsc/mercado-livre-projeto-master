@@ -11,6 +11,7 @@ import CadastrarCep from './components/CadastrarCep/Cadastrarcep';
 import RelatorioVendas from './components/RelatoriodeVenda/RelatorioVendas';
 import FeedbackProduto from './components/FeedbackProduto/FeedbackProduto';
 import ProdutoDetalhes from './components/ProdutoDetalhes/ProdutoDetalhes'; // Importando detalhes do produto
+import TelaCliente from './components/TelaCliente/TelaCliente';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <SiteShoppingInfo />
           </>
         } />
+        <Route path="/telacliente" element={<TelaCliente />} /> 
         <Route path="/cadastrovendedor" element={<CadastroVendedor />} />
         <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
         <Route path="/produtos-cadastrados" element={<ProdutosCadastrados />} />
