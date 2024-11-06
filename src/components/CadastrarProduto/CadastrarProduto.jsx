@@ -22,25 +22,32 @@ function CadastrarProduto() {
       return;
     }
 
-    // Remove pontos e vírgulas da string de preço para convertê-lo em float corretamente
-    const formattedPrice = parseFloat(productPrice.replace(/[R$\.,]/g, '') / 100);
+    // Converte a imagem em Base64
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64Image = reader.result;
 
-    const newProduct = {
-      id: Date.now().toString(), // Garantindo que o ID seja uma string
-      name: productName,
-      price: formattedPrice,
-      quantity: parseInt(productQuantity),
-      category: productCategory,
-      description: productDescription,
-      image: productImage ? URL.createObjectURL(productImage) : null,
+      // Remove pontos e vírgulas da string de preço para convertê-lo em float corretamente
+      const formattedPrice = parseFloat(productPrice.replace(/[R$\.,]/g, '') / 100);
+
+      const newProduct = {
+        id: Date.now().toString(), // Garantindo que o ID seja uma string
+        name: productName,
+        price: formattedPrice,
+        quantity: parseInt(productQuantity),
+        category: productCategory,
+        description: productDescription,
+        image: base64Image, // Armazena a imagem em Base64
+      };
+
+      const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
+      existingProducts.push(newProduct);
+      localStorage.setItem('products', JSON.stringify(existingProducts));
+
+      navigate('/produtos-cadastrados');
     };
-    
 
-    const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
-    existingProducts.push(newProduct);
-    localStorage.setItem('products', JSON.stringify(existingProducts));
-
-    navigate('/produtos-cadastrados');
+    reader.readAsDataURL(productImage); // Lê a imagem como Base64
   };
 
   return (
@@ -69,7 +76,7 @@ function CadastrarProduto() {
           <div className="form-group">
             <label htmlFor="product-price">Preço:</label>
             <InputMask
-              mask="R$ 999,99"
+              mask="R$ 99,99"
               id="product-price"
               required
               placeholder="Digite o preço do produto"

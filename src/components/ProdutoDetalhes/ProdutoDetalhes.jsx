@@ -18,9 +18,8 @@ function ProdutoDetalhes() {
   }
 
   const handleReviewClick = () => {
-    navigate(`/produtos/${id}/feedback`); // Use o ID correto aqui
+    navigate(`/produtos/${id}/feedback`); // Navega para a página de feedback
   };
-  
 
   return (
     <div className="produto-detalhes">
@@ -30,12 +29,12 @@ function ProdutoDetalhes() {
       <div className="produto-info">
         <h1>{product.name}</h1>
         <p className="produto-preco">R$ {product.price.toFixed(2)}</p>
-        <p className="produto-desconto">36% OFF</p>
+        <p className="produto-desconto">12% OFF</p>
         <p className="produto-categoria">Categoria: {product.category}</p>
         <p className="produto-descricao">{product.description}</p>
         <button className="comprar-agora">Comprar agora</button>
         <button className="adicionar-carrinho">Adicionar ao carrinho</button>
-        <button className="avaliar-produto" onClick={handleReviewClick}>Avaliar Produto</button> {/* Botão Avaliar Produto */}
+        <button className="avaliar-produto" onClick={handleReviewClick}>Avaliar Produto</button>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-// FeedbackProduto.js
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './FeedbackProduto.css';
@@ -16,7 +15,7 @@ function FeedbackProduto() {
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-    const foundProduct = storedProducts.find(item => item.id === parseInt(productId));
+    const foundProduct = storedProducts.find(item => item.id === productId);
     setProduct(foundProduct);
 
     const storedFeedbacks = JSON.parse(localStorage.getItem('feedbacks')) || {};
@@ -69,7 +68,6 @@ function FeedbackProduto() {
           <img src={product.image} alt={product.name} />
           <p>{product.description}</p>
 
-          {/* Avaliação Geral */}
           <div className="overall-rating">
             <h3>Opiniões do produto</h3>
             <div className="rating-display">
@@ -79,34 +77,6 @@ function FeedbackProduto() {
             </div>
           </div>
 
-          {/* Avaliação de Características */}
-          <div className="characteristics-rating">
-            <h4>Avaliação de características</h4>
-            <div className="characteristic">
-              Custo-benefício: <span className="stars">{'⭐'.repeat(4)}</span>
-            </div>
-            <div className="characteristic">
-              Qualidade dos materiais: <span className="stars">{'⭐'.repeat(5)}</span>
-            </div>
-            <div className="characteristic">
-              Durabilidade: <span className="stars">{'⭐'.repeat(4)}</span>
-            </div>
-          </div>
-
-          {/* Comentários em Destaque */}
-          <div className="highlighted-feedbacks">
-            <h4>Comentários em destaque</h4>
-            <div className="feedback-card">
-              <p>O produto é excelente, recomendo!</p>
-              <p>Estrelas: {'⭐'.repeat(5)}</p>
-            </div>
-            <div className="feedback-card">
-              <p>Vale cada centavo. Muito satisfeito.</p>
-              <p>Estrelas: {'⭐'.repeat(4)}</p>
-            </div>
-          </div>
-
-          {/* Seção de Comentários Existentes */}
           <div className="existing-feedbacks">
             <h3>Comentários:</h3>
             {feedbacks.length > 0 ? (
@@ -128,7 +98,6 @@ function FeedbackProduto() {
             )}
           </div>
 
-          {/* Formulário para Adicionar Novo Comentário */}
           <div className="new-feedback-form">
             <h3>Adicionar Novo Comentário</h3>
             <textarea
