@@ -26,9 +26,20 @@ function ProdutosCadastrados() {
   };
 
   const handleAddToCart = (product) => {
-    const updatedCart = [...cart, product];
-    setCart(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+    if (existingProductIndex >= 0) {
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].quantity += 1;
+      updatedCart[existingProductIndex].totalPrice = updatedCart[existingProductIndex].price * updatedCart[existingProductIndex].quantity;
+      setCart(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    } else {
+      const newProduct = { ...product, quantity: 1, totalPrice: product.price };
+      const updatedCart = [...cart, newProduct];
+      setCart(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
   };
 
   const handleRemoveFromCart = (productId) => {
@@ -42,7 +53,7 @@ function ProdutosCadastrados() {
   };
 
   const calculateTotal = () => {
-    const total = cart.reduce((acc, item) => acc + (item.price || 0), 0);
+    const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
     return total.toFixed(2);
   };
 
@@ -51,6 +62,30 @@ function ProdutosCadastrados() {
     setProducts(updatedProducts);
     setFilteredProducts(updatedProducts);
     localStorage.setItem('products', JSON.stringify(updatedProducts));
+  };
+
+  const handleIncreaseQuantity = (productId) => {
+    const updatedCart = cart.map(item => {
+      if (item.id === productId) {
+        item.quantity += 1;
+        item.totalPrice = item.price * item.quantity;
+      }
+      return item;
+    });
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    const updatedCart = cart.map(item => {
+      if (item.id === productId && item.quantity > 1) {
+        item.quantity -= 1;
+        item.totalPrice = item.price * item.quantity;
+      }
+      return item;
+    });
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
   return (
@@ -93,8 +128,20 @@ function ProdutosCadastrados() {
             <>
               {cart.map(item => (
                 <div key={item.id} className="cart-item">
-                  <h3>{item.name}</h3>
-                  <p>R$ {(item.price || 0).toFixed(2)}</p>
+                  <div className="cart-item-details">
+                    <img src={item.image} alt={item.name} className="cart-item-image" />
+                    <div className="cart-item-info">
+                      <h3>{item.name}</h3>
+                      <p>{item.description}</p>
+                      <p>Preço unitário: R$ {(item.price || 0).toFixed(2)}</p>
+                      <div className="quantity-controls">
+                        <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                        <span>{item.quantity}</span>
+                        <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+                      </div>
+                      <p>Total: R$ {(item.totalPrice || 0).toFixed(2)}</p>
+                    </div>
+                  </div>
                   <button onClick={() => handleRemoveFromCart(item.id)} className="remove-button">Remover</button>
                 </div>
               ))}
@@ -103,9 +150,7 @@ function ProdutosCadastrados() {
               </div>
             </>
           )}
-          <button onClick={() => navigate('/cadastrar-cep')} className="new-product-button">
-            Adicione o Endereço
-          </button>
+          <button onClick={() => navigate('/cadastrar-cep')} className="new-product-button">Adicione o Endereço</button>
           <button onClick={toggleCart} className="close-cart-button">Fechar</button>
         </div>
       )}

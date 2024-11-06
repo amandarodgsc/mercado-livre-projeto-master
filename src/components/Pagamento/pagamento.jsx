@@ -9,12 +9,21 @@ function Pagamento() {
 
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
 
+  // Valor fixo de frete (Você pode ajustar ou calcular dinamicamente dependendo da localização do cliente)
+  const shippingCost = 20.0; // Exemplo: valor fixo de R$ 20 para o frete
+
   const generatePixKey = () => {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   };
 
+  // Função para calcular o total do carrinho com base na quantidade de cada produto
   const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
+    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
+  };
+
+  // Função para calcular o total final incluindo o frete
+  const calculateTotalWithShipping = () => {
+    return (parseFloat(calculateTotal()) + shippingCost).toFixed(2);
   };
 
   const handleSubmit = (e) => {
@@ -89,7 +98,15 @@ function Pagamento() {
   return (
     <div className="pagamento-container">
       <h1>Página de Pagamento</h1>
-      <p>Total a Pagar: R$ {calculateTotal()}</p>
+      {/* Valor total dos produtos */}
+      <p>Subtotal: R$ {calculateTotal()}</p>
+      
+      {/* Valor do frete */}
+      <p>+ Frete: R$ {shippingCost.toFixed(2)}</p>
+      
+      {/* Valor total com frete */}
+      <h2>Total a Pagar: R$ {calculateTotalWithShipping()}</h2>
+
       <h2>Endereço para entrega</h2>
       <p>{`${endereco.endereco}, ${endereco.numero}, ${endereco.complemento || ''}, ${endereco.cep}, ${endereco.cidade}, ${endereco.estado}`}</p>
 

@@ -252,3 +252,28 @@ body {
   height: auto; /* Mantém a proporção da imagem */
 }
 
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+  background-color: #ffdb15;
+}
+
+.quantity-controls span {
+  font-size: 16px;
+  margin: 0 5px;
+}
