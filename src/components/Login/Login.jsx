@@ -1,17 +1,59 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha"; // Importe o ReCAPTCHA
 import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');  // Estado para armazenar a senha
-  const navigate = useNavigate(); // Hook para navegação
+  const [password, setPassword] = useState('');
+  const [captchaVerified, setCaptchaVerified] = useState(false); // Estado para verificar se o captcha foi validado
+  const [captchaToken, setCaptchaToken] = useState(null); // Estado para armazenar o token do reCAPTCHA
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const siteKey = "6LfkC3cqAAAAAIgoiRHvHhcAfHhTY7YF4IKEf5FA"; // Substitua com sua chave pública do reCAPTCHA
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Verifica se o captcha foi validado
+    if (!captchaVerified) {
+      alert('Por favor, complete o reCAPTCHA!');
+      return;
+    }
+
     console.log('E-mail enviado:', email);
-    console.log('Senha enviada:', password); // Exibe a senha no console (remova em produção)
-    navigate('/produtos-cadastrados'); // Redireciona para a página de produtos cadastrados
+    console.log('Senha enviada:', password);
+
+    // Enviar token do captcha para o backend para validação
+    const response = await fetch('/verify-captcha', { // URL do seu endpoint no backend
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        token: captchaToken,  // O token que você obteve do reCAPTCHA
+        email,
+        password
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      navigate('/produtos-cadastrados'); // Se o captcha for validado no backend, redireciona
+    } else {
+      alert('Falha na verificação do reCAPTCHA!');
+    }
+  };
+
+  const onCaptchaChange = (value) => {
+    if (value) {
+      setCaptchaVerified(true);
+      setCaptchaToken(value);  // Armazena o token do captcha
+    } else {
+      setCaptchaVerified(false);
+      setCaptchaToken(null);  // Reseta o token se o captcha for desmarcado
+    }
   };
 
   return (
@@ -36,13 +78,20 @@ const Login = () => {
             required
           />
           <input
-            type="password"  // Tipo "password" para ocultar a senha
+            type="password"
             placeholder="Senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="login-input"
             required
           />
+          
+          {/* Adiciona o reCAPTCHA */}
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={onCaptchaChange}
+          />
+
           <button type="submit" className="login-button">
             Continuar
           </button>
