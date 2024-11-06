@@ -4,11 +4,13 @@ import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');  // Estado para armazenar a senha
   const navigate = useNavigate(); // Hook para navegação
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('E-mail enviado:', email);
+    console.log('Senha enviada:', password); // Exibe a senha no console (remova em produção)
     navigate('/produtos-cadastrados'); // Redireciona para a página de produtos cadastrados
   };
 
@@ -23,13 +25,21 @@ const Login = () => {
       </header>
 
       <div className="login-box">
-        <h2>Digite seu e-mail ou telefone para iniciar sessão</h2>
+        <h2>Digite seu e-mail ou telefone e senha para iniciar sessão</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="E-mail ou telefone"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="login-input"
+            required
+          />
+          <input
+            type="password"  // Tipo "password" para ocultar a senha
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="login-input"
             required
           />
