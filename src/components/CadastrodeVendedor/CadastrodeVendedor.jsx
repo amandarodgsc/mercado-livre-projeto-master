@@ -41,7 +41,7 @@ function CadastrarVendedor() {
       existingSellers.push(newSeller);
       localStorage.setItem('sellers', JSON.stringify(existingSellers));
 
-      navigate('/vendedores-cadastrados');
+      navigate('/produtos-cadastrados');
     };
 
     reader.readAsDataURL(sellerProfileImage); // Lê a imagem como Base64
