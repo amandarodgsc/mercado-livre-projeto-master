@@ -86,6 +86,10 @@ function ProdutoDetalhes() {
     navigate(`/produtos/${id}/feedback`); // Navega para a página de feedback
   };
 
+  const handleBuyNow = () => {
+    navigate('/cadastrar-cep'); // Navega para a página de cadastro de CEP
+  };
+
   return (
     <div className="produto-detalhes">
       <div className="produto-imagem">
@@ -97,7 +101,7 @@ function ProdutoDetalhes() {
         <p className="produto-desconto">12% OFF</p>
         <p className="produto-categoria">Categoria: {product.category}</p>
         <p className="produto-descricao">{product.description}</p>
-        <button className="comprar-agora">Comprar agora</button>
+        <button className="comprar-agora" onClick={handleBuyNow}>Comprar agora</button>
         <button className="adicionar-carrinho" onClick={() => handleAddToCart(product)}>Adicionar ao carrinho</button>
         <button className="avaliar-produto" onClick={handleReviewClick}>Avaliar Produto</button>
       </div>
