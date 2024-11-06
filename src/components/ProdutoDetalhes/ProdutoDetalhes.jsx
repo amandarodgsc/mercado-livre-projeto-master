@@ -39,6 +39,30 @@ function ProdutoDetalhes() {
     }
   };
 
+  const handleIncreaseQuantity = (productId) => {
+    const updatedCart = cart.map(item => {
+      if (item.id === productId) {
+        item.quantity += 1;
+        item.totalPrice = item.price * item.quantity; // Atualiza o valor total
+      }
+      return item;
+    });
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    const updatedCart = cart.map(item => {
+      if (item.id === productId && item.quantity > 1) {
+        item.quantity -= 1;
+        item.totalPrice = item.price * item.quantity; // Atualiza o valor total
+      }
+      return item;
+    });
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
   const toggleCart = () => {
     setCartVisible(!cartVisible);
   };
@@ -102,9 +126,9 @@ function ProdutoDetalhes() {
                       <p>{item.description}</p>
                       <p>Preço unitário: R$ {(item.price || 0).toFixed(2)}</p>
                       <div className="quantity-controls">
-                        <button onClick={() => handleRemoveFromCart(item.id)}>-</button>
+                        <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
                         <span>{item.quantity}</span>
-                        <button onClick={() => handleRemoveFromCart(item.id)}>+</button>
+                        <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
                       </div>
                       <p>Total: R$ {(item.totalPrice || 0).toFixed(2)}</p>
                     </div>
