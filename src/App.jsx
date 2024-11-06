@@ -24,7 +24,7 @@ function App() {
           </>
         } />
         <Route path="/telacliente" element={<TelaCliente />} /> 
-        <Route path="/Login" element={<Login />} />
+        <Route path="/login" element={<Login />} /> {/* Corrigido para /login em minúsculo */}
         <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
         <Route path="/produtos-cadastrados" element={<ProdutosCadastrados />} />
         <Route path="/cadastrar-cep" element={<CadastrarCep />} />
@@ -33,7 +33,7 @@ function App() {
         <Route path="/vendedor" element={<Vendedor />} />
         <Route path="/produtos/:id" element={<ProdutoDetalhes />} /> {/* Rota para detalhes do produto */}
         <Route path="/produtos/:productId/feedback" element={<FeedbackProduto />} />
-        </Routes>
+      </Routes>
     </Router>
   );
 }

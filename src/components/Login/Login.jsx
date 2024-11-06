@@ -10,11 +10,11 @@ const Login = () => {
   const [captchaToken, setCaptchaToken] = useState(null); // Estado para armazenar o token do reCAPTCHA
   const navigate = useNavigate();
 
-  const siteKey = "6LfkC3cqAAAAAIgoiRHvHhcAfHhTY7YF4IKEf5FA"; // Substitua com sua chave pública do reCAPTCHA
+  const siteKey = "6Leb0XYqAAAAAGMa41IvgRRmW084cUH2jSJwiWJa"; // Substitua com sua chave pública do reCAPTCHA
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Verifica se o captcha foi validado
     if (!captchaVerified) {
       alert('Por favor, complete o reCAPTCHA!');
@@ -25,7 +25,7 @@ const Login = () => {
     console.log('Senha enviada:', password);
 
     // Enviar token do captcha para o backend para validação
-    const response = await fetch('/verify-captcha', { // URL do seu endpoint no backend
+    const response = await fetch('http://localhost:3001/verify-captcha', { // URL do seu backend
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,9 +38,10 @@ const Login = () => {
     });
 
     const data = await response.json();
+    console.log('Resposta do backend:', data);
 
     if (data.success) {
-      navigate('/produtos-cadastrados'); // Se o captcha for validado no backend, redireciona
+      navigate('/Produtos-Cadastrados'); // Se o captcha for validado no backend, redireciona
     } else {
       alert('Falha na verificação do reCAPTCHA!');
     }
