@@ -277,3 +277,24 @@ body {
   font-size: 16px;
   margin: 0 5px;
 }
+
+/* Botão de adicionar produto */
+.add-product-button {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background-color: #ffdb15;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.add-product-button:hover {
+  transform: scale(1.1);
+}

@@ -119,6 +119,9 @@ function ProdutosCadastrados() {
 
       <button onClick={toggleCart} className="cart-button">🛒</button>
 
+      {/* Novo botão flutuante de cadastro de produto */}
+      <button onClick={() => navigate('/cadastrar-produto')} className="add-product-button">+</button>
+
       {cartVisible && (
         <div className="cart-modal">
           <h2>Carrinho</h2>
