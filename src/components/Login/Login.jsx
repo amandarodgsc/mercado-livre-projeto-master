@@ -57,6 +57,11 @@ const Login = () => {
     }
   };
 
+  // Função para redirecionar para a página de cadastro de vendedor
+  const navigateToCadastroVendedor = () => {
+    navigate('/cadastro-vendedor');
+  };
+
   return (
     <div className="login-container">
       <header>
@@ -97,7 +102,12 @@ const Login = () => {
             Continuar
           </button>
         </form>
-        <a href="#" className="create-account">Criar conta</a>
+        
+        {/* Link para o Cadastro de Vendedor */}
+        <a href="#" className="create-account" onClick={navigateToCadastroVendedor}>
+          Criar conta
+        </a>
+        
         <div className="divider">ou</div>
 
         <button className="google-button">
