@@ -8,6 +8,13 @@ function ProdutosCadastrados() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [cart, setCart] = useState([]);
   const [cartVisible, setCartVisible] = useState(false);
+  const [editingProductId, setEditingProductId] = useState(null);
+  const [editedProductData, setEditedProductData] = useState({
+    name: '',
+    price: '',
+    description: '',
+    category: ''
+  });
 
   const navigate = useNavigate();
 
@@ -88,9 +95,42 @@ function ProdutosCadastrados() {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
-  // Calcula a quantidade total de produtos no carrinho
   const getTotalItemsInCart = () => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
+  };
+
+  const handleEditProduct = (product) => {
+    setEditingProductId(product.id);
+    setEditedProductData({
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      category: product.category
+    });
+  };
+
+  const handleSaveEditedProduct = (productId) => {
+    const updatedProducts = products.map(product => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          ...editedProductData
+        };
+      }
+      return product;
+    });
+    setProducts(updatedProducts);
+    setFilteredProducts(updatedProducts);
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+    setEditingProductId(null);  // Stop editing mode
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedProductData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
   return (
@@ -116,6 +156,44 @@ function ProdutosCadastrados() {
             <p>Quantidade: {product.quantity}</p>
             <p>Categoria: {product.category}</p>
             <p>{product.description}</p>
+
+            {/* Se estiver editando, mostrar campos de input */}
+            {editingProductId === product.id ? (
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={editedProductData.name}
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="number"
+                  name="price"
+                  value={editedProductData.price}
+                  onChange={handleInputChange}
+                />
+                <textarea
+                  name="description"
+                  value={editedProductData.description}
+                  onChange={handleInputChange}
+                />
+                <select
+                  name="category"
+                  value={editedProductData.category}
+                  onChange={handleInputChange}
+                >
+                  <option value="eletrônicos">eletrônicos</option>
+                  <option value="roupas">roupas</option>
+                  <option value="brinquedos">brinquedos</option>
+                  <option value="casa">casa</option>
+                  <option value="esportes">esportes</option>
+                </select>
+                <button onClick={() => handleSaveEditedProduct(product.id)} className="filter-button">Salvar</button>
+              </div>
+            ) : (
+              <button onClick={() => handleEditProduct(product)} className="filter-button">Alterar</button>
+            )}
+
             <button onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }} className="filter-button">Adicionar ao Carrinho</button>
             <button onClick={(e) => { e.stopPropagation(); handleRemoveProduct(product.id); }} className="remove-product-button">Remover Produto</button>
           </div>
@@ -126,7 +204,7 @@ function ProdutosCadastrados() {
       <button onClick={toggleCart} className="cart-button">
         🛒
         {getTotalItemsInCart() > 0 && (
-          <span className="cart-item-count">{getTotalItemsInCart()}</span> 
+          <span className="cart-item-count">{getTotalItemsInCart()}</span>
         )}
       </button>
 
