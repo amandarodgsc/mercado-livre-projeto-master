@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';  // Importa o hook useNavigate
 import './SiteShoppingInfo.css'; // Certifique-se de criar um arquivo CSS para estilização
 
 const SiteShoppingInfo = () => {
+  const navigate = useNavigate(); // Inicializa o hook para navegação
+
+  const handleLoginClick = () => {
+    navigate('/login'); // Redireciona para a página de login ao clicar no botão
+  };
+
   return (
     <section data-testid="site-shopping-info" className="site-shopping-info" type="site-shopping-info">
       <div className="container">
@@ -61,6 +68,7 @@ const SiteShoppingInfo = () => {
             Como te protegemos
           </a>
         </div>
+        
         {/* Adicionando o título e a imagem abaixo dos cards */}
         <div className="business-info-image">    
           <h1>Todas as informações organizadas para você</h1>      
@@ -70,7 +78,8 @@ const SiteShoppingInfo = () => {
             className="business-img" 
           />
         </div>
-           {/* Adicionando o novo card vertical */}
+
+        {/* Adicionando o novo card vertical */}
         <div className="info-card">
           <div className="img-container">
             <img 
@@ -81,8 +90,7 @@ const SiteShoppingInfo = () => {
             />
           </div>
           <h3>Inicie sessão para conferir conteúdos personalizados para seus negócios</h3>
-          <button className="login-button">Iniciar sessão</button>
-        </div>
+          <button className="login-button" onClick={handleLoginClick}>Iniciar sessão</button>        </div>
       </div>
 
       {/* Adicionando o footer */}

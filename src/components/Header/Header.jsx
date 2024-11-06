@@ -6,9 +6,9 @@ import './Header.css';
 function Header() {
   const navigate = useNavigate(); // Instanciar o hook de navegação
 
-  // Função para redirecionar para a página de cadastro
+  // Função para redirecionar para a página de login
   const handleLoginClick = () => {
-    navigate('/cadastrovendedor'); // Redireciona para a página de cadastro de vendedor
+    navigate('/login'); // Redireciona para a página de login
   };
 
   return (
