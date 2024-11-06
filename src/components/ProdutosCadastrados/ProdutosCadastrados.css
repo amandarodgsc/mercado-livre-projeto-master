@@ -279,9 +279,10 @@ body {
 }
 
 /* Botão de adicionar produto */
+/* Botão de adicionar produto (+) */
 .add-product-button {
   position: fixed;
-  bottom: 100px;
+  bottom: 100px; /* Ajuste a distância para ficar acima do carrinho */
   right: 20px;
   background-color: #ffdb15;
   color: #333;
@@ -298,3 +299,42 @@ body {
 .add-product-button:hover {
   transform: scale(1.1);
 }
+
+/* Botão de carrinho */
+.cart-button {
+  position: fixed;
+  bottom: 20px; /* Ajuste a distância para ficar abaixo do botão + */
+  right: 20px;
+  background-color: #ffdb15;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cart-button:hover {
+  transform: scale(1.1);
+}
+
+/* Bolinha vermelha de contagem */
+.cart-item-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

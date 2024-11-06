@@ -88,6 +88,11 @@ function ProdutosCadastrados() {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
+  // Calcula a quantidade total de produtos no carrinho
+  const getTotalItemsInCart = () => {
+    return cart.reduce((acc, item) => acc + item.quantity, 0);
+  };
+
   return (
     <div className="produtos-container">
       <div className="filter-container">
@@ -117,7 +122,13 @@ function ProdutosCadastrados() {
         ))}
       </div>
 
-      <button onClick={toggleCart} className="cart-button">🛒</button>
+      {/* Botão de carrinho com número de itens */}
+      <button onClick={toggleCart} className="cart-button">
+        🛒
+        {getTotalItemsInCart() > 0 && (
+          <span className="cart-item-count">{getTotalItemsInCart()}</span> 
+        )}
+      </button>
 
       {/* Novo botão flutuante de cadastro de produto */}
       <button onClick={() => navigate('/cadastrar-produto')} className="add-product-button">+</button>
