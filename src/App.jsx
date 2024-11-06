@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import SiteShoppingInfo from './components/SiteShoppingInfo/SiteShoppingInfo';
 import Pagamento from './components/Pagamento/pagamento';
-import CadastroVendedor from './components/CadastroVendedor/Cadastrovendedor';
+import Login from './components/Login/Login';
 import CadastrarProduto from './components/CadastrarProduto/CadastrarProduto'; 
 import Vendedor from './components/Vendedor/Vendedor';
 import ProdutosCadastrados from './components/ProdutosCadastrados/ProdutosCadastrados';
@@ -24,7 +24,7 @@ function App() {
           </>
         } />
         <Route path="/telacliente" element={<TelaCliente />} /> 
-        <Route path="/cadastrovendedor" element={<CadastroVendedor />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
         <Route path="/produtos-cadastrados" element={<ProdutosCadastrados />} />
         <Route path="/cadastrar-cep" element={<CadastrarCep />} />
