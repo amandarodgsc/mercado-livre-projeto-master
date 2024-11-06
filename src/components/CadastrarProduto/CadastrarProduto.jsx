@@ -52,27 +52,33 @@ function CadastrarProduto() {
 
   return (
     <div>
-      <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
-        <div className="nav-bounds">
-          <a className="nav-logo" href="//www.mercadolivre.com.br">Mercado Livre</a>
+    <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
+      <div className="nav-bounds">
+        <a className="nav-logo" href="//www.mercadolivre.com.br">
+          <img
+            src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png"
+            alt="Mercado Livre"
+            style={{ height: '60px', width: 'auto' }}
+          />
+        </a>
+      </div>
+    </header>
+  
+    <div className="cadastro-container">
+      <h1>Cadastro de Produto</h1>
+      <form className="cadastro-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="product-name">Nome do Produto:</label>
+          <input
+            type="text"
+            id="product-name"
+            required
+            placeholder="Digite o nome do produto"
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+          />
         </div>
-      </header>
-
-      <div className="cadastro-container">
-        <h1>Cadastro de Produto</h1>
-        <form className="cadastro-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="product-name">Nome do Produto:</label>
-            <input
-              type="text"
-              id="product-name"
-              required
-              placeholder="Digite o nome do produto"
-              value={productName}
-              onChange={(e) => setProductName(e.target.value)}
-            />
-          </div>
-
+    
           <div className="form-group">
             <label htmlFor="product-price">Preço:</label>
             <InputMask
