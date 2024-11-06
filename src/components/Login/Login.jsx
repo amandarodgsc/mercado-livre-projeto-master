@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReCAPTCHA from "react-google-recaptcha"; // Importe o ReCAPTCHA
+import ReCAPTCHA from "react-google-recaptcha"; // Importe o reCAPTCHA
 import './Login.css';
 
 const Login = () => {
@@ -10,40 +10,13 @@ const Login = () => {
   const [captchaToken, setCaptchaToken] = useState(null); // Estado para armazenar o token do reCAPTCHA
   const navigate = useNavigate();
 
-  const siteKey = "6LfkC3cqAAAAAIgoiRHvHhcAfHhTY7YF4IKEf5FA"; // Substitua com sua chave pública do reCAPTCHA
+  const siteKey = "6Leb0XYqAAAAAGMa41IvgRRmW084cUH2jSJwiWJa"; // Substitua com sua chave pública do reCAPTCHA
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Verifica se o captcha foi validado
-    if (!captchaVerified) {
-      alert('Por favor, complete o reCAPTCHA!');
-      return;
-    }
 
-    console.log('E-mail enviado:', email);
-    console.log('Senha enviada:', password);
-
-    // Enviar token do captcha para o backend para validação
-    const response = await fetch('/verify-captcha', { // URL do seu endpoint no backend
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: captchaToken,  // O token que você obteve do reCAPTCHA
-        email,
-        password
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      navigate('/produtos-cadastrados'); // Se o captcha for validado no backend, redireciona
-    } else {
-      alert('Falha na verificação do reCAPTCHA!');
-    }
+    // Redireciona diretamente para a página de Produtos Cadastrados
+    navigate('/Produtos-Cadastrados');
   };
 
   const onCaptchaChange = (value) => {
@@ -54,6 +27,11 @@ const Login = () => {
       setCaptchaVerified(false);
       setCaptchaToken(null);  // Reseta o token se o captcha for desmarcado
     }
+  };
+
+  // Função para redirecionar para a página de cadastro de vendedor
+  const navigateToCadastroVendedor = () => {
+    navigate('/cadastro-vendedor');
   };
 
   return (
@@ -96,7 +74,12 @@ const Login = () => {
             Continuar
           </button>
         </form>
-        <a href="#" className="create-account">Criar conta</a>
+        
+        {/* Link para o Cadastro de Vendedor */}
+        <a href="#" className="create-account" onClick={navigateToCadastroVendedor}>
+          Criar conta
+        </a>
+        
         <div className="divider">ou</div>
 
         <button className="google-button">

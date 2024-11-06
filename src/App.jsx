@@ -12,6 +12,7 @@ import RelatorioVendas from './components/RelatoriodeVenda/RelatorioVendas';
 import FeedbackProduto from './components/FeedbackProduto/FeedbackProduto';
 import ProdutoDetalhes from './components/ProdutoDetalhes/ProdutoDetalhes'; // Importando detalhes do produto
 import TelaCliente from './components/TelaCliente/TelaCliente';
+import CadastrarVendedor from './components/CadastrodeVendedor/CadastrodeVendedor'; // Importando a página de cadastro de vendedor
 
 function App() {
   return (
@@ -24,16 +25,17 @@ function App() {
           </>
         } />
         <Route path="/telacliente" element={<TelaCliente />} /> 
-        <Route path="/Login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
         <Route path="/produtos-cadastrados" element={<ProdutosCadastrados />} />
         <Route path="/cadastrar-cep" element={<CadastrarCep />} />
         <Route path="/pagamento" element={<Pagamento />} />
         <Route path="/relatorio-vendas" element={<RelatorioVendas />} />
         <Route path="/vendedor" element={<Vendedor />} />
-        <Route path="/produtos/:id" element={<ProdutoDetalhes />} /> {/* Rota para detalhes do produto */}
+        <Route path="/produtos/:id" element={<ProdutoDetalhes />} />
         <Route path="/produtos/:productId/feedback" element={<FeedbackProduto />} />
-        </Routes>
+        <Route path="/cadastro-vendedor" element={<CadastrarVendedor />} /> {/* Rota para o cadastro de vendedor */}
+      </Routes>
     </Router>
   );
 }
