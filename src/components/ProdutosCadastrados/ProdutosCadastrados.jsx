@@ -15,7 +15,7 @@ function ProdutosCadastrados() {
     description: '',
     category: ''
   });
-  const [showRemoveWarning, setShowRemoveWarning] = useState(false); // Novo estado para a validação
+  const [showRemoveWarning, setShowRemoveWarning] = useState(false);
 
   const navigate = useNavigate();
 
@@ -149,7 +149,7 @@ function ProdutosCadastrados() {
 
   return (
     <div className="produtos-container">
-      <header>
+      <header className="header-ml">
         <img 
           src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
           alt="Logo Mercado Livre" 
@@ -246,8 +246,8 @@ function ProdutosCadastrados() {
               {cart.map(item => (
                 <div key={item.id} className="cart-item">
                   <div className="cart-item-details">
-                    <img src={item.image} alt={item.name} className="cart-item-image" />
-                    <div className="cart-item-info">
+                    <img src={item.image} alt={item.name} />
+                    <div>
                       <h3>{item.name}</h3>
                       <p>Quantidade: {item.quantity}</p>
                       <p>Preço: R$ {item.totalPrice.toFixed(2)}</p>
@@ -262,7 +262,7 @@ function ProdutosCadastrados() {
               ))}
               <div className="cart-total">
                 <p>Total: R$ {calculateTotal()}</p>
-                <button onClick={handleGoToAddressPage}>Finalizar Compra</button>
+                <button onClick={handleGoToAddressPage} className="checkout-button">Finalizar Compra</button>
               </div>
             </>
           )}

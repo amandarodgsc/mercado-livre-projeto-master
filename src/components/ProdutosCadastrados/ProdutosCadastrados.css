@@ -10,7 +10,7 @@ body {
 header {
   margin: 0;
   padding: 0;
-  position: relative; /* Caso o header tenha um comportamento de margem devido ao posicionamento */
+  position: relative;
 }
 
 .produtos-container {
@@ -19,37 +19,29 @@ header {
   padding: 30px;
   background-color: #fceb54;
   border-radius: 8px;
-
 }
+
 /* Cabeçalho de categoria */
 .filter-container {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;  /* Distribui igualmente os botões */
   margin: 0;  /* Remove o espaço em volta */
-  padding: 0 ; /* Remove todo o padding, incluindo o superior */
-  background-color: #fceb54;;
+  padding: 0; /* Remove o padding */
+  background-color: #fceb54;
   border-radius: 8px;
-}
-
-
-.filter-container h2 {
-  font-size: 1.5em;
-  color: #807d7d;
 }
 
 .filter-button {
   background-color: #fff;
   border: 1px solid #807d7d;
   padding: 10px 1px;
-  margin: 1px;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s ease;
   color: #000000;
+  white-space: nowrap;  /* Garante que o texto do botão não quebre para uma nova linha */
 }
 
 .filter-button:hover {
@@ -61,6 +53,7 @@ header {
   background-color: #333;
   color: #ffdb15;
 }
+
 
 /* Grid de produtos */
 .produtos-grid {
@@ -126,7 +119,7 @@ header {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #1525ff;
+  background-color: #fffb00;
   color: #333;
   border: none;
   border-radius: 50%;
@@ -179,7 +172,27 @@ header {
   background-color: #c0392b;
 }
 
-.total-container {
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-actions button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-actions button:hover {
+  background-color: #ffdb15;
+}
+
+.cart-total {
   margin-top: 20px;
   text-align: right;
 }
@@ -219,76 +232,10 @@ header {
   background-color: #f4c10b;
 }
 
-/* Botão de cadastrar novo produto */
-.new-product-button {
-  display: block;
-  margin: 30px auto 0;
-  padding: 15px 30px;
-  background-color: #ffdb15;
-  color: #333;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.new-product-button:hover {
-  background-color: #f4c10b;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .produtos-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cart-modal {
-    width: 100%;
-  }
-}
-
-.business-info-image {
-  text-align: center; /* Centraliza a imagem horizontalmente */
-  margin-top: 0.1px; /* Adiciona um espaçamento entre os cards e a imagem */
-}
-
-.business-info-image img {
-  max-width: 90%; /* Garante que a imagem não ultrapasse a largura do contêiner */
-  height: auto; /* Mantém a proporção da imagem */
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.quantity-controls button {
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 0 5px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.quantity-controls button:hover {
-  background-color: #ffdb15;
-}
-
-.quantity-controls span {
-  font-size: 16px;
-  margin: 0 5px;
-}
-
 /* Botão de adicionar produto */
-/* Botão de adicionar produto (+) */
 .add-product-button {
   position: fixed;
-  bottom: 100px; /* Ajuste a distância para ficar acima do carrinho */
+  bottom: 100px;
   right: 20px;
   background-color: #fffb00;
   color: #000000;
@@ -303,27 +250,6 @@ header {
 }
 
 .add-product-button:hover {
-  transform: scale(1.1);
-}
-
-/* Botão de carrinho */
-.cart-button {
-  position: fixed;
-  bottom: 20px; /* Ajuste a distância para ficar abaixo do botão + */
-  right: 20px;
-  background-color: #fffb00;
-  color: #333;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 1.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.cart-button:hover {
   transform: scale(1.1);
 }
 
@@ -343,4 +269,3 @@ header {
   justify-content: center;
   align-items: center;
 }
-
