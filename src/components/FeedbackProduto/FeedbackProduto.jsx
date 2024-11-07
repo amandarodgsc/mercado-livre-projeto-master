@@ -89,6 +89,15 @@ function FeedbackProduto() {
     };
 
     return (
+        <div>
+        <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
+          <div className="nav-bounds">
+            <a className="nav-logo" href="//www.mercadolivre.com.br">
+              <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
+            </a>
+          </div>
+        </header>
+
         <div className="container">
             <button onClick={() => navigate(-1)} className="back-button">Voltar</button>
             {product ? (
@@ -193,6 +202,8 @@ function FeedbackProduto() {
                 </div>
             )}
         </div>
+        </div>
+
     );
 }
 
