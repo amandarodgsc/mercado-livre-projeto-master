@@ -1,110 +1,73 @@
-/* Estilos gerais */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-/* Página de detalhes do produto */
-.produto-detalhes {
-  display: flex;
+/* ProdutosDetalhes.css */
+.product-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
   background-color: #fff;
-  margin: 20px auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 1200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.produto-imagem img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.produto-info {
-  margin-left: 30px;
-  max-width: 600px;
-}
-
-.produto-info h2 {
+.product-details-container h2 {
   font-size: 2rem;
   color: #333;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.product-details-container p {
+  font-size: 1.2rem;
+  color: #666;
   margin-bottom: 10px;
 }
 
-.produto-descricao {
-  font-size: 1rem;
-  color: #666;
-  margin: 10px 0;
+.product-details-container p strong {
+  color: #333;
 }
 
-.produto-categoria, .produto-preco, .produto-quantidade {
+.product-details-container .btn-avaliar {
+  display: inline-block;
+  padding: 12px 24px;
   font-size: 1.2rem;
+  background-color: #FFD700; /* cor amarela */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.product-details-container .btn-avaliar:hover {
+  background-color: #fbbd00; /* cor amarela mais escura */
+}
+
+.product-details-container .btn-avaliar:focus {
+  outline: none;
+}
+
+.product-details-container .product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0070ba;
+  margin-top: 15px;
+}
+
+.product-details-container .product-category {
+  font-size: 1.1rem;
   color: #333;
   margin-top: 10px;
 }
 
-.produto-preco {
-  font-weight: bold;
-  color: #e74c3c;
-}
-
-.produto-quantidade {
-  margin-top: 5px;
-}
-
-.botao-avaliar {
-  background-color: #fffb00;
-  color: #333;
-  border: none;
-  border-radius: 5px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
+.product-details-container .product-description {
   margin-top: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.botao-avaliar:hover {
-  background-color: #f4c10b;
-}
-
-/* Adicionando um botão de voltar, se necessário */
-.produto-info button {
-  background-color: #f1c40f;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.produto-info button:hover {
-  background-color: #e1b70f;
-}
-/* ProdutoDetalhes.css */
-.btn-avaliar {
-  background-color: #4CAF50; /* Cor de fundo verde */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.btn-avaliar:hover {
-  background-color: #45a049; /* Cor do botão ao passar o mouse */
+  line-height: 1.6;
 }
