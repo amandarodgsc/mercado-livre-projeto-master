@@ -172,7 +172,7 @@ function ProdutosCadastrados() {
         {filteredProducts.map((product) => (
           <div className="produto-item" key={product.id}>
             <Link to={`/produto/${product.id}`} className="produto-link">
-            <Link to={`/produtos/${product.id}`}>Detalhes</Link>
+            <Link to={`/produtos/${product.id}`} className="link2">Detalhes</Link>
 
               <img src={product.image} alt={product.name} />
               <h2>{product.name}</h2>
