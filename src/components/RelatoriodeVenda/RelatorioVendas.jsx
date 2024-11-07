@@ -1,78 +1,95 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart, registerables } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import './RelatorioVendas.css';
 
-// Registrar os componentes necessários do Chart.js
-Chart.register(...registerables);
+// Registrar os módulos do Chart.js
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const RelatorioVendas = () => {
-  const [vendas, setVendas] = useState([]);
+function RelatorioVendas() {
+  const [seller, setSeller] = useState(null);
+  const [sales, setSales] = useState([]);
+  const [totalEarnings, setTotalEarnings] = useState(0);
 
   useEffect(() => {
-    const fetchVendas = () => {
-      const storedVendas = JSON.parse(localStorage.getItem('vendas')) || [];
-      setVendas(storedVendas);
-    };
+    const storedSellers = JSON.parse(localStorage.getItem('sellers')) || [];
+    const sellerData = storedSellers[0]; // Considerando que existe apenas um vendedor
+    setSeller(sellerData);
 
-    fetchVendas();
+    const storedSales = JSON.parse(localStorage.getItem('sales')) || [];
+    setSales(storedSales);
+
+    const earnings = storedSales.reduce((acc, sale) => acc + sale.amount, 0);
+    setTotalEarnings(earnings);
   }, []);
 
-  const calcularTotal = () => {
-    const total = vendas.reduce((acc, venda) => {
-      const preco = Number(venda.preco); // Certifique-se de que `venda.preco` é um número
-      return acc + (isNaN(preco) ? 0 : preco); // Ignorar valores não numéricos
-    }, 0);
-
-    return total.toFixed(2); // Retornar o total formatado
+  const formatCurrency = (amount) => {
+    return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   };
 
-  const dadosGrafico = {
-    labels: vendas.map(venda => venda.produto),
+  const chartData = {
+    labels: sales.map((sale) => sale.date),
     datasets: [
       {
-        label: 'Total de Vendas',
-        data: vendas.map(venda => Number(venda.preco)), // Garantir que os dados sejam numéricos
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        label: 'Vendas Semanais',
+        data: sales.map((sale) => sale.amount),
+        backgroundColor: 'rgba(75, 192, 192, 0.5)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
     ],
   };
 
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Gráfico de Vendas Semanais',
+      },
+    },
+  };
+
   return (
-    <div className="relatorio-vendas-container">
+    <div className="relatorio-container">
       <h1>Relatório de Vendas</h1>
-      <div className="summary">
-        <h2>Total Vendido: R$ {calcularTotal()}</h2>
-      </div>
-      <div className="chart-container">
-        <h3>Gráfico de Vendas</h3>
-        <Bar data={dadosGrafico} options={{ responsive: true }} />
-      </div>
-      <div className="tabela-vendas">
-        <h3>Detalhes das Vendas</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Produto</th>
-              <th>Preço</th>
-              <th>Data</th>
-            </tr>
-          </thead>
-          <tbody>
-            {vendas.map((venda, index) => (
-              <tr key={index}>
-                <td>{venda.produto}</td>
-                <td>R$ {Number(venda.preco).toFixed(2)}</td> {/* Garantir que seja numérico */}
-                <td>{venda.data}</td> {/* Supondo que você tenha uma data na venda */}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+
+      {seller && (
+        <div className="seller-profile">
+          <img src={seller.profileImage} alt="Foto do Vendedor" className="profile-image" />
+          <h2>{seller.name}</h2>
+          <p><strong>CPF:</strong> {seller.cpf}</p>
+          <p><strong>E-mail:</strong> {seller.email}</p>
+          <p><strong>Telefone:</strong> {seller.phone}</p>
+          <p><strong>Endereço:</strong> {seller.address}</p>
+        </div>
+      )}
+
+      <div className="dashboard">
+        <h2>Dashboard de Vendas</h2>
+        <div className="dashboard-info">
+          <p><strong>Total de Vendas:</strong> {sales.length}</p>
+          <p><strong>Ganhos Totais:</strong> {formatCurrency(totalEarnings)}</p>
+        </div>
+
+        {/* Gráfico de Vendas */}
+        {sales.length > 0 && (
+          <div className="chart-container">
+            <Bar data={chartData} options={chartOptions} />
+          </div>
+        )}
+
+        <h3>Vendas Diárias:</h3>
+        {sales.map((sale, index) => (
+          <div key={index} className="sale-detail">
+            <p><strong>Data:</strong> {sale.date}</p>
+            <p><strong>Produto:</strong> {sale.productName}</p>
+            <p><strong>Valor:</strong> {formatCurrency(sale.amount)}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
-};
+}
 
 export default RelatorioVendas;
