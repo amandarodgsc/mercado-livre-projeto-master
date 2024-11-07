@@ -1,37 +1,37 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './ProdutosDetalhes.css';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-function ProdutoDetalhes({ product }) {
+function ProdutoDetalhes() {
+  const { id } = useParams();  // Captura o ID da URL
+  const [product, setProduct] = useState(null);
   const navigate = useNavigate();
 
-  // Verifica se o produto está definido antes de tentar acessar suas propriedades
+  useEffect(() => {
+    console.log("ID do produto:", id); // Verifica o ID
+
+    // Carregar produtos do localStorage
+    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+    const foundProduct = storedProducts.find(product => product.id === id);
+
+    if (foundProduct) {
+      setProduct(foundProduct);
+    } else {
+      navigate('/produtos-cadastrados'); // Se não encontrar, redireciona para a lista de produtos
+    }
+  }, [id, navigate]);
+
   if (!product) {
-    return <p>Produto não encontrado</p>; // Exibe uma mensagem de erro se o produto não estiver disponível
+    return <p>Carregando...</p>;
   }
 
-  const handleAvaliarProduto = () => {
-    navigate(`/feedback/${product.id}`); // Navega para a página de feedback do produto
-  };
-
   return (
-    <div className="produto-detalhes">
-      <div className="produto-imagem">
-        {product.image ? (
-          <img src={product.image} alt={product.name} />
-        ) : (
-          <p>Imagem não disponível</p> // Exibe uma mensagem caso a imagem esteja ausente
-        )}
-      </div>
-      <div className="produto-info">
-        <h2>{product.name}</h2>
-        <p>{product.description}</p>
-        <p className="produto-preco">Preço: {product.price}</p>
-        <p className="produto-categoria">Categoria: {product.category}</p>
-        <button onClick={handleAvaliarProduto} className="botao-avaliar">
-          Avaliar Produto
-        </button>
-      </div>
+    <div>
+      <h1>{product.name}</h1>
+      <p>{product.description}</p>
+      <p>Preço: R$ {product.price}</p>
+      <p>Categoria: {product.category}</p>
+      <img src={product.image} alt={product.name} />
+      <button onClick={() => navigate('/produtos-cadastrados')}>Voltar</button>
     </div>
   );
 }

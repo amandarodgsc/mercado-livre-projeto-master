@@ -15,10 +15,9 @@ function ProdutosCadastrados() {
     description: '',
     category: ''
   });
-  const [showRemoveWarning, setShowRemoveWarning] = useState(false);
-
+  const [confirmRemoveProductId, setConfirmRemoveProductId] = useState(null); // Novo estado para confirmação de remoção
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
     setProducts(storedProducts);
@@ -50,11 +49,14 @@ function ProdutosCadastrados() {
   };
 
   const handleRemoveProduct = (productId) => {
-    if (window.confirm("Tem certeza que deseja remover este produto?")) {
+    if (confirmRemoveProductId === productId) {
       const updatedProducts = products.filter(product => product.id !== productId);
       setProducts(updatedProducts);
       setFilteredProducts(updatedProducts);
       localStorage.setItem('products', JSON.stringify(updatedProducts));
+      setConfirmRemoveProductId(null); // Limpa a confirmação após a remoção
+    } else {
+      setConfirmRemoveProductId(productId); // Solicita confirmação
     }
   };
 
@@ -106,13 +108,9 @@ function ProdutosCadastrados() {
   };
 
   const handleRemoveFromCart = (productId) => {
-    if (cart.length === 0) {
-      setShowRemoveWarning(true);
-    } else {
-      const updatedCart = cart.filter(item => item.id !== productId);
-      setCart(updatedCart);
-      localStorage.setItem('cart', JSON.stringify(updatedCart));
-    }
+    const updatedCart = cart.filter(item => item.id !== productId);
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
   const handleIncreaseQuantity = (productId) => {
@@ -174,6 +172,8 @@ function ProdutosCadastrados() {
         {filteredProducts.map((product) => (
           <div className="produto-item" key={product.id}>
             <Link to={`/produto/${product.id}`} className="produto-link">
+            <Link to={`/produtos/${product.id}`}>Detalhes</Link>
+
               <img src={product.image} alt={product.name} />
               <h2>{product.name}</h2>
               <p>R$ {Number(product.price || 0).toFixed(2)}</p>
@@ -218,18 +218,23 @@ function ProdutosCadastrados() {
               <>
                 <button onClick={() => handleEditProduct(product)} className="filter-button">Alterar</button>
                 <button onClick={() => handleAddToCart(product)} className="filter-button">Adicionar ao Carrinho</button>
-                <button onClick={() => handleRemoveProduct(product.id)} className="remove-product-button">Remover Produto</button>
+
+                {confirmRemoveProductId === product.id ? (
+                  <div className="confirmation">
+                    <p>Tem certeza que deseja remover este produto?</p>
+                    <button onClick={() => handleRemoveProduct(product.id)}>Sim</button>
+                    <button onClick={() => setConfirmRemoveProductId(null)}>Cancelar</button>
+                  </div>
+                ) : (
+                  <button onClick={() => handleRemoveProduct(product.id)} className="remove-product-button">Remover Produto</button>
+                )}
               </>
             )}
           </div>
         ))}
       </div>
-      <button
-  onClick={() => navigate('/cadastrar-produto')}
-  className="add-product-button"
->
-  +
-</button>
+
+      <button onClick={() => navigate('/cadastrar-produto')} className="add-product-button">+</button>
 
       <button onClick={toggleCart} className="cart-button">
         🛒
@@ -248,24 +253,19 @@ function ProdutosCadastrados() {
             <>
               {cart.map(item => (
                 <div key={item.id} className="cart-item">
-                  <div className="cart-item-details">
-                    <img src={item.image} alt={item.name} className="cart-item-image" />
-                    <div>
-                      <p>{item.name}</p>
-                      <div className="quantity-controls">
-                        <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
-                        <span>{item.quantity}</span>
-                        <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
-                      </div>
-                    </div>
-                    <p>R$ {item.totalPrice.toFixed(2)}</p>
+                  <p>{item.name}</p>
+                  <p>R$ {item.totalPrice.toFixed(2)}</p>
+                  <div className="quantity-controls">
+                    <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
                   </div>
-                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-from-cart-button">Remover</button>
+                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-item">Remover</button>
                 </div>
               ))}
               <div className="cart-total">
-                <h3>Total: R$ {calculateTotal()}</h3>
-                <button onClick={handleGoToAddressPage} className="go-to-address-button">Finalizar Compra</button>
+                <p>Total: R$ {calculateTotal()}</p>
+                <button onClick={handleGoToAddressPage} className="go-to-address-button">Ir para o endereço</button>
               </div>
             </>
           )}

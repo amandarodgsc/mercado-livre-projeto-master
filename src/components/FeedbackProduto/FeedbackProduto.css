@@ -1,99 +1,62 @@
-/* FeedbackProduto.css */
-
 .container {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .feedback-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .feedback-card p {
-    margin: 5px 0;
-  }
-  
-  .feedback-card img,
-  .feedback-card video {
-    max-width: 100%;
-    border-radius: 5px;
-    margin-top: 5px;
-  }
-  
-  .overall-rating {
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .rating-display {
-    display: flex;
-    align-items: center;
-  }
-  
-  .rating-number {
-    font-size: 2em;
-    margin-right: 10px;
-  }
-  
-  .characteristics-rating {
-    margin: 20px 0;
-  }
-  
-  .characteristic {
-    margin: 10px 0;
-  }
-  
-  .highlighted-feedbacks {
-    margin: 20px 0;
-  }
-  
-  .new-feedback-form {
-    padding-top: 15px;
-    border-top: 2px solid #e0e0e0;
-    margin-top: 20px;
-  }
-  
-  .new-feedback-form h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-  
-  .new-feedback-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    height: 80px;
-  }
-  
-  .new-feedback-form input[type="file"] {
-    margin-top: 10px;
-  }
-  
-  .new-feedback-form button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #3483fa;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .new-feedback-form button:hover {
-    background-color: #2968c8;
-  }
-  
-  .rating-label {
-    margin-top: 10px;
-    font-size: 1em;
-  }
-  
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.back-button {
+  background-color: #0073e6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.product-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  margin-left: 10px;
+}
+
+.stars-input {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.add-feedback-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.not-found-message {
+  color: red;
+  font-size: 18px;
+}
+
+.feedback-card {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.feedback-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  height: 100px;
+  resize: vertical;
+}

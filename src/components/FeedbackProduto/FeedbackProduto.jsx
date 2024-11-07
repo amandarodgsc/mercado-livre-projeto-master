@@ -10,6 +10,7 @@ function FeedbackProduto() {
     const [stars, setStars] = useState(0);
     const navigate = useNavigate();
 
+    // Carregar produto e feedbacks ao montar o componente
     useEffect(() => {
         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
         const foundProduct = storedProducts.find(item => String(item.id) === String(productId));
@@ -21,35 +22,40 @@ function FeedbackProduto() {
         setFeedbacks(storedFeedbacks[productId] || []);
     }, [productId]);
 
+    // Função para adicionar feedback
     const handleAddFeedback = () => {
-        if (newFeedback.trim() !== '') {
+        if (newFeedback.trim() !== '' && stars > 0) { // Validando para não permitir comentários vazios e com 0 estrelas
             const feedbackData = {
                 text: newFeedback,
                 stars,
             };
             const updatedFeedbacks = [...feedbacks, feedbackData];
             setFeedbacks(updatedFeedbacks);
-            setNewFeedback('');
-            setStars(0);
+            setNewFeedback(''); // Limpa o campo de feedback
+            setStars(0); // Limpa a seleção de estrelas
 
             const storedFeedbacks = JSON.parse(localStorage.getItem('feedbacks')) || {};
             storedFeedbacks[productId] = updatedFeedbacks;
             localStorage.setItem('feedbacks', JSON.stringify(storedFeedbacks));
+        } else {
+            alert('Por favor, insira um comentário válido e uma avaliação de 1 a 5 estrelas.');
         }
     };
 
+    // Calcular a avaliação média do produto
     const calculateAverageRating = () => {
+        if (feedbacks.length === 0) return 0; // Evitar divisão por zero
         const totalStars = feedbacks.reduce((sum, feedback) => sum + feedback.stars, 0);
-        return totalStars / (feedbacks.length || 1);
+        return (totalStars / feedbacks.length).toFixed(1); // Exibe a média com 1 casa decimal
     };
 
     return (
         <div className="container">
-            <button onClick={() => navigate(-1)}>Voltar</button>
+            <button onClick={() => navigate(-1)} className="back-button">Voltar</button>
             {product ? (
                 <div>
                     <h2>{product.name}</h2>
-                    <img src={product.image} alt={product.name} />
+                    <img src={product.image} alt={product.name} className="product-image" />
                     <p><strong>Descrição:</strong> {product.description}</p>
                     <p><strong>Preço:</strong> R$ {parseFloat(product.price).toFixed(2)}</p>
                     <p><strong>Categoria:</strong> {product.category}</p>
@@ -57,7 +63,7 @@ function FeedbackProduto() {
                     <div className="overall-rating">
                         <h3>Opiniões do produto</h3>
                         <div className="rating-display">
-                            <span className="rating-number">{calculateAverageRating().toFixed(1)}</span>
+                            <span className="rating-number">{calculateAverageRating()}</span>
                             <span className="stars">{'⭐'.repeat(Math.round(calculateAverageRating()))}</span>
                             <span className="rating-count">({feedbacks.length} avaliações)</span>
                         </div>
@@ -83,22 +89,29 @@ function FeedbackProduto() {
                             value={newFeedback}
                             onChange={(e) => setNewFeedback(e.target.value)}
                             placeholder="Deixe seu comentário"
+                            className="feedback-textarea"
                         />
                         <div className="rating-label">
                             Avaliação:
                             <input
                                 type="number"
                                 value={stars}
-                                onChange={(e) => setStars(parseInt(e.target.value))}
+                                onChange={(e) => setStars(Math.max(0, Math.min(5, parseInt(e.target.value))))}  // Restringe entre 0 e 5
                                 min="0"
                                 max="5"
+                                className="stars-input"
                             />
+                            <div className="stars-display">
+                                {'⭐'.repeat(stars)} {/* Exibe as estrelas selecionadas */}
+                            </div>
                         </div>
-                        <button onClick={handleAddFeedback}>Adicionar Comentário</button>
+                        <button onClick={handleAddFeedback} className="add-feedback-button">Adicionar Comentário</button>
                     </div>
                 </div>
             ) : (
-                <p>Produto não encontrado.</p>
+                <div className="not-found-message">
+                    <p>Produto não encontrado.</p>
+                </div>
             )}
         </div>
     );
