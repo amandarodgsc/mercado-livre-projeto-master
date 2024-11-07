@@ -14,7 +14,7 @@ body {
 }
 
 header {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .logo {
@@ -24,7 +24,7 @@ header {
 
 .login-box {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -34,9 +34,10 @@ header {
 }
 
 .login-box h2 {
-  font-size: 18px;
+  font-size: 15px;
   color: #333;
   margin-bottom: 20px;
+  align-items: center;
 }
 
 .login-input {
@@ -148,3 +149,21 @@ header {
   font-size: 12px;
   color: #999;
 }
+
+.captcha-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  margin: 1px 10; /* Espaço acima e abaixo */
+}
+
+.captcha-container .grecaptcha-badge {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+  border-radius: 8px; /* Bordas arredondadas */
+}
+
+.captcha-container iframe {
+  width: 100% !important; /* Ocupa toda a largura do contêiner */
+  max-width: 300px; /* Define uma largura máxima */
+  min-height: 78px; /* Define uma altura mínima */
+}
+

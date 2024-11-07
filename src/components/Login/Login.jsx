@@ -65,10 +65,12 @@ const Login = () => {
           />
           
           {/* Adiciona o reCAPTCHA */}
+          <div className="captcha-container">
           <ReCAPTCHA
             sitekey={siteKey}
             onChange={onCaptchaChange}
           />
+          </div>
 
           <button type="submit" className="login-button">
             Continuar
