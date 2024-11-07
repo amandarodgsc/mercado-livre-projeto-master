@@ -1,36 +1,117 @@
-.relatorio-vendas-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .summary {
-    margin-bottom: 20px;
-  }
-  
-  .chart-container {
-    margin: 20px 0;
-  }
-  
-  .tabela-vendas {
-    margin-top: 20px;
-  }
-  
-  .tabela-vendas table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .tabela-vendas th, .tabela-vendas td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .tabela-vendas th {
-    background-color: #f2f2f2;
-  }
-  
+/* Estilos gerais para a página de relatório de vendas */
+.relatorio-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Perfil do Vendedor */
+.seller-profile {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.seller-profile img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.seller-profile h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.seller-profile p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Dashboard de Vendas */
+.dashboard {
+  margin-bottom: 30px;
+}
+
+.dashboard h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.dashboard-info p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dashboard-info h3 {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: #333;
+}
+
+.sale-detail {
+  background-color: #f7f7f7;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sale-detail p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Tabela de Vendas */
+.tabela-vendas {
+  margin-top: 20px;
+}
+
+.tabela-vendas table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.tabela-vendas th, .tabela-vendas td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.tabela-vendas th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.tabela-vendas tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tabela-vendas tr:hover {
+  background-color: #e9e9e9;
+}
+
+.tabela-vendas td {
+  color: #555;
+}
