@@ -146,34 +146,34 @@ function ProdutosCadastrados() {
   return (
     <div className="produtos-container">
       <div className="produtos-container">
-      {/* Adicionando a logo */}
-      <header>
-        <img 
-          src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
-          alt="Logo Mercado Livre" 
-          className="logo"
-        />
-      </header>
-    
-      <div className="filter-container">
-        <h2>Categorias</h2>
-        {['Todos', 'eletrônicos', 'roupas', 'brinquedos', 'casa', 'esportes'].map(category => (
-          <button
-            key={category}
-            onClick={() => handleCategoryClick(category === 'Todos' ? '' : category)}
-            className={`filter-button ${selectedCategory === (category === 'Todos' ? '' : category) ? 'active' : ''}`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+        {/* Adicionando a logo */}
+        <header>
+          <img 
+            src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
+            alt="Logo Mercado Livre" 
+            className="logo"
+          />
+        </header>
+      
+        <div className="filter-container">
+          <h2>Categorias</h2>
+          {['Todos', 'eletrônicos', 'roupas', 'brinquedos', 'casa', 'esportes'].map(category => (
+            <button
+              key={category}
+              onClick={() => handleCategoryClick(category === 'Todos' ? '' : category)}
+              className={`filter-button ${selectedCategory === (category === 'Todos' ? '' : category) ? 'active' : ''}`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
       </div>
       <div className="produtos-grid">
         {filteredProducts.map((product) => (
           <div className="produto-item" key={product.id}>
             <img src={product.image} alt={product.name} />
             <h2>{product.name}</h2>
-            <p>R$ {(product.price || 0).toFixed(2)}</p>
+            <p>R$ {Number(product.price || 0).toFixed(2)}</p> {/* Correção aqui */}
             <p>Quantidade: {product.quantity}</p>
             <p>Categoria: {product.category}</p>
             <p>{product.description}</p>
@@ -243,31 +243,30 @@ function ProdutosCadastrados() {
                     <div className="cart-item-info">
                       <h3>{item.name}</h3>
                       <p>{item.description}</p>
-                      <p>Preço unitário: R$ {(item.price || 0).toFixed(2)}</p>
+                      <p>Preço unitário: R$ {Number(item.price || 0).toFixed(2)}</p> {/* Correção aqui */}
                       <div className="quantity-controls">
                         <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
                         <span>{item.quantity}</span>
                         <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
                       </div>
-                      <p>Total: R$ {(item.totalPrice || 0).toFixed(2)}</p>
+                      <p>Total: R$ {Number(item.totalPrice || 0).toFixed(2)}</p> {/* Correção aqui */}
                     </div>
                   </div>
-                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-button">Remover</button>
+                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-cart-item-button">Remover</button>
                 </div>
               ))}
-              <div className="total-container">
+              <div className="cart-total">
                 <h3>Total: R$ {calculateTotal()}</h3>
               </div>
+              <button onClick={handleGoToAddressPage} className="filter-button">Finalizar Compra</button>
             </>
           )}
+        </div>
+      )}
 
-          {/* Exibe a mensagem de validação */}
-          {showRemoveWarning && (
-            <p className="error">Não é possível remover um item do carrinho vazio!</p>
-          )}
-
-          <button onClick={handleGoToAddressPage} className="address-button"> Adicione Endereço de Entrega</button>
-          <button onClick={toggleCart} className="close-cart-button">Fechar</button>
+      {showRemoveWarning && (
+        <div className="remove-warning">
+          <p>Não é possível remover um produto quando o carrinho está vazio.</p>
         </div>
       )}
     </div>
