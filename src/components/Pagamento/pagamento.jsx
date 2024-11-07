@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { QRCodeCanvas } from 'qrcode.react';  // Corrigido para QRCodeCanvas
 import './pagamento.css';
 
 function Pagamento() {
@@ -15,8 +16,30 @@ function Pagamento() {
     cvv: '',
   });
   const [errors, setErrors] = useState({});
-  
-  const shippingCost = 20.0; 
+  const [pixKey, setPixKey] = useState('');
+  const [timeLeft, setTimeLeft] = useState(300); // 5 minutos (300 segundos)
+  const [timerActive, setTimerActive] = useState(false);
+
+  const shippingCost = 20.0;
+
+  useEffect(() => {
+    if (selectedPaymentMethod === 'pix') {
+      const newPixKey = generatePixKey();
+      setPixKey(newPixKey);
+      setTimerActive(true);
+      const timer = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 0) {
+            clearInterval(timer);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(timer); // Limpa o timer quando o componente for desmontado
+    }
+  }, [selectedPaymentMethod]);
 
   const generatePixKey = () => {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -150,11 +173,15 @@ function Pagamento() {
           </div>
         );
       case 'pix':
-        const pixKey = generatePixKey();
         return (
           <div className="payment-form">
             <h3>Pagamento com Pix</h3>
             <p>Chave Pix: {pixKey}</p>
+            <div className="qrcode-container">
+              <QRCodeCanvas value={`https://pix.com/${pixKey}`} size={256} />
+            </div>
+            <p>Tempo restante para pagar: {timeLeft}s</p>
+            {timeLeft === 0 && <p style={{ color: 'red' }}>QR Code expirado!</p>}
           </div>
         );
       default:

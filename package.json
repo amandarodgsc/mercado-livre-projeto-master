@@ -16,6 +16,7 @@
     "gh-pages": "^6.1.1",
     "localforage": "^1.10.0",
     "node-fetch": "^3.3.2",
+    "qrcode.react": "^4.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.5",
     "react-chartjs-2": "^5.2.0",
