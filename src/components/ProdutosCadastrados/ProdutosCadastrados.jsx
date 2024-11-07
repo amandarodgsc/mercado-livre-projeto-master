@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './ProdutosCadastrados.css';
 
 function ProdutosCadastrados() {
@@ -15,7 +15,7 @@ function ProdutosCadastrados() {
     description: '',
     category: ''
   });
-  const [showRemoveWarning, setShowRemoveWarning] = useState(false); // Novo estado para a validação
+  const [showRemoveWarning, setShowRemoveWarning] = useState(false);
 
   const navigate = useNavigate();
 
@@ -97,7 +97,7 @@ function ProdutosCadastrados() {
   };
 
   const closeCart = () => {
-    setCartVisible(false); // Fecha o carrinho
+    setCartVisible(false); 
   };
 
   const calculateTotal = () => {
@@ -107,7 +107,7 @@ function ProdutosCadastrados() {
 
   const handleRemoveFromCart = (productId) => {
     if (cart.length === 0) {
-      setShowRemoveWarning(true); // Exibe a mensagem de validação se o carrinho estiver vazio
+      setShowRemoveWarning(true);
     } else {
       const updatedCart = cart.filter(item => item.id !== productId);
       setCart(updatedCart);
@@ -144,43 +144,43 @@ function ProdutosCadastrados() {
   };
 
   const handleGoToAddressPage = () => {
-    navigate('/cadastrar-cep'); // Altere o caminho para o endereço da página que você deseja
+    navigate('/cadastrar-cep'); 
   };
 
   return (
     <div className="produtos-container">
-      <div className="produtos-container">
-        {/* Adicionando a logo */}
-        <header>
-          <img 
-            src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
-            alt="Logo Mercado Livre" 
-            className="logo"
-          />
-        </header>
-      
-        <div className="filter-container">
-          <h2>Categorias</h2>
-          {['Todos', 'eletrônicos', 'roupas', 'brinquedos', 'casa', 'esportes'].map(category => (
-            <button
-              key={category}
-              onClick={() => handleCategoryClick(category === 'Todos' ? '' : category)}
-              className={`filter-button ${selectedCategory === (category === 'Todos' ? '' : category) ? 'active' : ''}`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+      <header>
+        <img 
+          src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
+          alt="Logo Mercado Livre" 
+          className="logo"
+        />
+      </header>
+
+      <div className="filter-container">
+        <h2>Categorias</h2>
+        {['Todos', 'eletrônicos', 'roupas', 'brinquedos', 'casa', 'esportes'].map(category => (
+          <button
+            key={category}
+            onClick={() => handleCategoryClick(category === 'Todos' ? '' : category)}
+            className={`filter-button ${selectedCategory === (category === 'Todos' ? '' : category) ? 'active' : ''}`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
+
       <div className="produtos-grid">
         {filteredProducts.map((product) => (
           <div className="produto-item" key={product.id}>
-            <img src={product.image} alt={product.name} />
-            <h2>{product.name}</h2>
-            <p>R$ {Number(product.price || 0).toFixed(2)}</p> {/* Correção aqui */}
-            <p>Quantidade: {product.quantity}</p>
-            <p>Categoria: {product.category}</p>
-            <p>{product.description}</p>
+            <Link to={`/produto/${product.id}`} className="produto-link">
+              <img src={product.image} alt={product.name} />
+              <h2>{product.name}</h2>
+              <p>R$ {Number(product.price || 0).toFixed(2)}</p>
+              <p>Quantidade: {product.quantity}</p>
+              <p>Categoria: {product.category}</p>
+              <p>{product.description}</p>
+            </Link>
 
             {editingProductId === product.id ? (
               <div>
@@ -225,7 +225,6 @@ function ProdutosCadastrados() {
         ))}
       </div>
 
-      {/* Carrinho */}
       <button onClick={toggleCart} className="cart-button">
         🛒
         {getTotalItemsInCart() > 0 && (
@@ -235,7 +234,7 @@ function ProdutosCadastrados() {
 
       {cartVisible && (
         <div className="cart-modal">
-          <button onClick={closeCart} className="close-cart-button">Fechar</button> {/* Botão de fechar */}
+          <button onClick={closeCart} className="close-cart-button">Fechar</button>
           <h2>Carrinho</h2>
           {cart.length === 0 ? (
             <p>O carrinho está vazio.</p>
@@ -252,24 +251,18 @@ function ProdutosCadastrados() {
                         <span>{item.quantity}</span>
                         <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
                       </div>
-                      <p>Total: R$ {Number(item.totalPrice || 0).toFixed(2)}</p> {/* Correção aqui */}
                     </div>
+                    <p>R$ {item.totalPrice.toFixed(2)}</p>
                   </div>
-                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-cart-item-button">Remover</button>
+                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-from-cart-button">Remover</button>
                 </div>
               ))}
               <div className="cart-total">
                 <h3>Total: R$ {calculateTotal()}</h3>
+                <button onClick={handleGoToAddressPage} className="go-to-address-button">Finalizar Compra</button>
               </div>
-              <button onClick={handleGoToAddressPage} className="filter-button">Finalizar Compra</button>
             </>
           )}
-        </div>
-      )}
-
-      {showRemoveWarning && (
-        <div className="remove-warning">
-          <p>Não é possível remover um produto quando o carrinho está vazio.</p>
         </div>
       )}
     </div>

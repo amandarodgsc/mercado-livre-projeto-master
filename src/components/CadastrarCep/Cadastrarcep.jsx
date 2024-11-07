@@ -42,8 +42,11 @@ function CadastrarCep() {
 
   // Função para calcular o total do carrinho
   const calculateTotal = (cartItems) => {
-    return cartItems.reduce((acc, item) => acc + (item.price || 0), 0).toFixed(2);
+    return cartItems
+      .reduce((acc, item) => acc + (typeof item.price === 'number' ? item.price : 0), 0)
+      .toFixed(2);  // Garantir que o valor total seja um número fixado com 2 casas decimais
   };
+  
 
   const validateForm = async () => {
     try {
