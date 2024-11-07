@@ -145,6 +145,16 @@ function ProdutosCadastrados() {
 
   return (
     <div className="produtos-container">
+      <div className="produtos-container">
+      {/* Adicionando a logo */}
+      <header>
+        <img 
+          src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
+          alt="Logo Mercado Livre" 
+          className="logo"
+        />
+      </header>
+    
       <div className="filter-container">
         <h2>Categorias</h2>
         {['Todos', 'eletrônicos', 'roupas', 'brinquedos', 'casa', 'esportes'].map(category => (
@@ -156,6 +166,7 @@ function ProdutosCadastrados() {
             {category}
           </button>
         ))}
+      </div>
       </div>
       <div className="produtos-grid">
         {filteredProducts.map((product) => (

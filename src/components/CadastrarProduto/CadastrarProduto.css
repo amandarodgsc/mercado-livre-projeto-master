@@ -1,17 +1,8 @@
-/* CadastrarProduto.css */
-
-/* Estilos Globais */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-}
-
 .nav-header {
   background-color: #fff;
   border-bottom: 1px solid #e0e0e0;
   padding: 10px 20px;
+  margin-bottom: 0; /* Remover margem inferior */
 }
 
 .nav-bounds {
@@ -25,10 +16,14 @@ body {
   color: #3e3e3e;
   text-decoration: none;
 }
+.nav-logo img {
+  height: 40px;
+  width: auto;
+}
 
 .cadastro-container {
   max-width: 600px;
-  margin: 40px auto;
+  margin: 10px auto 0; /* Reduz o espaço superior para 20px */
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -46,12 +41,12 @@ h1 {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 9px; /* Diminui o espaçamento entre os campos */
 }
 
 label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 4px; /* Ajuste menor entre o label e o campo */
   display: block;
 }
 
@@ -61,7 +56,7 @@ input[type="file"],
 select,
 textarea {
   width: 100%;
-  padding: 10px;
+  padding: 8px; /* Reduz o padding para diminuir o campo */
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -83,12 +78,13 @@ textarea {
 .cadastro-button {
   background-color: #0073e8;
   color: #fff;
-  padding: 12px;
+  padding: 10px; /* Ajuste de padding no botão */
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-top: 10px; /* Menor espaço acima do botão */
 }
 
 .cadastro-button:hover {

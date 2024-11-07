@@ -73,8 +73,8 @@ function CadastrarProduto() {
             />
           </div>
 
-          <div className="cadastro-form">
-            <label htmlFor="product-name">Preço:</label>
+          <div className="form-group">
+            <label htmlFor="product-price">Preço:</label>
             <InputMask
               mask="R$ 99,99"
               id="product-name"

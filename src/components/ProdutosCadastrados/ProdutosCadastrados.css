@@ -7,43 +7,49 @@ body {
   color: #333;
 }
 
-.produtos-container {
-  width: 95%;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+header {
+  margin: 0;
+  padding: 0;
+  position: relative; /* Caso o header tenha um comportamento de margem devido ao posicionamento */
 }
 
+.produtos-container {
+  width: 100%;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #fceb54;
+  border-radius: 8px;
+
+}
 /* Cabeçalho de categoria */
 .filter-container {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #f4f4f4;
+  margin: 0;  /* Remove o espaço em volta */
+  padding: 0 ; /* Remove todo o padding, incluindo o superior */
+  background-color: #fceb54;;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 
 .filter-container h2 {
   font-size: 1.5em;
-  color: #333;
+  color: #807d7d;
 }
 
 .filter-button {
   background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 10px 20px;
-  margin: 5px;
+  border: 1px solid #807d7d;
+  padding: 10px 1px;
+  margin: 1px;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  color: #666;
+  color: #000000;
 }
 
 .filter-button:hover {
@@ -120,7 +126,7 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #ffdb15;
+  background-color: #1525ff;
   color: #333;
   border: none;
   border-radius: 50%;
@@ -284,8 +290,8 @@ body {
   position: fixed;
   bottom: 100px; /* Ajuste a distância para ficar acima do carrinho */
   right: 20px;
-  background-color: #ffdb15;
-  color: #333;
+  background-color: #fffb00;
+  color: #000000;
   border: none;
   border-radius: 50%;
   width: 60px;
@@ -305,7 +311,7 @@ body {
   position: fixed;
   bottom: 20px; /* Ajuste a distância para ficar abaixo do botão + */
   right: 20px;
-  background-color: #ffdb15;
+  background-color: #fffb00;
   color: #333;
   border: none;
   border-radius: 50%;
