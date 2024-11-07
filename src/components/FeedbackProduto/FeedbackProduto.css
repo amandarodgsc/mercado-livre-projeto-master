@@ -1,62 +1,187 @@
+/* FeedbackProduto.css */
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
 .back-button {
-  background-color: #0073e6;
-  color: white;
+  align-self: flex-start;
   padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #0070ba;
+  color: #fff;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
 }
 
+.back-button:hover {
+  background-color: #005f8d;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Estilos adicionais para o card da imagem */
+.image-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 30px;
+  max-width: 200px; /* Define a largura máxima do card */
+}
+
 .product-image {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 100%; /* A imagem agora se ajusta ao tamanho do card */
+  height: auto;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+
+.product-details-container p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-details-container p strong {
+  color: #333;
+}
+
+/* Seção de Avaliação */
+.overall-rating {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
 }
 
 .rating-display {
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 5px;
+}
+
+.rating-number {
+  font-size: 2rem;
+  color: #0070ba;
+  font-weight: bold;
 }
 
 .stars {
-  margin-left: 10px;
+  font-size: 1.5rem;
+  color: #FFD700;
 }
 
-.stars-input {
-  width: 50px;
-  margin-left: 10px;
+.rating-count {
+  font-size: 1rem;
+  color: #666;
 }
 
-.add-feedback-button {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.not-found-message {
-  color: red;
-  font-size: 18px;
+/* Feedbacks existentes */
+.existing-feedbacks {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20px;
 }
 
 .feedback-card {
-  background-color: #f9f9f9;
-  padding: 10px;
+  background-color: #fff;
+  padding: 15px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-card p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.feedback-card .stars {
+  font-size: 1.2rem;
+  color: #FFD700;
+}
+
+/* Formulário para novo feedback */
+.new-feedback-form {
+  background-color: #fff;
+  padding: 20px;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.new-feedback-form h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .feedback-textarea {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
   height: 100px;
-  resize: vertical;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.stars-display {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.stars-display span {
+  font-size: 1.5rem;
+  color: #FFD700;
+  cursor: pointer;
+}
+
+.add-feedback-button {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  background-color: #FFD700;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.add-feedback-button:hover {
+  background-color: #fbbd00;
+}
+
+.add-feedback-button:focus {
+  outline: none;
+}
+
+/* Seção de "Produto não encontrado" */
+.not-found-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 50px;
 }

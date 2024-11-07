@@ -55,7 +55,11 @@ function FeedbackProduto() {
             {product ? (
                 <div>
                     <h2>{product.name}</h2>
-                    <img src={product.image} alt={product.name} className="product-image" />
+                    <div className="image-card">
+    <img src={product.image} alt={product.name} className="product-image" />
+</div>
+
+                    
                     <p><strong>Descrição:</strong> {product.description}</p>
                     <p><strong>Preço:</strong> R$ {parseFloat(product.price).toFixed(2)}</p>
                     <p><strong>Categoria:</strong> {product.category}</p>
