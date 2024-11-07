@@ -1,39 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './ProdutosDetalhes.css';
 
 function ProdutoDetalhes() {
-  const { id } = useParams();  // Captura o ID da URL
-  const [product, setProduct] = useState(null);
-  const navigate = useNavigate();
+    const { id } = useParams(); // Pegando o ID do produto da URL
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("ID do produto:", id); // Verifica o ID
+    // Carregar os detalhes do produto
+    const product = JSON.parse(localStorage.getItem('products')).find(item => item.id === id);
 
-    // Carregar produtos do localStorage
-    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-    const foundProduct = storedProducts.find(product => product.id === id);
+    return (
+        <div className="product-details-container">
+            {product ? (
+                <>
+                    <h2>{product.name}</h2>
+                    <img src={product.image} alt={product.name} className="product-image" />
+                    <p><strong>Descrição:</strong> {product.description}</p>
+                    <p><strong>Preço:</strong> R$ {parseFloat(product.price).toFixed(2)}</p>
+                    <p><strong>Categoria:</strong> {product.category}</p>
 
-    if (foundProduct) {
-      setProduct(foundProduct);
-    } else {
-      navigate('/produtos-cadastrados'); // Se não encontrar, redireciona para a lista de produtos
-    }
-  }, [id, navigate]);
-
-  if (!product) {
-    return <p>Carregando...</p>;
-  }
-
-  return (
-    <div>
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <p>Preço: R$ {product.price}</p>
-      <p>Categoria: {product.category}</p>
-      <img src={product.image} alt={product.name} />
-      <button onClick={() => navigate('/produtos-cadastrados')}>Voltar</button>
-    </div>
-  );
+                    {/* Botão para avaliar o produto */}
+                    <button 
+                        onClick={() => navigate(`/produtos/${product.id}/feedback`)} 
+                        className="btn-avaliar"
+                    >
+                        Avaliar Produto
+                    </button>
+                </>
+            ) : (
+                <p>Produto não encontrado.</p>
+            )}
+        </div>
+    );
 }
 
 export default ProdutoDetalhes;

@@ -91,3 +91,20 @@ body {
 .produto-info button:hover {
   background-color: #e1b70f;
 }
+/* ProdutoDetalhes.css */
+.btn-avaliar {
+  background-color: #4CAF50; /* Cor de fundo verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-avaliar:hover {
+  background-color: #45a049; /* Cor do botão ao passar o mouse */
+}
