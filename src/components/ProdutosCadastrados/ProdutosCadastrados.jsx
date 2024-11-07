@@ -143,10 +143,12 @@ function ProdutosCadastrados() {
     navigate('/cadastrar-cep'); // Altere o caminho para o endereço da página que você deseja
   };
 
+  const handleGoToCadastrarProduto = () => {
+    navigate('/cadastrar-produto'); // Página de cadastro de produto
+  };
+
   return (
     <div className="produtos-container">
-      <div className="produtos-container">
-      {/* Adicionando a logo */}
       <header>
         <img 
           src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
@@ -167,7 +169,7 @@ function ProdutosCadastrados() {
           </button>
         ))}
       </div>
-      </div>
+
       <div className="produtos-grid">
         {filteredProducts.map((product) => (
           <div className="produto-item" key={product.id}>
@@ -221,6 +223,11 @@ function ProdutosCadastrados() {
         ))}
       </div>
 
+      {/* Botão de cadastrar produto */}
+      <button onClick={handleGoToCadastrarProduto} className="add-product-button">
+        +
+      </button>
+
       {/* Carrinho */}
       <button onClick={toggleCart} className="cart-button">
         🛒
@@ -242,32 +249,30 @@ function ProdutosCadastrados() {
                     <img src={item.image} alt={item.name} className="cart-item-image" />
                     <div className="cart-item-info">
                       <h3>{item.name}</h3>
-                      <p>{item.description}</p>
-                      <p>Preço unitário: R$ {(item.price || 0).toFixed(2)}</p>
-                      <div className="quantity-controls">
-                        <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
-                        <span>{item.quantity}</span>
-                        <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
-                      </div>
-                      <p>Total: R$ {(item.totalPrice || 0).toFixed(2)}</p>
+                      <p>Quantidade: {item.quantity}</p>
+                      <p>Preço: R$ {item.totalPrice.toFixed(2)}</p>
                     </div>
                   </div>
-                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-button">Remover</button>
+                  <div className="cart-item-actions">
+                    <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+                    <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                    <button onClick={() => handleRemoveFromCart(item.id)} className="remove-cart-item-button">Remover</button>
+                  </div>
                 </div>
               ))}
-              <div className="total-container">
-                <h3>Total: R$ {calculateTotal()}</h3>
+              <div className="cart-total">
+                <p>Total: R$ {calculateTotal()}</p>
+                <button onClick={handleGoToAddressPage}>Finalizar Compra</button>
               </div>
             </>
           )}
+        </div>
+      )}
 
-          {/* Exibe a mensagem de validação */}
-          {showRemoveWarning && (
-            <p className="error">Não é possível remover um item do carrinho vazio!</p>
-          )}
-
-          <button onClick={handleGoToAddressPage} className="address-button"> Adicione Endereço de Entrega</button>
-          <button onClick={toggleCart} className="close-cart-button">Fechar</button>
+      {showRemoveWarning && (
+        <div className="remove-warning">
+          <p>O carrinho está vazio. Não é possível remover produtos.</p>
+          <button onClick={() => setShowRemoveWarning(false)}>Fechar</button>
         </div>
       )}
     </div>
