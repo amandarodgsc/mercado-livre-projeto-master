@@ -185,3 +185,16 @@ h2 {
   color: #333;
   margin-top: 50px;
 }
+.icon-button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 1.2rem;
+  color: #0070ba;
+  outline: none;
+}
+
+.icon-button:hover {
+  color: #005f8d;
+}
