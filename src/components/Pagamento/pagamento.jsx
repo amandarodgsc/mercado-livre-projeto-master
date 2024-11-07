@@ -190,9 +190,19 @@ function Pagamento() {
   };
 
   return (
+    <div>
+    <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
+      <div className="nav-bounds">
+        <a className="nav-logo" href="//www.mercadolivre.com.br">
+          <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
+        </a>
+      </div>
+    </header>
+    
     <div className="pagamento">
-      <h2>Detalhes do Pedido</h2>
       <div className="order-summary">
+      <h2>Detalhes do Pedido</h2>
+
         <p>Total do Carrinho: R$ {calculateTotal()}</p>
         <p>Frete: R$ {shippingCost}</p>
         <p>Total: R$ {calculateTotalWithShipping()}</p>
@@ -236,6 +246,8 @@ function Pagamento() {
 
       {renderPaymentForm()}
     </div>
+    </div>
+
   );
 }
 

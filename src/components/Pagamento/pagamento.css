@@ -1,19 +1,52 @@
 /* Container principal de pagamento */
 .pagamento {
-  background-color: #f7f7f7; /* Fundo cinza claro */
+  background-color: #ffffff; /* Fundo cinza claro */
   padding: 30px; /* Maior espaçamento interno para um layout mais espaçoso */
   border-radius: 8px; /* Bordas arredondadas */
   width: 100%; /* Permite que o container ocupe toda a largura disponível */
-  max-width: 600px; /* Limita a largura máxima do container */
+  max-width: 1000px; /* Aumentei a largura máxima para comportar os dois lados */
   margin: 0 auto; /* Centraliza o container na tela */
+  display: flex; /* Usando flexbox para disposição em linha */
+  justify-content: space-between; /* Espaça igualmente os itens */
+  gap: 40px; /* Espaço entre as seções */
+}
+
+.order-summary {
+  background-color: #fff56d; /* Fundo cinza claro */
+  padding: 25px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  width: 700px; /* Largura fixa */
+  height: 200px; /* Altura fixa, se necessário */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  display: flex; /* Para usar flexbox */
+  flex-direction: column; /* Organiza os itens na vertical */
+  justify-content: space-between; /* Espaça os itens dentro do container */
+  align-items: center; /* Alinha os itens no centro horizontalmente */
+}
+
+
+/* Estilo para o título dentro do container de pagamento */
+h2 {
+  font-size: 20px; /* Tamanho do título */
+  font-weight: bold; /* Título em negrito */
+  color: #333; /* Cor do título */
+  text-align: center; /* Centraliza o título */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+  white-space: nowrap; /* Impede a quebra de linha */
+  text-overflow: ellipsis; /* Adiciona reticências (...) se o texto ultrapassar o limite */
+}
+
+/* Estilo para os métodos de pagamento */
+.payment-methods {
+  margin-bottom: 20px; /* Maior espaçamento entre os métodos de pagamento */
+  display: block; /* Exibe como bloco */
+  align-items: center;
+  border-radius: 8px;
+
+
 }
 
 /* Estilo dos métodos de pagamento */
-.payment-methods {
-  margin-bottom: 20px; /* Maior espaçamento entre os métodos de pagamento */
-  display: ruby;
-}
-
 .payment-methods label {
   display: block; /* Exibe as opções de pagamento como blocos */
   margin-bottom: 10px; /* Espaço entre as opções */
@@ -25,15 +58,10 @@
   margin-right: 10px; /* Espaço à direita do ícone do rádio */
 }
 
-.error {
-  color: red; /* Mensagens de erro em vermelho */
-  font-size: 12px; /* Tamanho menor para mensagens de erro */
-}
-
 /* Estilo para o formulário de pagamento */
 .payment-form {
   background-color: #ffffff; /* Fundo branco */
-  border: 1px solid #ccc; /* Borda suave */
+  border: 1px solid #8f3333; /* Borda suave */
   border-radius: 8px;
   padding: 30px; /* Mais espaçamento interno */
   width: 100%; /* Adapta a largura */
@@ -90,9 +118,10 @@
 
 /* Estilo do cabeçalho */
 .nav-header {
-  background-color: #f0c040; /* Amarelo Mercado Livre */
+  background-color: #FFEB3B; /* Amarelo Mercado Livre */
   padding: 15px 30px; /* Maior espaçamento */
   text-align: center; /* Centraliza o conteúdo */
+  margin-bottom: 30px !important; /* Espaço entre o cabeçalho e o container de pagamento */
 }
 
 .nav-logo-title span {
@@ -100,4 +129,17 @@
   font-weight: bold; /* Logo em negrito */
   font-size: 18px; /* Tamanho maior do logo */
   text-transform: uppercase; /* Deixa o logo em maiúsculas */
+}
+
+.qrcode-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+}
+
+.qrcode-container canvas {
+  max-width: 100%; 
+  height: auto; 
 }
