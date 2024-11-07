@@ -17,7 +17,6 @@ function FeedbackProduto() {
             setProduct(foundProduct);  // Se encontrado, define o produto
         }
 
-        // Carregar feedbacks do localStorage
         const storedFeedbacks = JSON.parse(localStorage.getItem('feedbacks')) || {};
         setFeedbacks(storedFeedbacks[productId] || []);
     }, [productId]);
@@ -33,7 +32,6 @@ function FeedbackProduto() {
             setNewFeedback('');
             setStars(0);
 
-            // Atualizando os feedbacks no localStorage
             const storedFeedbacks = JSON.parse(localStorage.getItem('feedbacks')) || {};
             storedFeedbacks[productId] = updatedFeedbacks;
             localStorage.setItem('feedbacks', JSON.stringify(storedFeedbacks));

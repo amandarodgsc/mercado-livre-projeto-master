@@ -224,6 +224,12 @@ function ProdutosCadastrados() {
           </div>
         ))}
       </div>
+      <button
+  onClick={() => navigate('/cadastrar-produto')}
+  className="add-product-button"
+>
+  +
+</button>
 
       <button onClick={toggleCart} className="cart-button">
         🛒
