@@ -158,16 +158,14 @@ function CadastrarCep() {
 
   return (
     <div>
-      <header role="banner" className="nav-header nav-header-lite">
-        <div className="nav-bounds">
-          <a href="./" className="nav-logo" tabIndex="0">
-            <div className="nav-logo-title">
-              <span>Mercado Livre</span>
-            </div>
-          </a>
-        </div>
-      </header>
-
+    <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
+      <div className="nav-bounds">
+        <a className="nav-logo" href="//www.mercadolivre.com.br">
+          <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
+        </a>
+      </div>
+    </header>
+    
       <div className="cadastro-cep-container">
         <div className="cards-container">
           <div className="card">
