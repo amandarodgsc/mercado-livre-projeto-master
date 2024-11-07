@@ -9,7 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px;
+  padding: 30px;
   background-color: #FFEB3B ; /* Fundo amarelo */
 }
 

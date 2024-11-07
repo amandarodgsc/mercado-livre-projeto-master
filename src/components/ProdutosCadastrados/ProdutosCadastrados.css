@@ -8,14 +8,14 @@ body {
 }
 
 header {
-  margin: 3;
+  margin: 0;
   padding: 0;
   position: relative;
 }
 
 .produtos-container {
   width: 100%;
-  margin: 20px auto;
+  margin: 0px auto;
   padding: 30px;
   background-color: #fceb54;
   border-radius: 8px;
