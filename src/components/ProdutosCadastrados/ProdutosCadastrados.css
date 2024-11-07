@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  margin: 0;
+  margin: 3;
   padding: 0;
   position: relative;
 }
@@ -29,19 +29,18 @@ header {
   margin: 0;  /* Remove o espaço em volta */
   padding: 0; /* Remove o padding */
   background-color: #fceb54;
-  border-radius: 8px;
+  border-radius: 7px;
 }
 
 .filter-button {
   background-color: #fff;
   border: 1px solid #807d7d;
-  padding: 10px 1px;
+  padding: 6px 1px;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s ease;
   color: #000000;
-  white-space: nowrap;  /* Garante que o texto do botão não quebre para uma nova linha */
 }
 
 .filter-button:hover {
@@ -268,4 +267,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Cabeçalho de categoria */
+.filter-container h2 {
+  margin-bottom: 8px; /* Espaço abaixo do título */
 }
