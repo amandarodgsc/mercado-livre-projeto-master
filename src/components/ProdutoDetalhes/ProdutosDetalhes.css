@@ -1,8 +1,8 @@
 /* ProdutosDetalhes.css */
 .product-details-container {
-  max-width: 1200px;
+  max-width: 500px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -15,8 +15,8 @@
 }
 
 .product-image {
-  width: 100%;
-  max-width: 600px;
+  width: 80%;
+  max-width: 500px;
   margin-bottom: 20px;
   object-fit: contain;
 }
@@ -36,7 +36,7 @@
   padding: 12px 24px;
   font-size: 1.2rem;
   background-color: #FFD700; /* cor amarela */
-  color: #fff;
+  color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
