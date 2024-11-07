@@ -1,117 +1,103 @@
-.pagamento-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Container principal de pagamento */
+.pagamento {
+  background-color: #f7f7f7; /* Fundo cinza claro */
+  padding: 30px; /* Maior espaçamento interno para um layout mais espaçoso */
+  border-radius: 8px; /* Bordas arredondadas */
+  width: 100%; /* Permite que o container ocupe toda a largura disponível */
+  max-width: 600px; /* Limita a largura máxima do container */
+  margin: 0 auto; /* Centraliza o container na tela */
 }
 
-h1 {
-  font-size: 2rem;
-  color: #333;
-  text-align: center;
+/* Estilo dos métodos de pagamento */
+.payment-methods {
+  margin-bottom: 20px; /* Maior espaçamento entre os métodos de pagamento */
+  display: ruby;
 }
 
-.payment-options {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
+.payment-methods label {
+  display: block; /* Exibe as opções de pagamento como blocos */
+  margin-bottom: 10px; /* Espaço entre as opções */
+  font-size: 16px; /* Tamanho do texto */
+  color: #333; /* Cor do texto */
 }
 
-.payment-options button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  background-color: #ffcf00;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.payment-methods input[type="radio"] {
+  margin-right: 10px; /* Espaço à direita do ícone do rádio */
 }
 
-.payment-options button:hover {
-  background-color: #ffd800;
+.error {
+  color: red; /* Mensagens de erro em vermelho */
+  font-size: 12px; /* Tamanho menor para mensagens de erro */
 }
 
-.payment-details {
-  margin-top: 20px;
-}
-
+/* Estilo para o formulário de pagamento */
 .payment-form {
-  margin-top: 20px;
-  background-color: #fff;
-  padding: 20px;
+  background-color: #ffffff; /* Fundo branco */
+  border: 1px solid #ccc; /* Borda suave */
   border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Mais espaçamento interno */
+  width: 100%; /* Adapta a largura */
+  max-width: 500px; /* Limita a largura máxima dos cards */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  margin-top: 20px; /* Espaço superior */
 }
 
-.payment-form h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.payment-form form {
-  display: flex;
-  flex-direction: column;
-}
-
+/* Estilo para os campos do formulário de pagamento */
 .payment-form label {
-  margin-bottom: 5px;
-  font-weight: bold;
+  display: block;
+  margin-bottom: 10px; /* Maior espaçamento entre os labels */
+  font-size: 14px;
+  color: #333;
 }
 
-.payment-form input {
-  margin-bottom: 15px;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.payment-form input[type="text"] {
+  width: 100%;
+  padding: 12px; /* Maior espaçamento interno para os campos */
+  border: 1px solid #ccc; /* Borda padrão */
+  border-radius: 4px; /* Bordas arredondadas */
+  font-size: 14px; /* Tamanho padrão da fonte */
+  background-color: #fff; /* Fundo branco para os inputs */
+  margin-bottom: 10px; /* Espaço inferior entre os campos */
 }
 
+.payment-form input:focus {
+  outline: none;
+  border-color: #00a859; /* Cor de foco verde Mercado Livre */
+}
+
+/* Borda vermelha para campos inválidos */
+.payment-form .input-error {
+  border: 1px solid red;
+}
+
+/* Estilo do botão de confirmação de pagamento */
 .payment-form button {
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #00a650;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: #00a859; /* Verde Mercado Livre */
+  color: white; /* Cor do texto */
+  border: none; /* Remove borda */
+  padding: 12px 24px; /* Aumenta o padding */
+  border-radius: 4px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de clique */
+  font-size: 14px; /* Tamanho de fonte agradável */
+  width: 100%; /* Largura completa para botões */
+  transition: background-color 0.3s ease; /* Efeito de transição */
 }
 
 .payment-form button:hover {
-  background-color: #00b160;
+  background-color: #008f4b; /* Tom mais escuro quando o mouse passa */
 }
 
-.qrcode {
-  display: block;
-  margin: 20px auto;
-  width: 200px;
-  height: 200px;
+/* Estilo do cabeçalho */
+.nav-header {
+  background-color: #f0c040; /* Amarelo Mercado Livre */
+  padding: 15px 30px; /* Maior espaçamento */
+  text-align: center; /* Centraliza o conteúdo */
 }
 
-p {
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Estilo para responsividade */
-@media (max-width: 600px) {
-  .pagamento-container {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .payment-options button {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-  }
-
-  .payment-form input {
-    padding: 8px;
-    font-size: 0.9rem;
-  }
+.nav-logo-title span {
+  color: #333; /* Cor do texto do logo */
+  font-weight: bold; /* Logo em negrito */
+  font-size: 18px; /* Tamanho maior do logo */
+  text-transform: uppercase; /* Deixa o logo em maiúsculas */
 }

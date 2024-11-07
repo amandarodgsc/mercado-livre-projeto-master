@@ -1,123 +1,173 @@
-.cards-container { 
-  display: flex;
+/* Container principal de cadastro */
+.cadastro-cep-container {
+  background-color: #f7f7f7; /* Fundo cinza claro */
+  padding: 30px; /* Maior espaçamento interno para um layout mais espaçoso */
+  border-radius: 8px; /* Bordas arredondadas */
+  width: 100%; /* Permite que o container ocupe toda a largura disponível */
+  max-width: 600px; /* Limita a largura máxima do container */
+  margin: 0 auto; /* Centraliza o container na tela */
+}
+
+/* Contêiner dos cards */
+.cards-container {
+  display: inline-block;
   justify-content: center;
   gap: 20px;
-  margin: 20px auto; /* Espaço vertical */
+  margin: 20px auto; /* Espaço vertical entre os cards */
 }
 
+/* Estilo dos cards */
 .card {
-  background-color: #ffffff; /* Fundo branco para os cards */
-  border: 1px solid #ccc; /* Borda com cor mais suave */
+  background-color: #ffffff; /* Fundo branco */
+  border: 1px solid #ccc; /* Borda suave */
   border-radius: 8px;
-  padding: 30px; /* Aumenta o padding para mais espaço interno */
-  width: 500px; /* Aumenta a largura dos cards para caber a tabela */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Mais espaçamento interno */
+  width: 100%; /* Adapta a largura */
+  max-width: 500px; /* Limita a largura máxima dos cards */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
   overflow-x: auto; /* Permite rolagem horizontal se necessário */
+  margin: 10px; /* Espaço ao redor de cada card */
 }
 
+/* Tabela de endereços */
 .enderecos-table {
   width: 100%;
-  border-collapse: collapse; /* Remove espaços entre as bordas das células */
+  border-collapse: collapse; /* Remove espaços entre bordas */
 }
 
 .enderecos-table th,
 .enderecos-table td {
-  padding: 10px; /* Espaçamento interno das células */
-  border: 1px solid #ccc; /* Borda das células com cor mais suave */
+  padding: 12px; /* Mais espaçamento nas células */
+  border: 1px solid #ccc; /* Borda mais suave */
   text-align: left; /* Alinhamento do texto à esquerda */
 }
 
 .enderecos-table th {
-  background-color: #f0c040; /* Fundo das cabeçalhos da tabela (amarelo Mercado Livre) */
-  color: #333; /* Cor do texto dos cabeçalhos */
+  background-color: #f0c040; /* Amarelo Mercado Livre */
+  color: #333; /* Cor do texto nos cabeçalhos */
+  font-size: 16px; /* Tamanho maior nas colunas de cabeçalho */
 }
 
 .enderecos-table tr:nth-child(even) {
   background-color: #f2f2f2; /* Fundo alternado para linhas pares */
 }
 
-.cadastro-cep-container {
-  background-color: #f7f7f7; /* Fundo cinza claro */
-  padding: 20px; /* Espaçamento interno do container */
-  border-radius: 8px; /* Bordas arredondadas */
-}
-
+/* Estilo para os campos de formulário */
 .cadastro-cep-form .form-group {
-  margin-bottom: 15px; /* Espaçamento entre os grupos de formulário */
+  margin-bottom: 20px; /* Maior espaçamento entre os campos */
 }
 
-.finalizar-pagamento-button {
-  background-color: #00a859; /* Verde Mercado Livre */
-  color: white; /* Cor do texto */
-  border: none; /* Remove borda */
-  padding: 10px 20px; /* Espaçamento interno do botão */
-  border-radius: 4px; /* Bordas arredondadas do botão */
-  cursor: pointer; /* Muda o cursor para indicar que é clicável */
-}
-
-.finalizar-pagamento-button:hover {
-  background-color: #008f4b; /* Tom mais escuro ao passar o mouse */
-}
-
-.cart-item {
-  border-bottom: 1px solid #ccc; /* Borda inferior para itens do carrinho */
-  padding: 10px 0; /* Espaçamento interno */
-}
-
-.total-container {
-  font-weight: bold; /* Negrito para o total */
-  margin-top: 10px; /* Espaçamento acima do total */
-}
-
-.nav-header {
-  background-color: #f0c040; /* Amarelo Mercado Livre */
-  padding: 10px 20px; /* Espaçamento interno do cabeçalho */
-}
-
-.nav-logo-title span {
-  color: #333; /* Cor do texto do logo */
-  font-weight: bold; /* Deixa o texto em negrito */
-}
-
-button {
-  background-color: #00a838; /* Verde para os botões */
-  color: white; /* Cor do texto */
-  border: none; /* Remove borda */
-  padding: 10px; /* Espaçamento interno */
+input,
+select {
+  width: 100%;
+  padding: 12px; /* Maior espaçamento interno para os campos */
+  border: 1px solid #ccc; /* Borda padrão */
   border-radius: 4px; /* Bordas arredondadas */
-  cursor: pointer; /* Muda o cursor ao passar por cima */
-  transition: background-color 0.3s; /* Animação suave na mudança de cor */
-  margin: 5px 0; /* Espaço entre os botões */
-  width: 100px; /* Define um tamanho fixo para os botões */
+  font-size: 14px; /* Tamanho padrão da fonte */
+  background-color: #fff; /* Fundo branco para os inputs */
 }
 
-.edit-button {
-  background-color: #4e87f0; /* Amarelo para o botão de editar */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #00a859; /* Cor de foco verde Mercado Livre */
 }
 
-.edit-button:hover {
-  background-color: #ec971f; /* Tom mais escuro ao passar o mouse no botão de editar */
-}
-
-.delete-button {
-  background-color: #d9534f; /* Vermelho para o botão de excluir */
-}
-
-.delete-button:hover {
-  background-color: #c9302c; /* Tom mais escuro ao passar o mouse no botão de excluir */
-}
-
+/* Erros de validação */
 .input-error {
-  border: 1px solid red; /* Borda vermelha */
+  border: 1px solid red; /* Borda vermelha para campos inválidos */
 }
 
 .error {
   color: red; /* Mensagens de erro em vermelho */
+  font-size: 12px; /* Tamanho menor para mensagens de erro */
 }
 
-/* Adicione no seu arquivo Cadastrarcep.css */
+/* Botão de envio */
+.finalizar-pagamento-button,
+button {
+  background-color: #00a859; /* Verde Mercado Livre */
+  color: white; /* Cor do texto */
+  border: none; /* Remove borda */
+  padding: 12px 24px; /* Aumenta o padding */
+  border-radius: 4px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de clique */
+  font-size: 14px; /* Tamanho de fonte agradável */
+  width: 100%; /* Largura completa para botões */
+  transition: background-color 0.3s ease; /* Efeito de transição */
+}
+
+button:hover,
+.finalizar-pagamento-button:hover {
+  background-color: #008f4b; /* Tom mais escuro quando o mouse passa */
+}
+
+/* Estilos dos botões de editar e excluir */
+.edit-button {
+  background-color: #4e87f0; /* Azul para o botão de editar */
+}
+
+.edit-button:hover {
+  background-color: #ec971f; /* Tom mais escuro quando o mouse passa */
+}
+
+.delete-button {
+  background-color: #d9534f; /* Vermelho para excluir */
+}
+
+.delete-button:hover {
+  background-color: #c9302c; /* Tom mais escuro para o botão de excluir */
+}
+
+/* Estilo do botão de buscar CEP */
 .btn-buscar {
-  padding: 5px 10px; /* Ajuste o padding conforme necessário */
-  font-size: 12px; /* Altere o tamanho da fonte */
+  padding: 8px 16px; /* Ajuste no padding */
+  font-size: 14px; /* Tamanho da fonte */
+  background-color: #00a859; /* Verde Mercado Livre */
+  color: white; /* Cor do texto */
+  border-radius: 4px; /* Bordas arredondadas */
+  cursor: pointer;
+  width: auto; /* Ajusta a largura para o conteúdo */
+  transition: background-color 0.3s;
 }
 
+.btn-buscar:hover {
+  background-color: #008f4b; /* Tom mais escuro quando passar o mouse */
+}
+
+/* Estilos do cabeçalho */
+.nav-header {
+  background-color: #f0c040; /* Amarelo Mercado Livre */
+  padding: 15px 30px; /* Maior espaçamento */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.nav-logo-title span {
+  color: #333; /* Cor do texto do logo */
+  font-weight: bold; /* Logo em negrito */
+  font-size: 18px; /* Tamanho maior do logo */
+  text-transform: uppercase; /* Deixa o logo em maiúsculas */
+}
+
+/* Estilo para o carrinho */
+.cart-item {
+  border-bottom: 1px solid #ccc; /* Linha de separação entre os itens */
+  padding: 12px 0; /* Maior espaçamento interno */
+}
+
+.total-container {
+  font-weight: bold; /* Título em negrito */
+  margin-top: 20px; /* Maior espaçamento no topo */
+  font-size: 16px; /* Aumenta o tamanho do total */
+}
+
+/* Estilo para o conteúdo de frete */
+.frete {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f7f7f7; /* Fundo para destacar o valor do frete */
+  font-size: 16px;
+  color: #333; /* Cor do texto */
+  border-radius: 4px;
+  text-align: center; /* Centraliza o texto */
+}

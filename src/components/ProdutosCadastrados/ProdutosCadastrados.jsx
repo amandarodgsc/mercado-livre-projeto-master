@@ -15,6 +15,7 @@ function ProdutosCadastrados() {
     description: '',
     category: ''
   });
+  const [showRemoveWarning, setShowRemoveWarning] = useState(false); // Novo estado para a validação
 
   const navigate = useNavigate();
 
@@ -34,7 +35,6 @@ function ProdutosCadastrados() {
 
   const handleAddToCart = (product) => {
     const existingProductIndex = cart.findIndex(item => item.id === product.id);
-
     if (existingProductIndex >= 0) {
       const updatedCart = [...cart];
       updatedCart[existingProductIndex].quantity += 1;
@@ -49,10 +49,47 @@ function ProdutosCadastrados() {
     }
   };
 
-  const handleRemoveFromCart = (productId) => {
-    const updatedCart = cart.filter(item => item.id !== productId);
-    setCart(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  const handleRemoveProduct = (productId) => {
+    if (window.confirm("Tem certeza que deseja remover este produto?")) {
+      const updatedProducts = products.filter(product => product.id !== productId);
+      setProducts(updatedProducts);
+      setFilteredProducts(updatedProducts);
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+    }
+  };
+
+  const handleEditProduct = (product) => {
+    setEditingProductId(product.id);
+    setEditedProductData({
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      category: product.category
+    });
+  };
+
+  const handleSaveEditedProduct = (productId) => {
+    const updatedProducts = products.map(product => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          ...editedProductData
+        };
+      }
+      return product;
+    });
+    setProducts(updatedProducts);
+    setFilteredProducts(updatedProducts);
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
+    setEditingProductId(null);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedProductData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
   const toggleCart = () => {
@@ -64,11 +101,14 @@ function ProdutosCadastrados() {
     return total.toFixed(2);
   };
 
-  const handleRemoveProduct = (productId) => {
-    const updatedProducts = products.filter(product => product.id !== productId);
-    setProducts(updatedProducts);
-    setFilteredProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
+  const handleRemoveFromCart = (productId) => {
+    if (cart.length === 0) {
+      setShowRemoveWarning(true); // Exibe a mensagem de validação se o carrinho estiver vazio
+    } else {
+      const updatedCart = cart.filter(item => item.id !== productId);
+      setCart(updatedCart);
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
   };
 
   const handleIncreaseQuantity = (productId) => {
@@ -99,38 +139,8 @@ function ProdutosCadastrados() {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
   };
 
-  const handleEditProduct = (product) => {
-    setEditingProductId(product.id);
-    setEditedProductData({
-      name: product.name,
-      price: product.price,
-      description: product.description,
-      category: product.category
-    });
-  };
-
-  const handleSaveEditedProduct = (productId) => {
-    const updatedProducts = products.map(product => {
-      if (product.id === productId) {
-        return {
-          ...product,
-          ...editedProductData
-        };
-      }
-      return product;
-    });
-    setProducts(updatedProducts);
-    setFilteredProducts(updatedProducts);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
-    setEditingProductId(null);  // Stop editing mode
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditedProductData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
+  const handleGoToAddressPage = () => {
+    navigate('/cadastrar-cep'); // Altere o caminho para o endereço da página que você deseja
   };
 
   return (
@@ -149,7 +159,7 @@ function ProdutosCadastrados() {
       </div>
       <div className="produtos-grid">
         {filteredProducts.map((product) => (
-          <div className="produto-item" key={product.id} onClick={() => navigate(`/produtos/${product.id}`)}>
+          <div className="produto-item" key={product.id}>
             <img src={product.image} alt={product.name} />
             <h2>{product.name}</h2>
             <p>R$ {(product.price || 0).toFixed(2)}</p>
@@ -157,7 +167,6 @@ function ProdutosCadastrados() {
             <p>Categoria: {product.category}</p>
             <p>{product.description}</p>
 
-            {/* Se estiver editando, mostrar campos de input */}
             {editingProductId === product.id ? (
               <div>
                 <input
@@ -191,25 +200,23 @@ function ProdutosCadastrados() {
                 <button onClick={() => handleSaveEditedProduct(product.id)} className="filter-button">Salvar</button>
               </div>
             ) : (
-              <button onClick={() => handleEditProduct(product)} className="filter-button">Alterar</button>
+              <>
+                <button onClick={() => handleEditProduct(product)} className="filter-button">Alterar</button>
+                <button onClick={() => handleAddToCart(product)} className="filter-button">Adicionar ao Carrinho</button>
+                <button onClick={() => handleRemoveProduct(product.id)} className="remove-product-button">Remover Produto</button>
+              </>
             )}
-
-            <button onClick={(e) => { e.stopPropagation(); handleAddToCart(product); }} className="filter-button">Adicionar ao Carrinho</button>
-            <button onClick={(e) => { e.stopPropagation(); handleRemoveProduct(product.id); }} className="remove-product-button">Remover Produto</button>
           </div>
         ))}
       </div>
 
-      {/* Botão de carrinho com número de itens */}
+      {/* Carrinho */}
       <button onClick={toggleCart} className="cart-button">
         🛒
         {getTotalItemsInCart() > 0 && (
           <span className="cart-item-count">{getTotalItemsInCart()}</span>
         )}
       </button>
-
-      {/* Novo botão flutuante de cadastro de produto */}
-      <button onClick={() => navigate('/cadastrar-produto')} className="add-product-button">+</button>
 
       {cartVisible && (
         <div className="cart-modal">
@@ -242,7 +249,13 @@ function ProdutosCadastrados() {
               </div>
             </>
           )}
-          <button onClick={() => navigate('/cadastrar-cep')} className="new-product-button">Adicione o Endereço</button>
+
+          {/* Exibe a mensagem de validação */}
+          {showRemoveWarning && (
+            <p className="error">Não é possível remover um item do carrinho vazio!</p>
+          )}
+
+          <button onClick={handleGoToAddressPage} className="address-button"> Adicione Endereço de Entrega</button>
           <button onClick={toggleCart} className="close-cart-button">Fechar</button>
         </div>
       )}
