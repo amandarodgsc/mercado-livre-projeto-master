@@ -189,21 +189,25 @@ function TelaCliente() {
 
             {/* Produtos */}
             <section className="produtos">
-                <h2>Produtos em Destaque</h2>
-                <div className="produtos-grid">
-                    {products.map((product) => (
-                        <div
-                            key={product.id}
-                            className="produto-item"
-                            onClick={() => navigate(`/produtos/${product.id}`)}
-                        >
-                            <img src={product.image} alt={product.name} />
-                            <h3>{product.name}</h3>
-                            <p>R$ {(product.price || 0).toFixed(2)}</p>
-                        </div>
-                    ))}
+    <h2>Produtos em Destaque</h2>
+    <div className="produtos-grid">
+        {products.map((product) => {
+            // Garantir que product.price seja um número válido
+            const price = parseFloat(product.price) || 0; // Se price for inválido, usa 0
+            return (
+                <div
+                    key={product.id}
+                    className="produto-item"
+                    onClick={() => navigate(`/produtos/${product.id}`)}
+                >
+                    <img src={product.image} alt={product.name} />
+                    <h3>{product.name}</h3>
+                    <p>R$ {price.toFixed(2)}</p> {/* Agora a formatação não gerará erro */}
                 </div>
-            </section>
+            );
+        })}
+    </div>
+</section>
 
             {/* Rodapé */}
             <footer className="footer">
