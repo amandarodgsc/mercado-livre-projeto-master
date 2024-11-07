@@ -96,6 +96,10 @@ function ProdutosCadastrados() {
     setCartVisible(!cartVisible);
   };
 
+  const closeCart = () => {
+    setCartVisible(false); // Fecha o carrinho
+  };
+
   const calculateTotal = () => {
     const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
     return total.toFixed(2);
@@ -231,6 +235,7 @@ function ProdutosCadastrados() {
 
       {cartVisible && (
         <div className="cart-modal">
+          <button onClick={closeCart} className="close-cart-button">Fechar</button> {/* Botão de fechar */}
           <h2>Carrinho</h2>
           {cart.length === 0 ? (
             <p>O carrinho está vazio.</p>
@@ -240,10 +245,8 @@ function ProdutosCadastrados() {
                 <div key={item.id} className="cart-item">
                   <div className="cart-item-details">
                     <img src={item.image} alt={item.name} className="cart-item-image" />
-                    <div className="cart-item-info">
-                      <h3>{item.name}</h3>
-                      <p>{item.description}</p>
-                      <p>Preço unitário: R$ {Number(item.price || 0).toFixed(2)}</p> {/* Correção aqui */}
+                    <div>
+                      <p>{item.name}</p>
                       <div className="quantity-controls">
                         <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
                         <span>{item.quantity}</span>
