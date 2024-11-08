@@ -13,7 +13,7 @@ function Header() {
 
   return (
     <>
-      <header className="header-new">
+      <header className="header-new" style={{ margin: '0px' }}>
         <div className="header-container-new">
           <a href="https://vendedores.mercadolivre.com.br/" className="nav-logo" tabIndex="0">
             <div className="nav-logo-title">
@@ -44,7 +44,7 @@ function Header() {
           <p className="subtitle">
             Encontre todas as informações necessárias para crescer como vendedor e se profissionalizar.
           </p>
-          <button
+          <button id='buttonfirst'
             type="button"
             className="andes-button cta-button outline andes-button--large andes-button--loud"
             onClick={handleLoginClick} // Redireciona também ao clicar nesse botão

@@ -26,7 +26,7 @@ function TelaCliente() {
 
     return (
         <div className="tela-cliente-container">
-            <header className="header">
+            <header className="header" style={{ margin: '0px' }}>
                 <div className="container">
                     <div className="logo-container">
                         <img

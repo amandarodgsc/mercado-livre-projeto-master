@@ -7,7 +7,7 @@
 
 /* Cabeçalho */
 .header {
-    background-color: #ffdf28;
+    background-color: #fee601;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -73,7 +73,7 @@
 
 .search__button {
     position: absolute;
-    right: 10px;
+    right: auto;
     background-color: transparent;
     border: none;
     padding: 10px;

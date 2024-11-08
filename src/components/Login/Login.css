@@ -1,20 +1,33 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Corpo da página com fundo cinza global (index.css) */
 body {
+  background-color: #dfdfdf; /* Cor de fundo global, do index.css */
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
 }
 
+/* Container de login com fundo amarelo */
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 30px;
-  background-color: #FFEB3B ; /* Fundo amarelo */
+  background-color: #FFEB3B; /* Fundo amarelo */
+  height: 100vh; /* Faz com que ocupe toda a altura da tela */
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
 }
 
+/* Cabeçalho com logo */
 header {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .logo {
@@ -22,6 +35,7 @@ header {
   height: auto;
 }
 
+/* Caixa do formulário */
 .login-box {
   width: 100%;
   max-width: 500px;
@@ -33,13 +47,14 @@ header {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Título do formulário */
 .login-box h2 {
   font-size: 15px;
   color: #333;
   margin-bottom: 20px;
-  align-items: center;
 }
 
+/* Estilo dos campos de entrada */
 .login-input {
   width: 100%;
   padding: 12px;
@@ -59,13 +74,13 @@ header {
   font-size: 15px;
   cursor: pointer;
   font-weight: bold;
-  align-items: center;
 }
 
 .login-button:hover {
   background-color: #2968c8;
 }
 
+/* Link "Criar conta" */
 .create-account {
   display: block;
   margin-top: 15px;
@@ -78,6 +93,7 @@ header {
   text-decoration: underline;
 }
 
+/* Divisória "ou" */
 .divider {
   margin: 20px 0;
   font-size: 14px;
@@ -103,6 +119,7 @@ header {
   right: 0;
 }
 
+/* Botão de login com o Google */
 .google-button {
   display: flex;
   align-items: center;
@@ -127,8 +144,9 @@ header {
   background-color: #3483fa;
 }
 
+/* Rodapé da página */
 .login-footer {
-  margin-top: 20px;
+  margin-top: 40px; /* Desce o rodapé */
   text-align: center;
   font-size: 13px;
   color: #666;
@@ -150,10 +168,11 @@ header {
   color: #999;
 }
 
+/* reCAPTCHA container */
 .captcha-container {
   display: flex;
   justify-content: center; /* Centraliza horizontalmente */
-  margin: 1px 10; /* Espaço acima e abaixo */
+  padding: 0 15px 15px 15px;
 }
 
 .captcha-container .grecaptcha-badge {
@@ -166,4 +185,3 @@ header {
   max-width: 300px; /* Define uma largura máxima */
   min-height: 78px; /* Define uma altura mínima */
 }
-

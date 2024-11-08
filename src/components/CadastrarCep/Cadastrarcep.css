@@ -93,7 +93,7 @@ button {
   border-radius: 4px; /* Bordas arredondadas */
   cursor: pointer; /* Cursor de clique */
   font-size: 14px; /* Tamanho de fonte agradável */
-  width: 100%; /* Largura completa para botões */
+  width: auto; /* Largura completa para botões */
   transition: background-color 0.3s ease; /* Efeito de transição */
 }
 

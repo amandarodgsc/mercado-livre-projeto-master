@@ -18,6 +18,23 @@
   width: 100%;
 }
 
+.andes-button__text {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 100%; 
+}
+
+
+#buttonfirst{
+  height: 60px;
+}
+
+#buttonfirst:hover {
+  background-color: #0078ff; /* Cor de fundo azul quando passar o mouse */
+  color: white; /* Cor do texto em branco quando passar o mouse */
+}
+
 .nav-logo {
   display: flex;
   align-items: center;
@@ -94,23 +111,24 @@
 /* Estilo da seção Central de Vendedores */
 .vendedores-section {
   background-image: url('https://http2.mlstatic.com/frontend-assets/sc-seller-university-frontend/header-waves.svg');
-  background-size:contain; /* Para cobrir toda a área da seção */
+  background-size:cover, contain; /* Para cobrir toda a área da seção */
   background-repeat: no-repeat; /* Para evitar repetição da imagem */
-  padding: 40px;
+  background-origin: border-box;
+  background-position: bottom;
+  padding: 0;
   text-align: center;
   color: white;
-  border-radius: 0 0 50px 50px;
 }
 
 
 .central-vendedores-container {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
+  margin: auto;
+  padding: 80px 0;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 38px;
   margin-bottom: 20px;
 }
 
