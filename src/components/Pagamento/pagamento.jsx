@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { QRCodeCanvas } from 'qrcode.react';  // Corrigido para QRCodeCanvas
+import { QRCodeCanvas } from 'qrcode.react';
 import './pagamento.css';
 
 function Pagamento() {
@@ -19,6 +20,7 @@ function Pagamento() {
   const [pixKey, setPixKey] = useState('');
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutos (300 segundos)
   const [timerActive, setTimerActive] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false); // Controle de redirecionamento
 
   const shippingCost = 20.0;
 
@@ -60,33 +62,26 @@ function Pagamento() {
   const validateForm = () => {
     const newErrors = {};
 
-    // Verifica se o método de pagamento foi selecionado
     if (!selectedPaymentMethod) {
       newErrors.paymentMethod = 'Escolha um método de pagamento.';
     }
 
     if (selectedPaymentMethod === 'cartao') {
-      // Validação para o formulário de pagamento com cartão
       if (!formData.cardNumber || formData.cardNumber.length !== 16) {
         newErrors.cardNumber = 'Número do cartão é obrigatório e deve ter 16 dígitos.';
       }
-
       if (!formData.cardName) {
         newErrors.cardName = 'Nome no cartão é obrigatório.';
       }
-
       if (!formData.expirationDate || !/^\d{2}\/\d{2}$/.test(formData.expirationDate)) {
         newErrors.expirationDate = 'Data de expiração é obrigatória e deve estar no formato MM/AA.';
       }
-
       if (!formData.cvv || formData.cvv.length !== 3) {
         newErrors.cvv = 'CVV é obrigatório e deve ter 3 dígitos.';
       }
     }
 
     setErrors(newErrors);
-
-    // Se não houver erros, o formulário pode ser enviado
     return Object.keys(newErrors).length === 0;
   };
 
@@ -94,21 +89,47 @@ function Pagamento() {
     e.preventDefault();
 
     if (validateForm()) {
+      // Criação da venda
       const venda = {
-        id: Date.now(),
+        id: Date.now(),  // Usando o timestamp como ID único
         produto: cartItems.map(item => item.name).join(', '),
-        preco: parseFloat(calculateTotal()),
+        preco: parseFloat(calculateTotalWithShipping()),  // Total com frete
         endereco: endereco,
-        metodoPagamento: selectedPaymentMethod,
+        metodoPagamento: selectedPaymentMethod,  // O método de pagamento (cartão, boleto, pix)
+        data: new Date().toLocaleDateString(),  // Data da venda
       };
 
+      // Atualiza o localStorage com a nova venda
       const vendasExistentes = JSON.parse(localStorage.getItem('vendas')) || [];
       vendasExistentes.push(venda);
-
       localStorage.setItem('vendas', JSON.stringify(vendasExistentes));
 
+      // Redireciona para a página de Relatório de Vendas
       navigate('/relatorio-vendas');
     }
+  };
+
+  const handlePaymentSuccess = () => {
+    // Criação da venda
+    const venda = {
+      id: Date.now(),  // Usando o timestamp como ID único
+      produto: cartItems.map(item => item.name).join(', '),
+      preco: parseFloat(calculateTotalWithShipping()),  // Total com frete
+      endereco: endereco,
+      metodoPagamento: selectedPaymentMethod,  // O método de pagamento (cartão, boleto, pix)
+      data: new Date().toLocaleDateString(),  // Data da venda
+    };
+
+    // Atualiza o localStorage com a nova venda
+    const vendasExistentes = JSON.parse(localStorage.getItem('vendas')) || [];
+    vendasExistentes.push(venda);
+    localStorage.setItem('vendas', JSON.stringify(vendasExistentes));
+
+    // Marca o sucesso do pagamento e redireciona
+    setPaymentSuccess(true);
+    setTimeout(() => {
+      navigate('/relatorio-vendas');
+    }, 3000); // Espera 3 segundos e vai para o Relatório de Vendas
   };
 
   const renderPaymentForm = () => {
@@ -128,7 +149,7 @@ function Pagamento() {
                 maxLength={16}
               />
               {errors.cardNumber && <span className="error">{errors.cardNumber}</span>}
-              
+
               <label>Nome no Cartão</label>
               <input
                 type="text"
@@ -138,7 +159,7 @@ function Pagamento() {
                 placeholder="Nome completo"
               />
               {errors.cardName && <span className="error">{errors.cardName}</span>}
-              
+
               <label>Data de Expiração</label>
               <input
                 type="text"
@@ -149,7 +170,7 @@ function Pagamento() {
                 maxLength={5}
               />
               {errors.expirationDate && <span className="error">{errors.expirationDate}</span>}
-              
+
               <label>CVV</label>
               <input
                 type="text"
@@ -160,7 +181,7 @@ function Pagamento() {
                 maxLength={3}
               />
               {errors.cvv && <span className="error">{errors.cvv}</span>}
-              
+
               <button type="submit">Confirmar Pagamento</button>
             </form>
           </div>
@@ -170,6 +191,10 @@ function Pagamento() {
           <div className="payment-form">
             <h3>Pagamento com Boleto</h3>
             <p>O boleto será gerado após a confirmação do pedido.</p>
+            {paymentSuccess && <p>Pagamento confirmado! Redirecionando...</p>}
+            {!paymentSuccess && (
+              <button onClick={handlePaymentSuccess}>Confirmar Boleto</button>
+            )}
           </div>
         );
       case 'pix':
@@ -182,6 +207,10 @@ function Pagamento() {
             </div>
             <p>Tempo restante para pagar: {timeLeft}s</p>
             {timeLeft === 0 && <p style={{ color: 'red' }}>QR Code expirado!</p>}
+            {paymentSuccess && <p>Pagamento confirmado! Redirecionando...</p>}
+            {!paymentSuccess && (
+              <button onClick={handlePaymentSuccess}>Confirmar Pix</button>
+            )}
           </div>
         );
       default:
@@ -191,64 +220,61 @@ function Pagamento() {
 
   return (
     <div>
-    <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite" style={{ margin: '0px' }}>
-      <div className="nav-bounds">
-        <a className="nav-logo" href="//www.mercadolivre.com.br">
-          <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
-        </a>
+      <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite" style={{ margin: '0px' }}>
+        <div className="nav-bounds">
+          <a className="nav-logo" href="//www.mercadolivre.com.br">
+            <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
+          </a>
+        </div>
+      </header>
+
+      <div className="pagamento">
+        <div className="order-summary">
+          <h2>Detalhes do Pedido</h2>
+          <p>Total do Carrinho: R$ {calculateTotal()}</p>
+          <p>Frete: R$ {shippingCost}</p>
+          <p>Total: R$ {calculateTotalWithShipping()}</p>
+        </div>
+
+        <div className="payment-methods">
+          <h3>Escolha o Método de Pagamento</h3>
+          <label>
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="cartao"
+              onChange={() => setSelectedPaymentMethod('cartao')}
+              checked={selectedPaymentMethod === 'cartao'}
+            />
+            Cartão de Crédito
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="boleto"
+              onChange={() => setSelectedPaymentMethod('boleto')}
+              checked={selectedPaymentMethod === 'boleto'}
+            />
+            Boleto
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="pix"
+              onChange={() => setSelectedPaymentMethod('pix')}
+              checked={selectedPaymentMethod === 'pix'}
+            />
+            Pix
+          </label>
+        </div>
+
+        {renderPaymentForm()}
       </div>
-    </header>
-    
-    <div className="pagamento">
-      <div className="order-summary">
-      <h2>Detalhes do Pedido</h2>
-
-        <p>Total do Carrinho: R$ {calculateTotal()}</p>
-        <p>Frete: R$ {shippingCost}</p>
-        <p>Total: R$ {calculateTotalWithShipping()}</p>
-      </div>
-
-      <div className="payment-methods">
-        <h3>Escolha o Método de Pagamento</h3>
-        <label>
-          <input
-            type="radio"
-            name="paymentMethod"
-            value="cartao"
-            onChange={() => setSelectedPaymentMethod('cartao')}
-            checked={selectedPaymentMethod === 'cartao'}
-          />
-          Cartão de Crédito
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="paymentMethod"
-            value="boleto"
-            onChange={() => setSelectedPaymentMethod('boleto')}
-            checked={selectedPaymentMethod === 'boleto'}
-          />
-          Boleto
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="paymentMethod"
-            value="pix"
-            onChange={() => setSelectedPaymentMethod('pix')}
-            checked={selectedPaymentMethod === 'pix'}
-          />
-          Pix
-        </label>
-
-        {errors.paymentMethod && <span className="error">{errors.paymentMethod}</span>}
-      </div>
-
-      {renderPaymentForm()}
     </div>
-    </div>
-
   );
 }
 
 export default Pagamento;
+

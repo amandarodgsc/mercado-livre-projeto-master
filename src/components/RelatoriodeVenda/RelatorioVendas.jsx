@@ -3,23 +3,18 @@ import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import './RelatorioVendas.css';
 
-// Registrar os módulos do Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 function RelatorioVendas() {
-  const [seller, setSeller] = useState(null);
   const [sales, setSales] = useState([]);
   const [totalEarnings, setTotalEarnings] = useState(0);
 
   useEffect(() => {
-    const storedSellers = JSON.parse(localStorage.getItem('sellers')) || [];
-    const sellerData = storedSellers[0]; // Considerando que existe apenas um vendedor
-    setSeller(sellerData);
-
-    const storedSales = JSON.parse(localStorage.getItem('sales')) || [];
+    const storedSales = JSON.parse(localStorage.getItem('vendas')) || [];
+    storedSales.sort((a, b) => new Date(a.data) - new Date(b.data));
     setSales(storedSales);
 
-    const earnings = storedSales.reduce((acc, sale) => acc + sale.amount, 0);
+    const earnings = storedSales.reduce((acc, sale) => acc + sale.preco, 0);
     setTotalEarnings(earnings);
   }, []);
 
@@ -27,12 +22,33 @@ function RelatorioVendas() {
     return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   };
 
+  const handleDeleteSale = (saleId) => {
+    const updatedSales = sales.filter(sale => sale.id !== saleId);
+    setSales(updatedSales);
+
+    localStorage.setItem('vendas', JSON.stringify(updatedSales));
+
+    const earnings = updatedSales.reduce((acc, sale) => acc + sale.preco, 0);
+    setTotalEarnings(earnings);
+  };
+
+  const groupedSales = sales.reduce((acc, sale) => {
+    const saleDate = sale.data;
+    if (!acc[saleDate]) {
+      acc[saleDate] = { data: saleDate, preco: 0 };
+    }
+    acc[saleDate].preco += sale.preco;
+    return acc;
+  }, {});
+
+  const dailySales = Object.values(groupedSales);
+
   const chartData = {
-    labels: sales.map((sale) => sale.date),
+    labels: dailySales.map((sale) => sale.data),
     datasets: [
       {
-        label: 'Vendas Semanais',
-        data: sales.map((sale) => sale.amount),
+        label: 'Vendas Diárias',
+        data: dailySales.map((sale) => sale.preco),
         backgroundColor: 'rgba(75, 192, 192, 0.5)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
@@ -45,61 +61,57 @@ function RelatorioVendas() {
     plugins: {
       title: {
         display: true,
-        text: 'Gráfico de Vendas Semanais',
+        text: 'Gráfico de Vendas Diárias',
       },
     },
   };
 
-  return (   
-     <div>
-    <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
-      <div className="nav-bounds">
-        <a className="nav-logo" href="//www.mercadolivre.com.br">
-          <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
-        </a>
-      </div>
-    </header>
-
-    <div className="relatorio-container">
-      <h1>Relatório de Vendas</h1>
-
-      {seller && (
-        <div className="seller-profile">
-          <img src={seller.profileImage} alt="Foto do Vendedor" className="profile-image" />
-          <h2>{seller.name}</h2>
-          <p><strong>CPF:</strong> {seller.cpf}</p>
-          <p><strong>E-mail:</strong> {seller.email}</p>
-          <p><strong>Telefone:</strong> {seller.phone}</p>
-          <p><strong>Endereço:</strong> {seller.address}</p>
+  return (
+    <div>
+      <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
+        <div className="nav-bounds">
+          <a className="nav-logo" href="//www.mercadolivre.com.br">
+            <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
+          </a>
         </div>
-      )}
+      </header>
 
-      <div className="dashboard">
-        <h2>Dashboard de Vendas</h2>
-        <div className="dashboard-info">
-          <p><strong>Total de Vendas:</strong> {sales.length}</p>
-          <p><strong>Ganhos Totais:</strong> {formatCurrency(totalEarnings)}</p>
+      <div className="relatorio-container">
+        <h1>Relatório de Vendas</h1>
+        <div className="dashboard">
+          <h2>Dashboard de Vendas</h2>
+          <div className="dashboard-info">
+            <p><strong>Total de Vendas:</strong> {sales.length}</p>
+            <p><strong>Ganhos Totais:</strong> {formatCurrency(totalEarnings)}</p>
+          </div>
+
+          {/* Gráfico de Vendas Diárias */}
+          {dailySales.length > 0 && (
+            <div className="chart-container">
+              <Bar data={chartData} options={chartOptions} />
+            </div>
+          )}
+
+          <h3>Vendas:</h3>
+          {sales.map((sale, index) => (
+            <div key={index} className="sale-detail">
+              <p><strong>Data:</strong> {sale.data}</p>
+              <p><strong>Produto:</strong> {sale.produto}</p>
+              <p><strong>Valor:</strong> {formatCurrency(sale.preco)}</p>
+              <p><strong>Forma de Pagamento:</strong> {sale.metodoPagamento}</p>
+
+              {/* Botão de exclusão */}
+              <button
+                className="delete-button"
+                onClick={() => handleDeleteSale(sale.id)}
+              >
+                Excluir Venda
+              </button>
+            </div>
+          ))}
         </div>
-
-        {/* Gráfico de Vendas */}
-        {sales.length > 0 && (
-          <div className="chart-container">
-            <Bar data={chartData} options={chartOptions} />
-          </div>
-        )}
-
-        <h3>Vendas Diárias:</h3>
-        {sales.map((sale, index) => (
-          <div key={index} className="sale-detail">
-            <p><strong>Data:</strong> {sale.date}</p>
-            <p><strong>Produto:</strong> {sale.productName}</p>
-            <p><strong>Valor:</strong> {formatCurrency(sale.amount)}</p>
-          </div>
-        ))}
       </div>
     </div>
-    </div>
-
   );
 }
 
