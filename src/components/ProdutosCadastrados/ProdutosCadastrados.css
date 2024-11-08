@@ -177,10 +177,11 @@ header {
   top: 0;
   width: 400px;
   height: 100%;
-  background-color: #fff;
+  background-color: #f5f5f5; /* Cor de fundo mais clara */
   box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   overflow-y: auto;
+  font-family: Arial, sans-serif; /* Tipografia similar */
 }
 
 .cart-item {
@@ -188,85 +189,161 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
 }
 
 .cart-item h3 {
-  font-size: 1.1em;
+  font-size: 1em;
+  color: #333;
+  font-weight: 500;
 }
 
 .cart-item .remove-button {
-  background-color: #e74c3c;
+  background-color: #3483fa; /* Azul característico do Mercado Livre */
   color: #fff;
   padding: 5px 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
+  font-size: 0.9em;
 }
 
 .cart-item .remove-button:hover {
-  background-color: #c0392b;
+  background-color: #2a69d8;
 }
 
 .cart-item-actions {
   display: flex;
   align-items: center;
+  gap: 10px; /* Espaço entre os botões */
 }
 
 .cart-item-actions button {
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  padding: 5px 10px;
+  background-color: #a5a3a3c5; /* Fundo claro */
+  border: 1px solid #fffdfd;
+  padding: 6px 12px; /* Tamanho menor para os botões */
   cursor: pointer;
-  font-size: 16px;
-  margin: 0 5px;
-  border-radius: 5px;
+  font-size: 14px;
+  border-radius: 50%; /* Botões redondos */
   transition: background-color 0.3s ease;
+  width: 30px; /* Tamanho fixo */
+  height: 30px; /* Tamanho fixo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-item-actions button:hover {
-  background-color: #ffdb15;
+  background-color: #ffe600; /* Amarelo do Mercado Livre ao passar o mouse */
+}
+.cart-item-actions button:focus {
+  outline: none; /* Remove o contorno de foco */
+}
+
+/* Estilo do texto de quantidade no carrinho */
+.cart-item-actions span {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+/* Ajuste para o item no carrinho */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+/* Estilo do botão de remoção (X) */
+.remove-item {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.remove-item:hover {
+  color: darkred;
+}
+
+.cart-item p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.cart-item h3 {
+  font-size: 1em;
+  color: #333;
+  font-weight: 500;
 }
 
 .cart-total {
   margin-top: 20px;
   text-align: right;
+  font-weight: 500;
+  color: #333;
 }
+.go-to-address-button{
+  background-color: #3483fa;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: auto;
+    transition: background-color 0.3s ease;
+    
+}
+.go-to-address-button:hover {
+  background-color: #2973d1;  /* Cor de fundo ao passar o mouse */
+}
+
+
 
 .checkout-button {
   display: block;
   width: 100%;
-  padding: 15px;
-  background-color: #2ecc71;
-  color: white;
+  padding: 12px;
+  background-color: #3483fa; /* Azul padrão Mercado Livre */
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   margin-top: 20px;
   text-align: center;
   font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .checkout-button:hover {
-  background-color: #27ae60;
+  background-color: #2a69d8;
 }
 
 .close-cart-button {
-  background-color: #ffdb15;
-  color: #333;
+  background-color: #3483fa; /* Amarelo padrão Mercado Livre */
+  color: #fcfcfc;
   border: none;
   padding: 10px;
   width: 100%;
   margin-top: 10px;
-  border-radius: 5px;
+  margin-bottom: 40px; /* Espaçamento com o item abaixo */
+  border-radius: 4px;
   cursor: pointer;
   font-size: 1em;
 }
 
+
 .close-cart-button:hover {
-  background-color: #f4c10b;
-}
+  background-color: #2973d1}
 
 /* Botão de adicionar produto */
 .add-product-button {

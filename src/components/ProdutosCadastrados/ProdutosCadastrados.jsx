@@ -252,15 +252,16 @@ function ProdutosCadastrados() {
             <>
               {cart.map(item => (
                 <div key={item.id} className="cart-item">
-                  <p>{item.name}</p>
-                  <p>R$ {item.totalPrice.toFixed(2)}</p>
-                  <div className="quantity-controls">
-                    <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
-                    <span>{item.quantity}</span>
-                    <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
-                  </div>
-                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-item">Remover</button>
+                <p>{item.name}</p>
+                <p>R$ {item.totalPrice.toFixed(2)}</p>
+                <div className="cart-item-actions">
+                  <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
                 </div>
+                <button onClick={() => handleRemoveFromCart(item.id)} className="remove-item">❌</button>
+                </div>
+              
               ))}
               <div className="cart-total">
                 <p>Total: R$ {calculateTotal()}</p>
