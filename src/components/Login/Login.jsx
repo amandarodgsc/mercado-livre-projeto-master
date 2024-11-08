@@ -78,7 +78,7 @@ const Login = () => {
         </form>
         
         {/* Link para o Cadastro de Vendedor */}
-        <a href="#" className="create-account" onClick={navigateToCadastroVendedor}>
+        <a href="/cadastro-vendedor" className="create-account" onClick={navigateToCadastroVendedor}>
           Criar conta
         </a>
         

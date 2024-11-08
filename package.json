@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.6",
+    "compressorjs": "^1.2.1",
     "express": "^4.21.1",
     "font-awesome": "^4.7.0",
     "gh-pages": "^6.1.1",

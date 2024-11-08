@@ -21,38 +21,45 @@ header {
   border-radius: 8px;
 }
 
-/* Cabeçalho de categoria */
+/* Contêiner de cabeçalho da categoria */
 .filter-container {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;  /* Distribui igualmente os botões */
-  margin: 0;  /* Remove o espaço em volta */
-  padding: 0; /* Remove o padding */
-  background-color: #fceb54;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+  background-color: #fceb54; /* Cor de fundo do Mercado Livre */
   border-radius: 7px;
+  margin-bottom: 40px;
 }
 
+/* Botões de categoria */
 .filter-button {
   background-color: #fff;
-  border: 1px solid #807d7d;
-  padding: 6px 1px;
+  border: 1px solid #e6e6e6;
+  padding: 8px 15px; /* Espaçamento interno maior para maior usabilidade */
   cursor: pointer;
   border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  color: #000000;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+/* Efeito ao passar o mouse */
 .filter-button:hover {
-  background-color: #ffdb15;
+  background-color: #f7f7f7;
   color: #333;
 }
 
+/* Estilo para o botão ativo */
 .filter-button.active {
-  background-color: #333;
-  color: #ffdb15;
+  background-color: #3483fa; /* Azul característico do Mercado Livre */
+  color: #fff;
+  border-color: #3483fa;
 }
-
 
 /* Grid de produtos */
 .produtos-grid {
@@ -75,10 +82,31 @@ header {
   transition: transform 0.2s ease;
 }
 
-.link2{
+.link2 {
+  display: inline-block;
+  padding: 8px 15px;
   text-decoration: none;
-  color: #000000;
+  color: #3483fa;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 15px; /* Espaço na parte de baixo */
 }
+
+/* Efeito ao passar o mouse */
+.link2:hover {
+  background-color: #f7f7f7;
+  color: #2a6dc0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
 
 .produto-item:hover {
   transform: scale(1.03);
@@ -131,8 +159,8 @@ header {
   color: #333;
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   font-size: 1.5em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -249,8 +277,8 @@ header {
   color: #000000;
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   font-size: 2em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;

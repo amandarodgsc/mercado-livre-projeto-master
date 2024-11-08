@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CadastrodeVendedor.css';
 import InputMask from 'react-input-mask';
+import Compressor from 'compressorjs';
 
 function CadastrarVendedor() {
   const [sellerName, setSellerName] = useState('');
@@ -22,29 +23,37 @@ function CadastrarVendedor() {
       return;
     }
 
-    // Converte a imagem em Base64
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64Image = reader.result;
+    // Comprime a imagem antes de convertê-la para Base64
+    new Compressor(sellerProfileImage, {
+      quality: 0.6, // Ajuste a qualidade conforme necessário para reduzir o tamanho
+      success(compressedImage) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const base64Image = reader.result;
 
-      const newSeller = {
-        id: Date.now().toString(), // Garantindo que o ID seja uma string
-        name: sellerName,
-        cpf: sellerCpf,
-        email: sellerEmail,
-        phone: sellerPhone,
-        address: sellerAddress,
-        profileImage: base64Image, // Armazena a imagem em Base64
-      };
+          const newSeller = {
+            id: Date.now().toString(), // Garantindo que o ID seja uma string
+            name: sellerName,
+            cpf: sellerCpf,
+            email: sellerEmail,
+            phone: sellerPhone,
+            address: sellerAddress,
+            profileImage: base64Image, // Armazena a imagem em Base64
+          };
 
-      const existingSellers = JSON.parse(localStorage.getItem('sellers')) || [];
-      existingSellers.push(newSeller);
-      localStorage.setItem('sellers', JSON.stringify(existingSellers));
+          const existingSellers = JSON.parse(localStorage.getItem('sellers')) || [];
+          existingSellers.push(newSeller);
+          localStorage.setItem('sellers', JSON.stringify(existingSellers));
 
-      navigate('/produtos-cadastrados');
-    };
+          navigate('/produtos-cadastrados');
+        };
 
-    reader.readAsDataURL(sellerProfileImage); // Lê a imagem como Base64
+        reader.readAsDataURL(compressedImage); // Lê a imagem comprimida como Base64
+      },
+      error(err) {
+        console.error('Erro ao comprimir a imagem:', err.message);
+      },
+    });
   };
 
   return (

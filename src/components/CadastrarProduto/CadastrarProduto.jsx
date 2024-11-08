@@ -79,7 +79,7 @@ function CadastrarProduto() {
           <div className="form-group">
             <label htmlFor="product-price">Preço:</label>
             <InputMask
-              mask="R$ 99,99"
+              mask="R$ 999,99"
               id="product-name"
               required
               placeholder="Digite o preço do produto"

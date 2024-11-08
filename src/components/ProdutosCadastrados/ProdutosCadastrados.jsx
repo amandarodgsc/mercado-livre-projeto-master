@@ -156,7 +156,6 @@ function ProdutosCadastrados() {
       </header>
 
       <div className="filter-container">
-        <h2>Categorias</h2>
         {['Todos', 'eletrônicos', 'roupas', 'brinquedos', 'casa', 'esportes'].map(category => (
           <button
             key={category}
