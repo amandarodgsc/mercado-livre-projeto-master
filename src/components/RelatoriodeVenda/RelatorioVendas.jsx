@@ -8,14 +8,23 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 function RelatorioVendas() {
   const [sales, setSales] = useState([]);
   const [totalEarnings, setTotalEarnings] = useState(0);
+  const [seller, setSeller] = useState(null); // Adiciona o estado para o vendedor
 
   useEffect(() => {
+    // Recuperando as vendas armazenadas
     const storedSales = JSON.parse(localStorage.getItem('vendas')) || [];
     storedSales.sort((a, b) => new Date(a.data) - new Date(b.data));
     setSales(storedSales);
 
+    // Calculando o total de ganhos
     const earnings = storedSales.reduce((acc, sale) => acc + sale.preco, 0);
     setTotalEarnings(earnings);
+
+    // Recuperando as informações do vendedor do localStorage
+    const storedSeller = JSON.parse(localStorage.getItem('sellers')) || [];
+    if (storedSeller.length > 0) {
+      setSeller(storedSeller[0]); // Exibindo o primeiro vendedor (pode ser ajustado para múltiplos vendedores)
+    }
   }, []);
 
   const formatCurrency = (amount) => {
@@ -85,6 +94,27 @@ function RelatorioVendas() {
             <p><strong>Ganhos Totais:</strong> {formatCurrency(totalEarnings)}</p>
           </div>
 
+          {/* Exibição das informações do vendedor */}
+          {seller && (
+            <div className="seller-info">
+              <h3>Informações do Vendedor</h3>
+              <div className="seller-details">
+                <img
+                  src={seller.profileImage} // Exibindo a foto do vendedor
+                  alt="Foto do Vendedor"
+                  className="seller-image"
+                />
+                <div className="seller-data">
+                  <p><strong>Nome:</strong> {seller.name}</p>
+                  <p><strong>CPF:</strong> {seller.cpf}</p>
+                  <p><strong>E-mail:</strong> {seller.email}</p>
+                  <p><strong>Telefone:</strong> {seller.phone}</p>
+                  <p><strong>Endereço:</strong> {seller.address}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Gráfico de Vendas Diárias */}
           {dailySales.length > 0 && (
             <div className="chart-container">
@@ -99,6 +129,7 @@ function RelatorioVendas() {
               <p><strong>Produto:</strong> {sale.produto}</p>
               <p><strong>Valor:</strong> {formatCurrency(sale.preco)}</p>
               <p><strong>Forma de Pagamento:</strong> {sale.metodoPagamento}</p>
+              <p><strong>Vendedor:</strong> {sale.vendedor}</p> {/* Exibindo o nome do vendedor */}
 
               {/* Botão de exclusão */}
               <button
