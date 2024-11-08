@@ -18,7 +18,9 @@ function Pagamento() {
   });
   const [errors, setErrors] = useState({});
   const [pixKey, setPixKey] = useState('');
-  const [timeLeft, setTimeLeft] = useState(300); // 5 minutos (300 segundos)
+  const [timeLeft, setTimeLeft] = useState(30
+
+  ); // 5 minutos (300 segundos)
   const [timerActive, setTimerActive] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false); // Controle de redirecionamento
 
@@ -275,6 +277,7 @@ function Pagamento() {
     </div>
   );
 }
+
 
 export default Pagamento;
 

@@ -37,26 +37,28 @@ h2 {
 }
 
 /* Estilo para os métodos de pagamento */
+/* Estilo para os métodos de pagamento */
 .payment-methods {
   margin-bottom: 20px; /* Maior espaçamento entre os métodos de pagamento */
   display: block; /* Exibe como bloco */
-  align-items: center;
+  align-items: flex-start; /* Alinha à esquerda */
   border-radius: 8px;
-
-
 }
 
 /* Estilo dos métodos de pagamento */
 .payment-methods label {
-  display: block; /* Exibe as opções de pagamento como blocos */
+  display: block; /* Exibe as opções de pagamento em blocos, um embaixo do outro */
   margin-bottom: 10px; /* Espaço entre as opções */
   font-size: 16px; /* Tamanho do texto */
   color: #333; /* Cor do texto */
 }
 
+/* Alinha o botão de rádio e o texto */
 .payment-methods input[type="radio"] {
   margin-right: 10px; /* Espaço à direita do ícone do rádio */
+  vertical-align: middle; /* Alinha o botão de rádio com o texto */
 }
+
 
 /* Estilo para o formulário de pagamento */
 .payment-form {
