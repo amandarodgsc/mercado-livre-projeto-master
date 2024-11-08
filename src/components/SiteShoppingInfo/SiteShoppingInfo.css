@@ -8,8 +8,7 @@
   max-width: 1200px;
   margin: 0 auto; /* Centraliza o container */
   padding: 20px; /* Espaçamento horizontal */
-  display: flex;
-  flex-wrap: wrap; /* Permite que os slides envolvam-se em várias linhas se necessário */
+  display: grid;  
   gap: 20px; /* Espaçamento entre os slides */
 }
 
