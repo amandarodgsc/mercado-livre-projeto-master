@@ -1,42 +1,47 @@
 /* ProdutosDetalhes.css */
 .product-details-container {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 40px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif; /* Fonte padrão do Mercado Livre */
 }
 
 .product-details-container h2 {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Tamanho ajustado para ficar semelhante ao Mercado Livre */
   color: #333;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  line-height: 1.4;
 }
 
 .product-image {
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 600px; /* Ajuste para uma largura maior */
   margin-bottom: 20px;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .product-details-container p {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Tamanho de texto reduzido para detalhes */
   color: #666;
   margin-bottom: 10px;
+  line-height: 1.5;
 }
 
 .product-details-container p strong {
   color: #333;
+  font-weight: bold;
 }
 
 .product-details-container .btn-avaliar {
   display: inline-block;
   padding: 12px 24px;
   font-size: 1.2rem;
-  background-color: #FFD700; /* cor amarela */
-  color: #000000;
+  background-color: #FFD700; /* Cor amarela do Mercado Livre */
+  color: #000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -47,7 +52,7 @@
 }
 
 .product-details-container .btn-avaliar:hover {
-  background-color: #fbbd00; /* cor amarela mais escura */
+  background-color: #fbbd00; /* Cor amarela mais escura */
 }
 
 .product-details-container .btn-avaliar:focus {
@@ -57,17 +62,60 @@
 .product-details-container .product-price {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #0070ba;
-  margin-top: 15px;
+  color: #0070ba; /* Azul semelhante ao usado pelo Mercado Livre */
+  margin-top: 20px;
 }
 
 .product-details-container .product-category {
   font-size: 1.1rem;
   color: #333;
   margin-top: 10px;
+  font-weight: normal;
 }
 
 .product-details-container .product-description {
   margin-top: 20px;
+  font-size: 1rem;
   line-height: 1.6;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+.product-details-container .product-description p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.product-details-container .product-details {
+  margin-top: 20px;
+}
+
+.product-details-container .product-details li {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.product-details-container .product-details li strong {
+  font-weight: bold;
+}
+
+.product-details-container .product-rating {
+  margin-top: 25px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-details-container .product-rating .stars {
+  color: #FFD700;
+  font-size: 1.3rem;
+}
+
+.product-details-container .product-rating .rating-count {
+  color: #333;
+  font-size: 1.1rem;
 }
