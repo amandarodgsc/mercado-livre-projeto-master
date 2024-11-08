@@ -8,7 +8,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 function RelatorioVendas() {
   const [sales, setSales] = useState([]);
   const [totalEarnings, setTotalEarnings] = useState(0);
-  const [seller, setSeller] = useState(null); // Adiciona o estado para o vendedor
+  const [seller, setSeller] = useState(null);
 
   useEffect(() => {
     // Recuperando as vendas armazenadas
@@ -23,7 +23,7 @@ function RelatorioVendas() {
     // Recuperando as informações do vendedor do localStorage
     const storedSeller = JSON.parse(localStorage.getItem('sellers')) || [];
     if (storedSeller.length > 0) {
-      setSeller(storedSeller[0]); // Exibindo o primeiro vendedor (pode ser ajustado para múltiplos vendedores)
+      setSeller(storedSeller[0]);
     }
   }, []);
 
@@ -41,23 +41,26 @@ function RelatorioVendas() {
     setTotalEarnings(earnings);
   };
 
-  const groupedSales = sales.reduce((acc, sale) => {
-    const saleDate = sale.data;
-    if (!acc[saleDate]) {
-      acc[saleDate] = { data: saleDate, preco: 0 };
-    }
-    acc[saleDate].preco += sale.preco;
-    return acc;
-  }, {});
+  // Agrupando todas as vendas por data
+  const groupSalesByDate = (sales) => {
+    return sales.reduce((acc, sale) => {
+      const saleDate = sale.data;
+      if (!acc[saleDate]) {
+        acc[saleDate] = 0;
+      }
+      acc[saleDate] += sale.preco;
+      return acc;
+    }, {});
+  };
 
-  const dailySales = Object.values(groupedSales);
+  const dailySales = groupSalesByDate(sales);
 
   const chartData = {
-    labels: dailySales.map((sale) => sale.data),
+    labels: Object.keys(dailySales),  // Datas das vendas
     datasets: [
       {
-        label: 'Vendas Diárias',
-        data: dailySales.map((sale) => sale.preco),
+        label: 'Total de Vendas',
+        data: Object.values(dailySales),  // Valores totais das vendas por data
         backgroundColor: 'rgba(75, 192, 192, 0.5)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
@@ -70,7 +73,7 @@ function RelatorioVendas() {
     plugins: {
       title: {
         display: true,
-        text: 'Gráfico de Vendas Diárias',
+        text: 'Gráfico de Vendas por Dia',
       },
     },
   };
@@ -115,12 +118,10 @@ function RelatorioVendas() {
             </div>
           )}
 
-          {/* Gráfico de Vendas Diárias */}
-          {dailySales.length > 0 && (
-            <div className="chart-container">
-              <Bar data={chartData} options={chartOptions} />
-            </div>
-          )}
+          {/* Exibição do gráfico de vendas */}
+          <div className="chart-container">
+            <Bar data={chartData} options={chartOptions} />
+          </div>
 
           <h3>Vendas:</h3>
           {sales.map((sale, index) => (
