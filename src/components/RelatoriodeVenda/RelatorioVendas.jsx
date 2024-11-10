@@ -100,8 +100,9 @@ function RelatorioVendas() {
           {/* Exibição das informações do vendedor */}
           {seller && (
             <div className="seller-info">
-              <h3>Informações do Vendedor</h3>
               <div className="seller-details">
+              <h3>Informações do Vendedor</h3>
+
                 <img
                   src={seller.profileImage} // Exibindo a foto do vendedor
                   alt="Foto do Vendedor"
