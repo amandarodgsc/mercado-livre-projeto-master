@@ -22,7 +22,7 @@ function Header() {
                 alt="mercadolivre"
                 className="logo"
               />
-              <span>Central de vendedores</span>
+              <span style={{textTransform:'none'}}>Central de vendedores</span>
             </div>
           </a>
           <SearchBar />
@@ -48,9 +48,9 @@ function Header() {
             type="button"
             className="andes-button cta-button outline andes-button--large andes-button--loud"
             onClick={handleLoginClick} // Redireciona também ao clicar nesse botão
-          >
+           style={{width:'160px'}}>
             <span className="andes-button__content">
-              <span className="andes-button__text">Iniciar sessão</span>
+              <span className="andes-button__text" style={{fontSize:'15px'}}>Iniciar sessão</span>
             </span>
           </button>
         </div>

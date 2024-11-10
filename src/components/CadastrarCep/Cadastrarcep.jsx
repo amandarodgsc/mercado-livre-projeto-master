@@ -230,6 +230,7 @@ function CadastrarCep() {
                   type="button" // Altera para button para evitar submit
                   className="btn-buscar"
                   onClick={buscarEndereco}
+                  style={{marginTop:'20px'}}
                 >
                   Buscar Endereço
                 </button>

@@ -15,7 +15,7 @@ function ProdutosCadastrados() {
     description: '',
     category: ''
   });
-  const [confirmRemoveProductId, setConfirmRemoveProductId] = useState(null); // Novo estado para confirmação de remoção
+  const [confirmRemoveProductId, setConfirmRemoveProductId] = useState(null);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -37,11 +37,11 @@ function ProdutosCadastrados() {
     if (existingProductIndex >= 0) {
       const updatedCart = [...cart];
       updatedCart[existingProductIndex].quantity += 1;
-      updatedCart[existingProductIndex].totalPrice = updatedCart[existingProductIndex].price * updatedCart[existingProductIndex].quantity;
+      updatedCart[existingProductIndex].totalPrice = Number(updatedCart[existingProductIndex].price) * updatedCart[existingProductIndex].quantity;
       setCart(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));
     } else {
-      const newProduct = { ...product, quantity: 1, totalPrice: product.price };
+      const newProduct = { ...product, quantity: 1, totalPrice: Number(product.price) };
       const updatedCart = [...cart, newProduct];
       setCart(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -103,7 +103,7 @@ function ProdutosCadastrados() {
   };
 
   const calculateTotal = () => {
-    const total = cart.reduce((acc, item) => acc + item.totalPrice, 0);
+    const total = cart.reduce((acc, item) => acc + (Number(item.totalPrice) || 0), 0);  // Garantir que totalPrice seja um número
     return total.toFixed(2);
   };
 
@@ -117,7 +117,7 @@ function ProdutosCadastrados() {
     const updatedCart = cart.map(item => {
       if (item.id === productId) {
         item.quantity += 1;
-        item.totalPrice = item.price * item.quantity;
+        item.totalPrice = Number(item.price) * item.quantity;  // Garantir que totalPrice seja um número
       }
       return item;
     });
@@ -129,7 +129,7 @@ function ProdutosCadastrados() {
     const updatedCart = cart.map(item => {
       if (item.id === productId && item.quantity > 1) {
         item.quantity -= 1;
-        item.totalPrice = item.price * item.quantity;
+        item.totalPrice = Number(item.price) * item.quantity;  // Garantir que totalPrice seja um número
       }
       return item;
     });
@@ -171,8 +171,6 @@ function ProdutosCadastrados() {
         {filteredProducts.map((product) => (
           <div className="produto-item" key={product.id}>
             <Link to={`/produto/${product.id}`} className="produto-link">
-            <Link to={`/produtos/${product.id}`} className="link2">Detalhes</Link>
-
               <img src={product.image} alt={product.name} />
               <h2>{product.name}</h2>
               <p>R$ {Number(product.price || 0).toFixed(2)}</p>
@@ -252,16 +250,15 @@ function ProdutosCadastrados() {
             <>
               {cart.map(item => (
                 <div key={item.id} className="cart-item">
-                <p>{item.name}</p>
-                <p>R$ {item.totalPrice.toFixed(2)}</p>
-                <div className="cart-item-actions">
-                  <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+                  <p>{item.name}</p>
+                  <p>R$ {Number(item.totalPrice).toFixed(2)}</p>
+                  <div className="cart-item-actions">
+                    <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+                  </div>
+                  <button onClick={() => handleRemoveFromCart(item.id)} className="remove-item">❌</button>
                 </div>
-                <button onClick={() => handleRemoveFromCart(item.id)} className="remove-item">❌</button>
-                </div>
-              
               ))}
               <div className="cart-total">
                 <p>Total: R$ {calculateTotal()}</p>

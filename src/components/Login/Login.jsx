@@ -62,6 +62,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="login-input"
             required
+            style={{height:'42px'}}
           />
           
           {/* Adiciona o reCAPTCHA */}
@@ -72,7 +73,7 @@ const Login = () => {
           />
           </div>
 
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button" style={{margin:'auto'}}>
             Continuar
           </button>
         </form>
@@ -86,7 +87,7 @@ const Login = () => {
 
         <button className="google-button">
           <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" 
+            src="https://cdn-icons-png.flaticon.com/512/2875/2875331.png" 
             alt="Google" 
           />
           Fazer login com o Google

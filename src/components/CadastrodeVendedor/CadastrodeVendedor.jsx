@@ -58,7 +58,7 @@ function CadastrarVendedor() {
 
   return (
     <div>
-      <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
+      <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite" style={{margin:'0px'}}>
         <div className="nav-bounds">
           <a className="nav-logo" href="//www.mercadolivre.com.br">Mercado Livre</a>
         </div>

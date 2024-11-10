@@ -24,7 +24,7 @@ function SearchBar() {
 
   return (
     <div>
-      <form className="search-bar custom-search-bar" onSubmit={handleSearch}>
+      <form className="search-bar custom-search-bar" onSubmit={handleSearch} style={{width:'600px'}}>
         <input
           type="search"
           value={searchValue}
@@ -32,6 +32,7 @@ function SearchBar() {
           className="search__input custom-search-input" 
           onChange={({ target }) => setSearchValue(target.value)}
           required
+          style={{height:'30px'}}
         />
 
         <button type="submit" className="search__button custom-search-button">

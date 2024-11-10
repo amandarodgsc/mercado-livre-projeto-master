@@ -52,7 +52,7 @@ function CadastrarProduto() {
 
   return (
     <div>
-    <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite">
+    <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite" style={{margin:'0px'}}>
       <div className="nav-bounds">
         <a className="nav-logo" href="//www.mercadolivre.com.br">
           <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
