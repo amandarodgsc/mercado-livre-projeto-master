@@ -99,7 +99,7 @@
 
 /* Navbar */
 .navbar {
-    background-color: #ffdf28 !important; /* Apliquei o !important para garantir que essa cor prevaleça */
+    background-color: #ffdf28; 
     padding: 10px 20px; /* Ajuste o padding conforme necessário */
 }
 

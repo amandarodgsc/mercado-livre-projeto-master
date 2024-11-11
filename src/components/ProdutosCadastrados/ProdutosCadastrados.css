@@ -8,15 +8,17 @@ body {
 }
 
 header {
-  margin: 15px;
   padding: 0;
   position: relative;
+}
+
+main {
+  flex: 1;                     /* O conteúdo principal vai preencher o espaço restante */
 }
 
 .produtos-container {
   width: 100%;
   margin: 0px auto;
-  padding: 30px;
   background-color: #fceb54;
   border-radius: 8px;
 }

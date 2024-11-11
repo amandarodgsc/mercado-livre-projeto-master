@@ -13,7 +13,7 @@ import FeedbackProduto from './components/FeedbackProduto/FeedbackProduto';
 import ProdutoDetalhes from './components/ProdutoDetalhes/ProdutoDetalhes'; // Importando detalhes do produto
 import TelaCliente from './components/TelaCliente/TelaCliente';
 import CadastrarVendedor from './components/CadastrodeVendedor/CadastrodeVendedor'; // Importando a página de cadastro de vendedor
-
+import FeedbacksPage from './components/FeedbacksPage/FeedbacksPage';
 function App() {
   return (
     <Router>
@@ -24,7 +24,7 @@ function App() {
             <SiteShoppingInfo />
           </>
         } />
-        <Route path="/telacliente" element={<TelaCliente />} /> 
+       <Route path="/telacliente" element={<TelaCliente />} /> 
         <Route path="/login" element={<Login />} />
         <Route path="/cadastrar-produto" element={<CadastrarProduto />} />
         <Route path="/produtos-cadastrados" element={<ProdutosCadastrados />} />
@@ -34,7 +34,8 @@ function App() {
         <Route path="/vendedor" element={<Vendedor />} />
         <Route path="/produtos/:id" element={<ProdutoDetalhes />} />
         <Route path="/produtos/:productId/feedback" element={<FeedbackProduto />} />
-        <Route path="/cadastro-vendedor" element={<CadastrarVendedor />} /> {/* Rota para o cadastro de vendedor */}
+        <Route path="/feedbacks" element={<FeedbacksPage />} /> 
+        <Route path="/cadastro-vendedor" element={<CadastrarVendedor />} />
       </Routes>
     </Router>
   );

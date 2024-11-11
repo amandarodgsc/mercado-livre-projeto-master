@@ -1,0 +1,58 @@
+/* FeedbacksPage.css */
+
+/* Classe para garantir que o header ocupe toda a largura da tela */
+.full-width-header {
+  position: relative; /* ou fixed, se você quiser que ele fique fixo no topo */
+  width: 100vw; /* Isso garante que ele ocupe toda a largura da tela */
+  left: 50%; /* Ajusta a posição para o centro */
+  margin-left: -50vw; /* Compensa o deslocamento e faz com que o header se estenda pela tela inteira */
+}
+
+.header {
+  background-color: #fff; /* Defina a cor de fundo do header, se necessário */
+  z-index: 10; /* Garante que o header fique acima de outros elementos */
+}
+
+/* Restante do seu CSS */
+.container {
+  padding: 20px;
+}
+
+.product-feedbacks {
+  margin-bottom: 20px;
+}
+
+.feedbacks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feedback-card {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.feedback-card p {
+  margin: 5px 0;
+}
+
+.stars {
+  color: #ffcc00;
+}
+
+.back-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}

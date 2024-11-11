@@ -13,13 +13,14 @@ function ProdutoDetalhes() {
         <div>
           <header className="header">
                 <img 
-                    src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
-                    alt="Logo Mercado Livre" 
-                    className="logo"
+                        src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
+                        alt="Logo Mercado Livre" 
+                        className="logo"
+                        style={{height:'40px',width:'150px'}}
                 />
                  <nav className="navbar">
           <Link to="/Produtos-Cadastrados" className="navbar-link">Produtos</Link>
-          <Link to="/produtos/:productId/feedback" className="navbar-link">Avaliação</Link>
+          <Link to="/feedbacks" className="navbar-link">Avaliação</Link>
           <Link to="/relatorio-vendas" className="navbar-link">Relatório</Link> 
           <Link to="/login" className="navbar-link">Login</Link>
           <Link to="/cadastro-vendedor" className="navbar-link">Cadastre-se</Link>

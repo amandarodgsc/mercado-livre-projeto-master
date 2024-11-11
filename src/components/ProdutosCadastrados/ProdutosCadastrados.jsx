@@ -148,15 +148,16 @@ function ProdutosCadastrados() {
   return (
     <div className="produtos-container">
         {/* Barra de Navegação */}
-        <header className="header">
+        <header className="header"style={{border:'0'}}>
         <img 
           src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
           alt="Logo Mercado Livre" 
           className="logo"
+          style={{height:'40px',width:'150px'}}
         />
-        <nav className="navbar">
+        <nav className="navbar" style={{backgroundColor:'#fee601'}}>
           <Link to="/Produtos-Cadastrados" className="navbar-link">Produtos</Link>
-          <Link to="/produtos/:productId/feedback" className="navbar-link">Avaliação</Link>
+          <Link to="/feedbacks" className="navbar-link">Avaliação</Link>
           <Link to="/relatorio-vendas" className="navbar-link">Relatório</Link> 
           <Link to="/login" className="navbar-link">Login</Link>
           <Link to="/cadastro-vendedor" className="navbar-link">Cadastre-se</Link>
@@ -177,7 +178,7 @@ function ProdutosCadastrados() {
         ))}
       </div>
 
-      <div className="produtos-grid">
+      <div className="produtos-grid" style={{padding:'40px'}}>
         {filteredProducts.map((product) => (
           <div className="produto-item" key={product.id}>
             <Link to={`/produto/${product.id}`} className="produto-link">

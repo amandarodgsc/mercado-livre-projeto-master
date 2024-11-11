@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import './RelatorioVendas.css';
+import { useNavigate, Link } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -80,13 +81,21 @@ function RelatorioVendas() {
 
   return (
     <div>
-      <header role="banner" data-siteid="MLB" className="nav-header nav-header-lite" style={{ margin: '0px' }}>
-        <div className="nav-bounds">
-          <a className="nav-logo" href="//www.mercadolivre.com.br">
-            <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
-          </a>
-        </div>
-      </header>
+      <header className="header"style={{border:'0'}}>
+        <img 
+          src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
+          alt="Logo Mercado Livre" 
+          className="logo"
+          style={{height:'40px',width:'150px'}}
+        />
+        <nav className="navbar" style={{backgroundColor:'#fee601'}}>
+          <Link to="/Produtos-Cadastrados" className="navbar-link">Produtos</Link>
+          <Link to="/feedbacks" className="navbar-link">Avaliação</Link>
+          <Link to="/relatorio-vendas" className="navbar-link">Relatório</Link> 
+          <Link to="/login" className="navbar-link">Login</Link>
+          <Link to="/cadastro-vendedor" className="navbar-link">Cadastre-se</Link>
+        </nav>
+        </header>
 
       <div className="relatorio-container">
         <h1>Relatório de Vendas</h1>
@@ -145,7 +154,7 @@ function RelatorioVendas() {
         </div>
       </div>
             {/* Adicionando o footer */}
-<footer className="produtos-footer">
+<footer className="produtos-footer" style={{padding:'40px'}}>
   <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
   <div className="produtos-footer-links">
     <a href="#termos" className="produtos-footer-link">Termos e condições</a>

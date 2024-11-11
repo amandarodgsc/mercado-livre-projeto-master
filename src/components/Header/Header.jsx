@@ -15,12 +15,13 @@ function Header() {
     <>
       <header className="header-new" style={{ margin: '0px' }}>
         <div className="header-container-new">
-          <a href="https://vendedores.mercadolivre.com.br/" className="nav-logo" tabIndex="0">
+          <a href="http://localhost:3000/mercado-livre-projeto-master" className="nav-logo" tabIndex="0">
             <div className="nav-logo-title">
               <img
                 src="https://w7.pngwing.com/pngs/396/132/png-transparent-free-market-e-marketplace-brazil-market-economy-others-miscellaneous-text-service-thumbnail.png"
                 alt="mercadolivre"
                 className="logo"
+                style={{marginRight:'20px'}}
               />
               <span style={{textTransform:'none'}}>Central de vendedores</span>
             </div>
