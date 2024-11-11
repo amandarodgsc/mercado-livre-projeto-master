@@ -387,3 +387,26 @@ header {
 .filter-container h2 {
   margin-bottom: 8px; /* Espaço abaixo do título */
 }
+.produtos-footer {
+  background-color:#fceb54;
+  padding: 20px;
+  color: #1b1919be;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.produtos-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.produtos-footer-link {
+  color: #141313af;
+  text-decoration: none;
+}
+
+.produtos-footer-link:hover {
+  color: #555552; /* Amarelo Mercado Livre */
+}
+

@@ -274,6 +274,17 @@ function Pagamento() {
 
         {renderPaymentForm()}
       </div>
+      {/* Adicionando o footer fixado no topo */}
+{/* Adicionando o footer fixado no rodapé */}
+<footer className="footer-fixo-rodape">
+  <p className="footer-fixo-rodape-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
+  <div className="footer-fixo-rodape-links">
+    <a href="#termos" className="footer-fixo-rodape-link">Termos e condições</a>
+    <a href="#privacidade" className="footer-fixo-rodape-link">Como cuidamos da sua privacidade</a>
+  </div>
+</footer>
+
+
     </div>
   );
 }

@@ -145,3 +145,33 @@ h2 {
   max-width: 100%; 
   height: auto; 
 }
+.footer-fixo-rodape {
+  position: fixed; /* Deixa o footer fixo */
+  bottom: 0; /* Posiciona no rodapé da página */
+  width: 100%; /* Preenche toda a largura da tela */
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+  z-index: 1000; /* Garante que o footer ficará sobre outros elementos */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-fixo-rodape-copyright {
+  margin: 0;
+}
+
+.footer-fixo-rodape-links {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-fixo-rodape-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-fixo-rodape-link:hover {
+  color: #007bff;
+}

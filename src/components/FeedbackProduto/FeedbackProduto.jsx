@@ -202,6 +202,15 @@ function FeedbackProduto() {
                 </div>
             )}
         </div>
+        {/* Adicionando o footer */}
+<footer className="produtos-footer">
+  <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
+  <div className="produtos-footer-links">
+    <a href="#termos" className="produtos-footer-link">Termos e condições</a>
+    <a href="#privacidade" className="produtos-footer-link">Como cuidamos da sua privacidade</a>
+  </div>
+</footer>
+
         </div>
 
     );
