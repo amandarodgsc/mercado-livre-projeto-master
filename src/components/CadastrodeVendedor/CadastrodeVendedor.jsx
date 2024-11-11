@@ -18,28 +18,26 @@ function CadastrarVendedor() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Valida se a imagem selecionada é válida
     if (!sellerProfileImage || !['image/jpeg', 'image/png', 'image/gif'].includes(sellerProfileImage.type)) {
       alert('Por favor, selecione uma imagem válida (JPEG, PNG ou GIF).');
       return;
     }
 
-    // Comprime a imagem antes de convertê-la para Base64
     new Compressor(sellerProfileImage, {
-      quality: 0.6, // Ajuste a qualidade conforme necessário para reduzir o tamanho
+      quality: 0.6, 
       success(compressedImage) {
         const reader = new FileReader();
         reader.onloadend = () => {
           const base64Image = reader.result;
 
           const newSeller = {
-            id: Date.now().toString(), // Garantindo que o ID seja uma string
+            id: Date.now().toString(), 
             name: sellerName,
             cpf: sellerCpf,
             email: sellerEmail,
             phone: sellerPhone,
             address: sellerAddress,
-            profileImage: base64Image, // Armazena a imagem em Base64
+            profileImage: base64Image, 
           };
 
           const existingSellers = JSON.parse(localStorage.getItem('sellers')) || [];
@@ -49,7 +47,7 @@ function CadastrarVendedor() {
           navigate('/produtos-cadastrados');
         };
 
-        reader.readAsDataURL(compressedImage); // Lê a imagem comprimida como Base64
+        reader.readAsDataURL(compressedImage); 
       },
       error(err) {
         console.error('Erro ao comprimir a imagem:', err.message);
@@ -153,7 +151,6 @@ function CadastrarVendedor() {
           <button type="submit" className="cadastro-button">Cadastrar Vendedor</button>
         </form>
       </div>
-      {/* Adicionando o footer */}
 <footer className="produtos-footer" style={{padding: '40px'}}>
   <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
   <div className="produtos-footer-links">

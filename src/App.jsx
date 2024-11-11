@@ -10,9 +10,9 @@ import ProdutosCadastrados from './components/ProdutosCadastrados/ProdutosCadast
 import CadastrarCep from './components/CadastrarCep/Cadastrarcep';
 import RelatorioVendas from './components/RelatoriodeVenda/RelatorioVendas';
 import FeedbackProduto from './components/FeedbackProduto/FeedbackProduto';
-import ProdutoDetalhes from './components/ProdutoDetalhes/ProdutoDetalhes'; // Importando detalhes do produto
+import ProdutoDetalhes from './components/ProdutoDetalhes/ProdutoDetalhes'; 
 import TelaCliente from './components/TelaCliente/TelaCliente';
-import CadastrarVendedor from './components/CadastrodeVendedor/CadastrodeVendedor'; // Importando a página de cadastro de vendedor
+import CadastrarVendedor from './components/CadastrodeVendedor/CadastrodeVendedor'; 
 import FeedbacksPage from './components/FeedbacksPage/FeedbacksPage';
 function App() {
   return (

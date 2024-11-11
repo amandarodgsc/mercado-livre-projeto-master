@@ -30,21 +30,20 @@ function CadastrarCep() {
   const [mostrarFrete, setMostrarFrete] = useState(false);
   const navigate = useNavigate();
 
-  // Buscar os itens do carrinho do localStorage
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const storedEnderecos = JSON.parse(localStorage.getItem('enderecos')) || [];
     setEnderecos(storedEnderecos);
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartItems(storedCart); // Carrega o carrinho do localStorage
+    setCartItems(storedCart); 
   }, []);
 
-  // Função para calcular o total do carrinho
+  
   const calculateTotal = (cartItems) => {
     return cartItems
       .reduce((acc, item) => acc + (typeof item.price === 'number' ? item.price : 0), 0)
-      .toFixed(2);  // Garantir que o valor total seja um número fixado com 2 casas decimais
+      .toFixed(2);  
   };
   
 
@@ -90,7 +89,7 @@ function CadastrarCep() {
     setEnderecos(updatedEnderecos);
     localStorage.setItem('enderecos', JSON.stringify(updatedEnderecos));
     setFormData({ endereco: '', numero: '', complemento: '', cep: '', estado: '', cidade: '' });
-    setMostrarFrete(false); // Esconde o frete ao cadastrar
+    setMostrarFrete(false); 
   };
 
   const buscarEndereco = async () => {
@@ -107,30 +106,29 @@ function CadastrarCep() {
             estado: data.uf,
             cidade: data.localidade,
           }));
-          calcularFrete(); // Chama a função para calcular o frete
-          setMostrarFrete(true); // Mostra o frete
+          calcularFrete(); 
+          setMostrarFrete(true); 
           setError('');
         } else {
           setError('CEP inválido!');
           setFrete(null);
-          setMostrarFrete(false); // Esconde o frete se o CEP for inválido
+          setMostrarFrete(false); 
         }
       } catch (error) {
         setError('Erro ao buscar o CEP. Tente novamente.');
         setFrete(null);
-        setMostrarFrete(false); // Esconde o frete se ocorrer erro
+        setMostrarFrete(false); 
       }
     } else {
       setError('Por favor, insira um CEP válido.');
-      setMostrarFrete(false); // Esconde o frete se o CEP for inválido
+      setMostrarFrete(false); 
     }
   };
 
   const calcularFrete = () => {
-    // Baseia o valor do frete no estado do endereço, por exemplo:
-    let valorFrete = 10.00; // Valor base
+    let valorFrete = 10.00; 
     if (formData.estado === "SP") {
-      valorFrete = 15.00; // Ajusta o frete conforme a localidade
+      valorFrete = 15.00; 
     } else if (formData.estado === "RJ") {
       valorFrete = 12.00;
     }
@@ -228,7 +226,7 @@ function CadastrarCep() {
                 />
                 {errors.cep && <p className="error">{errors.cep}</p>}
                 <button
-                  type="button" // Altera para button para evitar submit
+                  type="button" 
                   className="btn-buscar"
                   onClick={buscarEndereco}
                   style={{marginTop:'20px'}}
@@ -337,7 +335,6 @@ function CadastrarCep() {
           </div>
         </div>
       </div>
-      {/* Adicionando o footer */}
 <footer className="produtos-footer">
   <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
   <div className="produtos-footer-links">

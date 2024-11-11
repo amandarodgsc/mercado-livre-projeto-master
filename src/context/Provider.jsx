@@ -1,4 +1,3 @@
-// src/context/Provider.js
 import React from 'react';
 import { AppProvider } from './AppContext';
 

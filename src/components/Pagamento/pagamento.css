@@ -1,136 +1,124 @@
-/* Container principal de pagamento */
 .pagamento {
-  background-color: #ffffff; /* Fundo cinza claro */
-  padding: 30px; /* Maior espaçamento interno para um layout mais espaçoso */
-  border-radius: 8px; /* Bordas arredondadas */
-  width: 100%; /* Permite que o container ocupe toda a largura disponível */
-  max-width: 1000px; /* Aumentei a largura máxima para comportar os dois lados */
-  margin: 0 auto; /* Centraliza o container na tela */
-  display: flex; /* Usando flexbox para disposição em linha */
-  justify-content: space-between; /* Espaça igualmente os itens */
-  gap: 40px; /* Espaço entre as seções */
+  background-color: #ffffff; 
+  padding: 30px; 
+  border-radius: 8px; 
+  width: 100%;
+  max-width: 1000px; 
+  margin: 0 auto; 
+  display: flex; 
+  justify-content: space-between; 
+  gap: 40px; 
 }
 
 .order-summary {
-  background-color: #fff56d; /* Fundo cinza claro */
-  padding: 25px; /* Espaçamento interno */
-  border-radius: 8px; /* Bordas arredondadas */
-  width: 700px; /* Largura fixa */
-  height: 200px; /* Altura fixa, se necessário */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  display: flex; /* Para usar flexbox */
-  flex-direction: column; /* Organiza os itens na vertical */
-  justify-content: space-between; /* Espaça os itens dentro do container */
-  align-items: center; /* Alinha os itens no centro horizontalmente */
+  background-color: #fff56d; 
+  padding: 25px; 
+  border-radius: 8px; 
+  width: 700px; 
+  height: 200px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  align-items: center; 
 }
 
-
-/* Estilo para o título dentro do container de pagamento */
 h2 {
-  font-size: 20px; /* Tamanho do título */
-  font-weight: bold; /* Título em negrito */
-  color: #333; /* Cor do título */
-  text-align: center; /* Centraliza o título */
-  margin-bottom: 20px; /* Espaço abaixo do título */
-  white-space: nowrap; /* Impede a quebra de linha */
-  text-overflow: ellipsis; /* Adiciona reticências (...) se o texto ultrapassar o limite */
+  font-size: 20px; 
+  font-weight: bold; 
+  color: #333; 
+  text-align: center; 
+  margin-bottom: 20px; 
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
 }
 
-/* Estilo para os métodos de pagamento */
-/* Estilo para os métodos de pagamento */
 .payment-methods {
-  margin-bottom: 20px; /* Maior espaçamento entre os métodos de pagamento */
-  display: block; /* Exibe como bloco */
-  align-items: flex-start; /* Alinha à esquerda */
+  margin-bottom: 20px; 
+  display: block;
+  align-items: flex-start; 
   border-radius: 8px;
 }
 
-/* Estilo dos métodos de pagamento */
 .payment-methods label {
-  display: block; /* Exibe as opções de pagamento em blocos, um embaixo do outro */
-  margin-bottom: 10px; /* Espaço entre as opções */
-  font-size: 16px; /* Tamanho do texto */
-  color: #333; /* Cor do texto */
+  display: block; 
+  margin-bottom: 10px; 
+  font-size: 16px; 
+  color: #333; 
 }
 
-/* Alinha o botão de rádio e o texto */
 .payment-methods input[type="radio"] {
-  margin-right: 10px; /* Espaço à direita do ícone do rádio */
-  vertical-align: middle; /* Alinha o botão de rádio com o texto */
+  margin-right: 10px; 
+  vertical-align: middle; 
 }
 
 
-/* Estilo para o formulário de pagamento */
 .payment-form {
-  background-color: #ffffff; /* Fundo branco */
-  border: 1px solid #8f3333; /* Borda suave */
+  background-color: #ffffff; 
+  border: 1px solid #8f3333; 
   border-radius: 8px;
-  padding: 30px; /* Mais espaçamento interno */
-  width: 100%; /* Adapta a largura */
-  max-width: 500px; /* Limita a largura máxima dos cards */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  overflow-x: auto; /* Permite rolagem horizontal se necessário */
-  margin-top: 20px; /* Espaço superior */
+  padding: 30px; 
+  width: 100%;
+  max-width: 500px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  overflow-x: auto; 
+  margin-top: 20px; 
 }
 
-/* Estilo para os campos do formulário de pagamento */
 .payment-form label {
   display: block;
-  margin-bottom: 10px; /* Maior espaçamento entre os labels */
+  margin-bottom: 10px; 
   font-size: 14px;
   color: #333;
 }
 
 .payment-form input[type="text"] {
   width: 100%;
-  padding: 12px; /* Maior espaçamento interno para os campos */
-  border: 1px solid #ccc; /* Borda padrão */
-  border-radius: 4px; /* Bordas arredondadas */
-  font-size: 14px; /* Tamanho padrão da fonte */
-  background-color: #fff; /* Fundo branco para os inputs */
-  margin-bottom: 10px; /* Espaço inferior entre os campos */
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 14px; 
+  background-color: #fff; 
+  margin-bottom: 10px; 
 }
 
 .payment-form input:focus {
   outline: none;
-  border-color: #00a859; /* Cor de foco verde Mercado Livre */
+  border-color: #00a859; 
 }
 
-/* Borda vermelha para campos inválidos */
 .payment-form .input-error {
   border: 1px solid red;
 }
 
-/* Estilo do botão de confirmação de pagamento */
 .payment-form button {
-  background-color: #00a859; /* Verde Mercado Livre */
-  color: white; /* Cor do texto */
-  border: none; /* Remove borda */
-  padding: 12px 24px; /* Aumenta o padding */
-  border-radius: 4px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de clique */
-  font-size: 14px; /* Tamanho de fonte agradável */
-  width: 100%; /* Largura completa para botões */
-  transition: background-color 0.3s ease; /* Efeito de transição */
+  background-color: #00a859; 
+  color: white;
+  border: none; 
+  padding: 12px 24px; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  width: 100%; 
+  transition: background-color 0.3s ease; 
 }
 
 .payment-form button:hover {
-  background-color: #008f4b; /* Tom mais escuro quando o mouse passa */
+  background-color: #008f4b; 
 }
 
-/* Estilo do cabeçalho */
 .nav-header {
-  background-color: #FFEB3B; /* Amarelo Mercado Livre */
-  padding: 15px 30px; /* Maior espaçamento */
-  text-align: center; /* Centraliza o conteúdo */
-  margin-bottom: 30px !important; /* Espaço entre o cabeçalho e o container de pagamento */
+  background-color: #FFEB3B; 
+  padding: 15px 30px; 
+  text-align: center; 
+  margin-bottom: 30px !important; 
 }
 
 .nav-logo-title span {
-  color: #333; /* Cor do texto do logo */
-  font-weight: bold; /* Logo em negrito */
-  font-size: 18px; /* Tamanho maior do logo */
-  text-transform: uppercase; /* Deixa o logo em maiúsculas */
+  color: #333; 
+  font-weight: bold; 
+  font-size: 18px; 
+  text-transform: uppercase; 
 }
 
 .qrcode-container {
@@ -146,13 +134,13 @@ h2 {
   height: auto; 
 }
 .footer-fixo-rodape {
-  position: fixed; /* Deixa o footer fixo */
-  bottom: 0; /* Posiciona no rodapé da página */
-  width: 100%; /* Preenche toda a largura da tela */
+  position: fixed; 
+  bottom: 0; 
+  width: 100%; 
   background-color: #f8f8f8;
   padding: 10px 20px;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
-  z-index: 1000; /* Garante que o footer ficará sobre outros elementos */
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); 
+  z-index: 1000; 
   display: flex;
   justify-content: space-between;
   align-items: center;

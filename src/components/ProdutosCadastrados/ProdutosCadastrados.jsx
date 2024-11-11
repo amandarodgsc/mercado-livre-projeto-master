@@ -54,9 +54,9 @@ function ProdutosCadastrados() {
       setProducts(updatedProducts);
       setFilteredProducts(updatedProducts);
       localStorage.setItem('products', JSON.stringify(updatedProducts));
-      setConfirmRemoveProductId(null); // Limpa a confirmação após a remoção
+      setConfirmRemoveProductId(null); 
     } else {
-      setConfirmRemoveProductId(productId); // Solicita confirmação
+      setConfirmRemoveProductId(productId); 
     }
   };
 
@@ -103,7 +103,7 @@ function ProdutosCadastrados() {
   };
 
   const calculateTotal = () => {
-    const total = cart.reduce((acc, item) => acc + (Number(item.totalPrice) || 0), 0);  // Garantir que totalPrice seja um número
+    const total = cart.reduce((acc, item) => acc + (Number(item.totalPrice) || 0), 0);
     return total.toFixed(2);
   };
 
@@ -117,7 +117,7 @@ function ProdutosCadastrados() {
     const updatedCart = cart.map(item => {
       if (item.id === productId) {
         item.quantity += 1;
-        item.totalPrice = Number(item.price) * item.quantity;  // Garantir que totalPrice seja um número
+        item.totalPrice = Number(item.price) * item.quantity;  
       }
       return item;
     });
@@ -129,7 +129,7 @@ function ProdutosCadastrados() {
     const updatedCart = cart.map(item => {
       if (item.id === productId && item.quantity > 1) {
         item.quantity -= 1;
-        item.totalPrice = Number(item.price) * item.quantity;  // Garantir que totalPrice seja um número
+        item.totalPrice = Number(item.price) * item.quantity;  
       }
       return item;
     });
@@ -147,7 +147,6 @@ function ProdutosCadastrados() {
 
   return (
     <div className="produtos-container">
-        {/* Barra de Navegação */}
         <header className="header"style={{border:'0'}}>
         <img 
           src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
@@ -251,7 +250,6 @@ function ProdutosCadastrados() {
           <span className="cart-item-count">{getTotalItemsInCart()}</span>
         )}
       </button>
-      {/* Adicionando o footer */}
 <footer className="produtos-footer">
   <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
   <div className="produtos-footer-links">

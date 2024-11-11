@@ -15,7 +15,7 @@ function FeedbackProduto() {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [location, setLocation] = useState('');
-    const [editingIndex, setEditingIndex] = useState(null); // Índice do feedback em edição
+    const [editingIndex, setEditingIndex] = useState(null); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -197,13 +197,11 @@ function FeedbackProduto() {
                     </div>
                 )}
 
-                {/* Link para visualizar todas as avaliações */}
                 <div className="view-all-feedbacks-link">
                     <Link to="/feedbacks">Ver todas as avaliações</Link>
                 </div>
             </div>
 
-            {/* Footer */}
             <footer className="produtos-footer">
                 <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
                 <div className="produtos-footer-links">

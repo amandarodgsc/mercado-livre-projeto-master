@@ -94,7 +94,7 @@ function TelaCliente() {
                             <div
                                 key={product.id}
                                 className="produto-item"
-                                onClick={() => navigate(`/produtos/${product.id}`)}  // Navegação para a página de feedback do produto
+                                onClick={() => navigate(`/produtos/${product.id}`)}  
                             >
                                 <img src={product.image} alt={product.name} />
                                 <h3>{product.name}</h3>

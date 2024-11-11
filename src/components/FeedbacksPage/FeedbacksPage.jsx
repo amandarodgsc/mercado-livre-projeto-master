@@ -3,36 +3,28 @@ import { Link } from 'react-router-dom';
 
 function FeedbacksPage() {
     const [allFeedbacks, setAllFeedbacks] = useState([]);
-    const [allProducts, setAllProducts] = useState([]); // Estado para armazenar todos os produtos
+    const [allProducts, setAllProducts] = useState([]); 
 
     useEffect(() => {
-        // Carregar os produtos armazenados no localStorage
         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
         setAllProducts(storedProducts);
-
-        // Carregar os feedbacks armazenados no localStorage
         const storedFeedbacks = JSON.parse(localStorage.getItem('feedbacks')) || {};
-
-        // Criar um array com todos os feedbacks de todos os produtos
         const feedbackArray = Object.keys(storedFeedbacks).map(productId => {
             return {
                 productId,
                 feedbacks: storedFeedbacks[productId]
             };
         });
-
         setAllFeedbacks(feedbackArray);
     }, []);
 
-    // Função para obter a imagem do produto pelo ID
     const getProductImage = (productId) => {
         const product = allProducts.find(p => p.id === productId);
-        return product ? product.image : ''; // Retorna a imagem ou uma string vazia se não encontrado
+        return product ? product.image : ''; 
     };
 
     return (
         <>
-            {/* Header com a navegação */}
             <header className="header full-width-header">
                 <img 
                     src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
@@ -49,18 +41,14 @@ function FeedbacksPage() {
                 </nav>
             </header>
 
-            {/* Container com as avaliações dos produtos */}
             <div className="container">
                 <h2>Todas as Avaliações</h2>
-
-                {/* Exibe uma lista de feedbacks para todos os produtos */}
                 {allFeedbacks.length > 0 ? (
                     allFeedbacks.map(({ productId, feedbacks }) => {
-                        const productImage = getProductImage(productId); // Obtém a imagem do produto
+                        const productImage = getProductImage(productId);
                         return (
                             <div key={productId} className="product-feedbacks">
                                 <h3>Produto ID: {productId}</h3>
-                                {/* Exibe a imagem do produto */}
                                 {productImage && (
                                     <div className="product-image">
                                         <img src={productImage} alt={`Produto ${productId}`} />
@@ -85,7 +73,7 @@ function FeedbacksPage() {
                 )}
 
         
-                <div>
+     <div>
   <Link 
     to="/mercado-livre-projeto-master"
     style={{
@@ -106,9 +94,7 @@ function FeedbacksPage() {
   >
     Voltar para a Página Principal
   </Link>
-</div>
-                
-                
+     </div>             
             </div>
             <footer className="produtos-footer">
   <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>

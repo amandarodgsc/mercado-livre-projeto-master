@@ -1,173 +1,162 @@
-/* Container principal de cadastro */
 .cadastro-cep-container {
-  background-color: #f7f7f7; /* Fundo cinza claro */
-  padding: 30px; /* Maior espaçamento interno para um layout mais espaçoso */
-  border-radius: 8px; /* Bordas arredondadas */
-  width: 100%; /* Permite que o container ocupe toda a largura disponível */
-  max-width: 600px; /* Limita a largura máxima do container */
-  margin: 0 auto; /* Centraliza o container na tela */
+  background-color: #f7f7f7; 
+  padding: 30px; 
+  border-radius: 8px; 
+  width: 100%; 
+  max-width: 600px; 
+  margin: 0 auto; 
 }
 
-/* Contêiner dos cards */
 .cards-container {
   display: inline-block;
   justify-content: center;
   gap: 20px;
-  margin: 20px auto; /* Espaço vertical entre os cards */
+  margin: 20px auto; 
 }
 
-/* Estilo dos cards */
 .card {
-  background-color: #ffffff; /* Fundo branco */
-  border: 1px solid #ccc; /* Borda suave */
+  background-color: #ffffff; 
+  border: 1px solid #ccc; 
   border-radius: 8px;
-  padding: 30px; /* Mais espaçamento interno */
-  width: 100%; /* Adapta a largura */
-  max-width: 500px; /* Limita a largura máxima dos cards */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  overflow-x: auto; /* Permite rolagem horizontal se necessário */
-  margin: 10px; /* Espaço ao redor de cada card */
+  padding: 30px; 
+  width: 100%; 
+  max-width: 500px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  overflow-x: auto; 
+  margin: 10px; 
 }
 
-/* Tabela de endereços */
 .enderecos-table {
   width: 100%;
-  border-collapse: collapse; /* Remove espaços entre bordas */
+  border-collapse: collapse; 
 }
 
 .enderecos-table th,
 .enderecos-table td {
-  padding: 12px; /* Mais espaçamento nas células */
-  border: 1px solid #ccc; /* Borda mais suave */
-  text-align: left; /* Alinhamento do texto à esquerda */
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
 }
 
 .enderecos-table th {
-  background-color: #f0c040; /* Amarelo Mercado Livre */
-  color: #333; /* Cor do texto nos cabeçalhos */
-  font-size: 16px; /* Tamanho maior nas colunas de cabeçalho */
+  background-color: #f0c040; 
+  color: #333;
+  font-size: 16px; 
 }
 
 .enderecos-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Fundo alternado para linhas pares */
+  background-color: #f2f2f2; 
 }
 
-/* Estilo para os campos de formulário */
+
 .cadastro-cep-form .form-group {
-  margin-bottom: 20px; /* Maior espaçamento entre os campos */
+  margin-bottom: 20px; 
 }
 
 input,
 select {
   width: 100%;
-  padding: 12px; /* Maior espaçamento interno para os campos */
-  border: 1px solid #ccc; /* Borda padrão */
-  border-radius: 4px; /* Bordas arredondadas */
-  font-size: 14px; /* Tamanho padrão da fonte */
-  background-color: #fff; /* Fundo branco para os inputs */
+  padding: 12px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 14px; 
+  background-color: #fff; 
 }
 
 input:focus,
 select:focus {
   outline: none;
-  border-color: #00a859; /* Cor de foco verde Mercado Livre */
+  border-color: #00a859; 
 }
 
-/* Erros de validação */
 .input-error {
-  border: 1px solid red; /* Borda vermelha para campos inválidos */
+  border: 1px solid red;
 }
 
 .error {
-  color: red; /* Mensagens de erro em vermelho */
-  font-size: 12px; /* Tamanho menor para mensagens de erro */
+  color: red; 
+  font-size: 12px; 
 }
 
-/* Botão de envio */
 .finalizar-pagamento-button,
 button {
-  background-color: #00a859; /* Verde Mercado Livre */
-  color: white; /* Cor do texto */
-  border: none; /* Remove borda */
-  padding: 12px 24px; /* Aumenta o padding */
-  border-radius: 4px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de clique */
-  font-size: 14px; /* Tamanho de fonte agradável */
-  width: auto; /* Largura completa para botões */
-  transition: background-color 0.3s ease; /* Efeito de transição */
+  background-color: #00a859; 
+  color: white; 
+  border: none; 
+  padding: 12px 24px; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  width: auto; 
+  transition: background-color 0.3s ease; 
 }
 
 button:hover,
 .finalizar-pagamento-button:hover {
-  background-color: #008f4b; /* Tom mais escuro quando o mouse passa */
+  background-color: #008f4b; 
 }
 
-/* Estilos dos botões de editar e excluir */
 .edit-button {
-  background-color: #4e87f0; /* Azul para o botão de editar */
+  background-color: #4e87f0; 
 }
 
 .edit-button:hover {
-  background-color: #ec971f; /* Tom mais escuro quando o mouse passa */
+  background-color: #ec971f; 
 }
 
 .delete-button {
-  background-color: #d9534f; /* Vermelho para excluir */
+  background-color: #d9534f; 
 }
 
 .delete-button:hover {
-  background-color: #c9302c; /* Tom mais escuro para o botão de excluir */
+  background-color: #c9302c;
 }
 
-/* Estilo do botão de buscar CEP */
 .btn-buscar {
-  padding: 8px 16px; /* Ajuste no padding */
-  font-size: 14px; /* Tamanho da fonte */
-  background-color: #00a859; /* Verde Mercado Livre */
-  color: white; /* Cor do texto */
-  border-radius: 4px; /* Bordas arredondadas */
+  padding: 8px 16px; 
+  font-size: 14px; 
+  background-color: #00a859; 
+  color: white; 
+  border-radius: 4px; 
   cursor: pointer;
-  width: auto; /* Ajusta a largura para o conteúdo */
+  width: auto; 
   transition: background-color 0.3s;
 }
 
 .btn-buscar:hover {
-  background-color: #008f4b; /* Tom mais escuro quando passar o mouse */
+  background-color: #008f4b; 
 }
 
-/* Estilos do cabeçalho */
 .nav-header {
   background-color: #fceb54;
-  padding: 15px 30px; /* Maior espaçamento */
-  text-align: center; /* Centraliza o conteúdo */
+  padding: 15px 30px; 
+  text-align: center; 
 }
 
 .nav-logo-title span {
-  color: #333; /* Cor do texto do logo */
-  font-weight: bold; /* Logo em negrito */
-  font-size: 18px; /* Tamanho maior do logo */
-  text-transform: uppercase; /* Deixa o logo em maiúsculas */
+  color: #333; 
+  font-weight: bold; 
+  font-size: 18px; 
+  text-transform: uppercase; 
 }
 
-/* Estilo para o carrinho */
 .cart-item {
-  border-bottom: 1px solid #ccc; /* Linha de separação entre os itens */
-  padding: 12px 0; /* Maior espaçamento interno */
+  border-bottom: 1px solid #ccc; 
+  padding: 12px 0; 
 }
 
 .total-container {
-  font-weight: bold; /* Título em negrito */
-  margin-top: 20px; /* Maior espaçamento no topo */
-  font-size: 16px; /* Aumenta o tamanho do total */
+  font-weight: bold; 
+  margin-top: 20px; 
+  font-size: 16px; 
 }
 
-/* Estilo para o conteúdo de frete */
 .frete {
   margin-top: 10px;
   padding: 10px;
-  background-color: #f7f7f7; /* Fundo para destacar o valor do frete */
+  background-color: #f7f7f7; 
   font-size: 16px;
-  color: #333; /* Cor do texto */
+  color: #333; 
   border-radius: 4px;
-  text-align: center; /* Centraliza o texto */
+  text-align: center; 
 }

@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import React, { useState, useContext } from 'react';
 import { BsSearch } from 'react-icons/bs';
 
@@ -9,7 +8,7 @@ import AppContext from '../../context/AppContext';
 function SearchBar() {
   const { setProducts, setLoading } = useContext(AppContext);
   const [searchValue, setSearchValue] = useState('');
-  const [searchResults, setSearchResults] = useState([]); // Novo estado para armazenar resultados
+  const [searchResults, setSearchResults] = useState([]); 
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -17,7 +16,7 @@ function SearchBar() {
 
     const products = await fetchProducts(searchValue);
     setProducts(products);
-    setSearchResults(products); // Armazena os resultados da pesquisa
+    setSearchResults(products); 
     setLoading(false);
     setSearchValue('');
   };
@@ -40,7 +39,6 @@ function SearchBar() {
         </button>
       </form>
 
-      {/* Renderiza os resultados da pesquisa */}
       {searchResults.length > 0 && (
         <div className="search-results">
           {searchResults.map((product) => (

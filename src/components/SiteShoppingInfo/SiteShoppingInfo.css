@@ -1,141 +1,140 @@
-/* SiteShoppingInfo.css */
 .site-shopping-info {
-  background-color: #dfdfdf;; /* Cor de fundo leve */
-  border-top: 0.1px solid #e6dee1; /* Linha de separação no topo */
+  background-color: #dfdfdf;; 
+  border-top: 0.1px solid #e6dee1; 
 }
 
 .site-shopping-info .container {
   max-width: 1200px;
-  margin: 0 auto; /* Centraliza o container */
-  padding: 20px; /* Espaçamento horizontal */
+  margin: 0 auto;
+  padding: 20px; 
   display: grid;  
-  gap: 20px; /* Espaçamento entre os slides */
+  gap: 20px; 
 }
 
 .info-slide {
-  flex: 1 1 300px; /* Permite que o slide se ajuste à largura disponível, com largura mínima de 300px */
+  flex: 1 1 300px; 
   display: flex;
-  flex-direction: column; /* Organiza a imagem, título e texto verticalmente */
-  align-items: center; /* Alinha os itens ao centro */
-  background-color: #ffffff; /* Cor de fundo dos slides */
+  flex-direction: column; 
+  align-items: center; 
+  background-color: #ffffff; 
   border-radius: 40px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   padding: 30px;
-  box-sizing: border-box; /* Inclui padding e border no cálculo da largura e altura */
+  box-sizing: border-box; 
   
 }
 
 .info-slide .img-container {
-  align-self: center; /* Centraliza a imagem horizontalmente dentro do slide */
+  align-self: center; 
   
 }
 
 .info-slide .img-container img {
-  max-width: 60px; /* Define um tamanho máximo para as imagens */
+  max-width: 60px; 
   height: auto;
 }
 
 .info-slide h2 {
-  font-size: 1.25rem; /* Tamanho da fonte para o título */
-  margin: 0; /* Margem abaixo do título */
-  color: #333; /* Cor do texto */
+  font-size: 1.25rem; 
+  margin: 0; 
+  color: #333; 
 }
 
 .info-slide p {
-  font-size: 1rem; /* Tamanho da fonte para o texto */
-  margin: 0 0 10px; /* Margem abaixo do parágrafo */
-  color: #555; /* Cor do texto */
+  font-size: 1rem; 
+  margin: 0 0 10px; 
+  color: #555; 
 }
 
 .info-slide a {
-  font-size: 0.875rem; /* Tamanho da fonte para o link */
-  color: #007bff; /* Cor do link */
-  text-decoration: none; /* Remove o sublinhado padrão do link */
+  font-size: 0.875rem; 
+  color: #007bff;
+  text-decoration: none;
 }
 
 .info-slide a:hover {
-  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+  text-decoration: underline; 
   
 }
 
 .business-info-image img {
-  max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
-  height: auto; /* Mantém a proporção da imagem */
-  margin-top: -140px; /* Ajuste o valor negativo para mover a imagem para cima */
+  max-width: 100%; 
+  height: auto; 
+  margin-top: -140px; 
 }
 
 .info-card {
   display: flex;
-  align-items: center; /* Alinha verticalmente o conteúdo */
-  background-color: #fff; /* Cor de fundo do card */
-  border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra do card */
-  padding: 30px; /* Espaçamento interno */
-  margin: 20px auto; /* Centraliza o card horizontalmente com margem automática */
-  width: 100%; /* Largura total */
-  max-width: 1000px; /* Largura máxima do card */
-  margin-top: -140px; /* Ajuste o valor negativo para mover a imagem para cima */
+  align-items: center; 
+  background-color: #fff; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  padding: 30px; 
+  margin: 20px auto; 
+  width: 100%; 
+  max-width: 1000px; 
+  margin-top: -140px;
 
 }
 
 .rocket-img {
-  width: 50px; /* Ajuste conforme necessário */
-  height: auto; /* Mantém a proporção da imagem */
-  margin-right: 15px; /* Espaço à direita da imagem */
+  width: 50px; 
+  height: auto; 
+  margin-right: 15px; 
 }
 
 .info-card h3 {
-  margin: 0; /* Remove margem padrão do título */
-  flex-grow: 1; /* Faz o título ocupar o espaço restante */
+  margin: 0;
+  flex-grow: 1; 
   font-size: 18px;
   }
 
   .business-info-image h1 {
-    margin-top: 100px; /* Ajuste o valor negativo para mover a imagem para cima */
+    margin-top: 100px; 
   }
   
 .login-button {
-  background-color: blue; /* Cor do botão */
-  color: white; /* Cor do texto do botão */
+  background-color: blue; 
+  color: white; 
   border: none;
-  border-radius: 20px; /* Bordas arredondadas */
-  padding: 10px 20px; /* Espaçamento interno do botão */
+  border-radius: 20px; 
+  padding: 10px 20px; 
   cursor: pointer;
   font-size: 14px;
-  margin-left: 15px; /* Espaço à esquerda do botão */
-  transition: background-color 0.3s; /* Efeito de transição */
+  margin-left: 15px; 
+  transition: background-color 0.3s; 
 }
 
 .login-button:hover {
-  background-color: darkblue; /* Cor ao passar o mouse */
+  background-color: darkblue; 
 }
 
 .site-footer {
-  background-color: #e7eaee; /* Cor de fundo leve */
-  padding: 20px 0; /* Espaçamento vertical */
-  text-align: center; /* Centraliza o conteúdo */
-  display: flex; /* Ativa o Flexbox */
-  flex-direction: column; /* Alinha os itens na coluna (verticalmente) */
-  align-items: center; /* Alinha os itens no centro */
+  background-color: #e7eaee; 
+  padding: 20px 0;
+  text-align: center; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .copyright {
-  margin-bottom: 20px; /* Espaço entre o copyright e os links */
-  font-size: 0.875rem; /* Tamanho da fonte */
-  color: #333; /* Cor do texto */
+  margin-bottom: 20px; 
+  font-size: 0.875rem; 
+  color: #333; 
 }
 
 .footer-links {
-  display: flex; /* Flexbox para alinhar os links */
-  flex-direction: row; /* Alinha os links na horizontal */
-  gap: 15px; /* Espaçamento entre os links */
+  display: flex; 
+  flex-direction: row; 
+  gap: 15px; 
 }
 
 .footer-link {
-  color: #007bff; /* Cor do link */
-  text-decoration: none; /* Remove o sublinhado */
+  color: #007bff;
+  text-decoration: none; 
 }
 
 .footer-link:hover {
-  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+  text-decoration: underline; 
 }

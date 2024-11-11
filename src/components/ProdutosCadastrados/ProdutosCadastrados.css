@@ -13,7 +13,7 @@ header {
 }
 
 main {
-  flex: 1;                     /* O conteúdo principal vai preencher o espaço restante */
+  flex: 1;                    
 }
 
 .produtos-container {
@@ -23,23 +23,21 @@ main {
   border-radius: 8px;
 }
 
-/* Contêiner de cabeçalho da categoria */
 .filter-container {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   margin: 0;
   padding: 0;
-  background-color: #fceb54; /* Cor de fundo do Mercado Livre */
+  background-color: #fceb54; 
   border-radius: 7px;
   margin-bottom: 40px;
 }
 
-/* Botões de categoria */
 .filter-button {
   background-color: #fff;
   border: 1px solid #e6e6e6;
-  padding: 8px 15px; /* Espaçamento interno maior para maior usabilidade */
+  padding: 8px 15px; 
   cursor: pointer;
   border-radius: 5px;
   font-weight: 500;
@@ -47,23 +45,20 @@ main {
   color: #333;
   font-family: Arial, sans-serif;
   font-size: 14px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
 }
 
-/* Efeito ao passar o mouse */
 .filter-button:hover {
   background-color: #f7f7f7;
   color: #333;
 }
 
-/* Estilo para o botão ativo */
 .filter-button.active {
-  background-color: #3483fa; /* Azul característico do Mercado Livre */
+  background-color: #3483fa; 
   color: #fff;
   border-color: #3483fa;
 }
 
-/* Grid de produtos */
 .produtos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -98,17 +93,14 @@ main {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  margin-bottom: 15px; /* Espaço na parte de baixo */
+  margin-bottom: 15px; 
 }
 
-/* Efeito ao passar o mouse */
 .link2:hover {
   background-color: #f7f7f7;
   color: #2a6dc0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .produto-item:hover {
   transform: scale(1.03);
@@ -152,7 +144,6 @@ main {
   background-color: #c0392b;
 }
 
-/* Estilos do carrinho */
 .cart-button {
   position: fixed;
   bottom: 20px;
@@ -179,11 +170,11 @@ main {
   top: 0;
   width: 400px;
   height: 100%;
-  background-color: #f5f5f5; /* Cor de fundo mais clara */
+  background-color: #f5f5f5;
   box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   overflow-y: auto;
-  font-family: Arial, sans-serif; /* Tipografia similar */
+  font-family: Arial, sans-serif;
 }
 
 .cart-item {
@@ -202,7 +193,7 @@ main {
 }
 
 .cart-item .remove-button {
-  background-color: #3483fa; /* Azul característico do Mercado Livre */
+  background-color: #3483fa; 
   color: #fff;
   padding: 5px 10px;
   border: none;
@@ -218,32 +209,31 @@ main {
 .cart-item-actions {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre os botões */
+  gap: 10px; 
 }
 
 .cart-item-actions button {
-  background-color: #a5a3a3c5; /* Fundo claro */
+  background-color: #a5a3a3c5; 
   border: 1px solid #fffdfd;
-  padding: 6px 12px; /* Tamanho menor para os botões */
+  padding: 6px 12px; 
   cursor: pointer;
   font-size: 14px;
-  border-radius: 50%; /* Botões redondos */
+  border-radius: 50%; 
   transition: background-color 0.3s ease;
-  width: 30px; /* Tamanho fixo */
-  height: 30px; /* Tamanho fixo */
+  width: 30px; 
+  height: 30px; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .cart-item-actions button:hover {
-  background-color: #ffe600; /* Amarelo do Mercado Livre ao passar o mouse */
+  background-color: #ffe600; 
 }
 .cart-item-actions button:focus {
-  outline: none; /* Remove o contorno de foco */
+  outline: none; 
 }
 
-/* Estilo do texto de quantidade no carrinho */
 .cart-item-actions span {
   font-size: 16px;
   color: #333;
@@ -251,7 +241,6 @@ main {
   margin: 0 10px;
 }
 
-/* Ajuste para o item no carrinho */
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -260,7 +249,7 @@ main {
   border-bottom: 1px solid #ddd;
   background-color: #fff;
 }
-/* Estilo do botão de remoção (X) */
+
 .remove-item {
   background: none;
   border: none;
@@ -305,7 +294,7 @@ main {
     
 }
 .go-to-address-button:hover {
-  background-color: #2973d1;  /* Cor de fundo ao passar o mouse */
+  background-color: #2973d1; 
 }
 
 
@@ -314,7 +303,7 @@ main {
   display: block;
   width: 100%;
   padding: 12px;
-  background-color: #3483fa; /* Azul padrão Mercado Livre */
+  background-color: #3483fa; 
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -331,13 +320,13 @@ main {
 }
 
 .close-cart-button {
-  background-color: #3483fa; /* Amarelo padrão Mercado Livre */
+  background-color: #3483fa; 
   color: #fcfcfc;
   border: none;
   padding: 10px;
   width: 100%;
   margin-top: 10px;
-  margin-bottom: 40px; /* Espaçamento com o item abaixo */
+  margin-bottom: 40px; 
   border-radius: 4px;
   cursor: pointer;
   font-size: 1em;
@@ -347,7 +336,6 @@ main {
 .close-cart-button:hover {
   background-color: #2973d1}
 
-/* Botão de adicionar produto */
 .add-product-button {
   position: fixed;
   bottom: 100px;
@@ -368,7 +356,6 @@ main {
   transform: scale(1.1);
 }
 
-/* Bolinha vermelha de contagem */
 .cart-item-count {
   position: absolute;
   top: -5px;
@@ -385,9 +372,8 @@ main {
   align-items: center;
 }
 
-/* Cabeçalho de categoria */
 .filter-container h2 {
-  margin-bottom: 8px; /* Espaço abaixo do título */
+  margin-bottom: 8px; 
 }
 .produtos-footer {
   background-color:#fceb54;
@@ -409,11 +395,9 @@ main {
 }
 
 .produtos-footer-link:hover {
-  color: #555552; /* Amarelo Mercado Livre */
+  color: #555552; 
 }
 
-/* Estilos para a barra de navegação */
-/* Estilos para a barra de navegação */
 .header {
   display: flex;
   justify-content: space-between;
@@ -430,7 +414,7 @@ main {
 .navbar {
   display: flex;
   background-color : #fceb54;
-  gap: 15px; /* Adiciona o espaçamento entre os links */
+  gap: 15px; 
 }
 
 .navbar-link {
@@ -441,12 +425,12 @@ main {
   font-size: 16px;
   font-weight: bold;
   padding: 10px 20px;
-  border-radius: 30px; /* Bordas arredondadas */
+  border-radius: 30px; 
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .navbar-link:hover {
   background-color: #4d4e4e44;
-  transform: scale(1.1); /* Efeito de aumento no hover */
+  transform: scale(1.1);
 }
 

@@ -1,14 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importar o hook do react-router-dom
+import { useNavigate } from 'react-router-dom'; 
 import SearchBar from '../SearchBar/SearchBar';
 import './Header.css';
 
 function Header() {
-  const navigate = useNavigate(); // Instanciar o hook de navegação
+  const navigate = useNavigate(); 
 
-  // Função para redirecionar para a página de login
   const handleLoginClick = () => {
-    navigate('/login'); // Redireciona para a página de login
+    navigate('/login'); 
   };
 
   return (
@@ -29,7 +28,7 @@ function Header() {
           <SearchBar />
           <div className="user-search-container-login-not">
             <button
-              onClick={handleLoginClick} // Acionar a função de redirecionamento no clique
+              onClick={handleLoginClick}
               className="andes-button user-search-container-login-not-button"
             >
               <span>Iniciar sessão</span>
@@ -38,7 +37,6 @@ function Header() {
         </div>
       </header>
 
-      {/* Seção Central de Vendedores */}
       <section className="vendedores-section">
         <div className="central-vendedores-container">
           <h1 className="title">Central de vendedores</h1>
@@ -48,7 +46,7 @@ function Header() {
           <button id='buttonfirst'
             type="button"
             className="andes-button cta-button outline andes-button--large andes-button--loud"
-            onClick={handleLoginClick} // Redireciona também ao clicar nesse botão
+            onClick={handleLoginClick}
            style={{width:'160px'}}>
             <span className="andes-button__content">
               <span className="andes-button__text" style={{fontSize:'15px'}}>Iniciar sessão</span>
@@ -56,7 +54,6 @@ function Header() {
           </button>
         </div>
         <div className="cards-container">
-          {/* Os cartões podem continuar da mesma forma */}
         </div>
       </section>
     </>

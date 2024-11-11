@@ -1,8 +1,7 @@
-/* Ícone de carrinho no canto da tela */
 .cart-icon {
-    position: fixed; /* Garante que o ícone permaneça no canto da tela */
-    bottom: 20px; /* Distância da parte inferior da tela */
-    right: 20px; /* Distância da parte direita da tela */
+    position: fixed; 
+    bottom: 20px;
+    right: 20px;
     background-color: #ffe600;
     border-radius: 50%;
     width: 50px;
@@ -35,7 +34,6 @@
     align-items: center;
 }
 
-/* Modal do carrinho */
 .cart-modal {
     position: fixed;
     right: 0;
@@ -81,7 +79,6 @@
     margin-right: 10px;
 }
 
-/* src/components/Vendedor/Vendedor.css */
 .remove-item-button {
     background-color: #ff4d4d;
     color: white;

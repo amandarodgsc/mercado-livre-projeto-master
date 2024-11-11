@@ -1,8 +1,7 @@
-// src/index.js
 import React from 'react'; 
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Provider from './context/Provider'; // Verifique o caminho correto
+import Provider from './context/Provider'; 
 import 'font-awesome/css/font-awesome.min.css';
 
 import './index.css';

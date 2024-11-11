@@ -16,28 +16,25 @@ function CadastrarProduto() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Valida se a imagem selecionada é válida
     if (!productImage || !['image/jpeg', 'image/png', 'image/gif'].includes(productImage.type)) {
       alert('Por favor, selecione uma imagem válida (JPEG, PNG ou GIF).');
       return;
     }
 
-    // Converte a imagem em Base64
     const reader = new FileReader();
     reader.onloadend = () => {
       const base64Image = reader.result;
 
-      // Remove pontos e vírgulas da string de preço para convertê-lo em float corretamente
       const formattedPrice = parseFloat(productPrice.replace(/[R$\.,]/g, '') / 100);
 
       const newProduct = {
-        id: Date.now().toString(), // Garantindo que o ID seja uma string
+        id: Date.now().toString(),
         name: productName,
         price: formattedPrice,
         quantity: parseInt(productQuantity),
         category: productCategory,
         description: productDescription,
-        image: base64Image, // Armazena a imagem em Base64
+        image: base64Image, 
       };
 
       const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -47,7 +44,7 @@ function CadastrarProduto() {
       navigate('/produtos-cadastrados');
     };
 
-    reader.readAsDataURL(productImage); // Lê a imagem como Base64
+    reader.readAsDataURL(productImage); 
   };
 
   return (
@@ -152,7 +149,6 @@ function CadastrarProduto() {
           <button type="submit" className="cadastro-button">Cadastrar Produto</button>
         </form>
       </div>
-      {/* Adicionando o footer */}
 <footer className="produtos-footer">
   <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
   <div className="produtos-footer-links">

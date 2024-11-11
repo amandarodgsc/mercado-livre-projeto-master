@@ -1,15 +1,14 @@
-/* ProdutosDetalhes.css */
 .product-details-container {
   max-width: 700px;
   margin: 0 auto;
   padding: 40px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif; /* Fonte padrão do Mercado Livre */
+  font-family: 'Arial', sans-serif; 
 }
 
 .product-details-container h2 {
-  font-size: 1.8rem; /* Tamanho ajustado para ficar semelhante ao Mercado Livre */
+  font-size: 1.8rem; 
   color: #333;
   font-weight: bold;
   margin-bottom: 20px;
@@ -18,14 +17,14 @@
 
 .product-image {
   width: 100%;
-  max-width: 600px; /* Ajuste para uma largura maior */
+  max-width: 600px; 
   margin-bottom: 20px;
   object-fit: contain;
   border-radius: 8px;
 }
 
 .product-details-container p {
-  font-size: 1rem; /* Tamanho de texto reduzido para detalhes */
+  font-size: 1rem; 
   color: #666;
   margin-bottom: 10px;
   line-height: 1.5;
@@ -40,7 +39,7 @@
   display: inline-block;
   padding: 12px 24px;
   font-size: 1.2rem;
-  background-color: #FFD700; /* Cor amarela do Mercado Livre */
+  background-color: #FFD700;
   color: #000;
   border: none;
   border-radius: 5px;
@@ -52,7 +51,7 @@
 }
 
 .product-details-container .btn-avaliar:hover {
-  background-color: #fbbd00; /* Cor amarela mais escura */
+  background-color: #fbbd00; 
 }
 
 .product-details-container .btn-avaliar:focus {
@@ -62,7 +61,7 @@
 .product-details-container .product-price {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #0070ba; /* Azul semelhante ao usado pelo Mercado Livre */
+  color: #0070ba; 
   margin-top: 20px;
 }
 

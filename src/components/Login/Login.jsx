@@ -1,35 +1,33 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReCAPTCHA from "react-google-recaptcha"; // Importe o reCAPTCHA
+import ReCAPTCHA from "react-google-recaptcha"; 
 import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [captchaVerified, setCaptchaVerified] = useState(false); // Estado para verificar se o captcha foi validado
-  const [captchaToken, setCaptchaToken] = useState(null); // Estado para armazenar o token do reCAPTCHA
+  const [captchaVerified, setCaptchaVerified] = useState(false); 
+  const [captchaToken, setCaptchaToken] = useState(null); 
   const navigate = useNavigate();
 
-  const siteKey = "6Leb0XYqAAAAAGMa41IvgRRmW084cUH2jSJwiWJa"; // Substitua com sua chave pública do reCAPTCHA
+  const siteKey = "6Leb0XYqAAAAAGMa41IvgRRmW084cUH2jSJwiWJa";
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Redireciona diretamente para a página de Produtos Cadastrados
     navigate('/Produtos-Cadastrados');
   };
 
   const onCaptchaChange = (value) => {
     if (value) {
       setCaptchaVerified(true);
-      setCaptchaToken(value);  // Armazena o token do captcha
+      setCaptchaToken(value); 
     } else {
       setCaptchaVerified(false);
-      setCaptchaToken(null);  // Reseta o token se o captcha for desmarcado
+      setCaptchaToken(null);  
     }
   };
 
-  // Função para redirecionar para a página de cadastro de vendedor
   const navigateToCadastroVendedor = () => {
     navigate('/cadastro-vendedor');
   };
@@ -65,7 +63,6 @@ const Login = () => {
             style={{height:'42px'}}
           />
           
-          {/* Adiciona o reCAPTCHA */}
           <div className="captcha-container">
           <ReCAPTCHA
             sitekey={siteKey}
@@ -78,7 +75,6 @@ const Login = () => {
           </button>
         </form>
         
-        {/* Link para o Cadastro de Vendedor */}
         <a href="/cadastro-vendedor" className="create-account" onClick={navigateToCadastroVendedor}>
           Criar conta
         </a>

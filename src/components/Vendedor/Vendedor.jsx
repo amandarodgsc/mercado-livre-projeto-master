@@ -1,4 +1,3 @@
-// src/components/Vendedor/Vendedor.js
 import React, { useEffect, useState, useContext } from 'react';
 import './Vendedor.css';
 import { FaShoppingCart } from 'react-icons/fa'; 

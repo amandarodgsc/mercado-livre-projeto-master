@@ -3,10 +3,9 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import './ProdutosDetalhes.css';
 
 function ProdutoDetalhes() {
-    const { id } = useParams(); // Pegando o ID do produto da URL
+    const { id } = useParams(); 
     const navigate = useNavigate();
 
-    // Carregar os detalhes do produto
     const product = JSON.parse(localStorage.getItem('products')).find(item => item.id === id);
 
     return (
@@ -38,7 +37,6 @@ function ProdutoDetalhes() {
                     <p><strong>Preço:</strong> R$ {parseFloat(product.price).toFixed(2)}</p>
                     <p><strong>Categoria:</strong> {product.category}</p>
 
-                    {/* Botão para avaliar o produto */}
                     <button 
                         onClick={() => navigate(`/produtos/${product.id}/feedback`)} 
                         className="btn-avaliar"
@@ -50,7 +48,6 @@ function ProdutoDetalhes() {
                 <p>Produto não encontrado.</p>
             )}
         </div>
-        {/* Adicionando o footer */}
 <footer className="produtos-footer">
   <p className="produtos-footer-copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
   <div className="produtos-footer-links">

@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // Importa o hook useNavigate
-import './SiteShoppingInfo.css'; // Certifique-se de criar um arquivo CSS para estilização
+import { useNavigate } from 'react-router-dom';  
+import './SiteShoppingInfo.css'; 
 
 const SiteShoppingInfo = () => {
-  const navigate = useNavigate(); // Inicializa o hook para navegação
+  const navigate = useNavigate(); 
 
   const handleLoginClick = () => {
-    navigate('/login'); // Redireciona para a página de login ao clicar no botão
+    navigate('/login'); 
   };
 
   return (
@@ -69,7 +69,6 @@ const SiteShoppingInfo = () => {
           </a>
         </div>
         
-        {/* Adicionando o título e a imagem abaixo dos cards */}
         <div className="business-info-image">    
           <h1>Todas as informações organizadas para você</h1>      
           <img 
@@ -79,7 +78,6 @@ const SiteShoppingInfo = () => {
           />
         </div>
 
-        {/* Adicionando o novo card vertical */}
         <div className="info-card">
           <div className="img-container">
             <img 
@@ -93,7 +91,6 @@ const SiteShoppingInfo = () => {
           <button className="login-button" onClick={handleLoginClick}>Iniciar sessão</button>        </div>
       </div>
 
-      {/* Adicionando o footer */}
       <footer className="site-footer">
       <p className="copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
       <div className="footer-links">
