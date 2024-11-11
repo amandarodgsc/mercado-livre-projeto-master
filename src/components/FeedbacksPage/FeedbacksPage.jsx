@@ -42,7 +42,7 @@ function FeedbacksPage() {
                 />
                 <nav className="navbar" style={{ backgroundColor: '#fee601' }}>
                     <Link to="/Produtos-Cadastrados" className="navbar-link">Produtos</Link>
-                    <Link to="/produtos/feedbacks" className="navbar-link">Avaliação</Link>
+                    <Link to="/feedbacks" className="navbar-link">Avaliação</Link>
                     <Link to="/relatorio-vendas" className="navbar-link">Relatório</Link>
                     <Link to="/login" className="navbar-link">Login</Link>
                     <Link to="/cadastro-vendedor" className="navbar-link">Cadastre-se</Link>
