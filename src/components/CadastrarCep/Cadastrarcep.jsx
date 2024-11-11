@@ -164,6 +164,7 @@ function CadastrarCep() {
           <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" alt="Logo Mercado Livre" className="logo-image" />
         </a>
       </div>
+      
     </header>
     
       <div className="cadastro-cep-container">

@@ -410,3 +410,41 @@ header {
   color: #555552; /* Amarelo Mercado Livre */
 }
 
+/* Estilos para a barra de navegação */
+/* Estilos para a barra de navegação */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f3f3;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  width: 150px;
+}
+
+.navbar {
+  display: flex;
+  background-color : #fceb54;
+  gap: 15px; /* Adiciona o espaçamento entre os links */
+}
+
+.navbar-link {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ecf0f3;
+  color: #201f1fc7;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 30px; /* Bordas arredondadas */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-link:hover {
+  background-color: #4d4e4e44;
+  transform: scale(1.1); /* Efeito de aumento no hover */
+}
+

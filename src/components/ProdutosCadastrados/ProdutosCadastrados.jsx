@@ -147,12 +147,22 @@ function ProdutosCadastrados() {
 
   return (
     <div className="produtos-container">
-      <header>
+        {/* Barra de Navegação */}
+        <header className="header">
         <img 
           src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.21.11/mercadolibre/logo__large_plus@2x.png" 
           alt="Logo Mercado Livre" 
           className="logo"
         />
+        <nav className="navbar">
+          <Link to="/Produtos-Cadastrados" className="navbar-link">Produtos</Link>
+          <Link to="/produtos/:productId/feedback" className="navbar-link">Avaliação</Link>
+          <Link to="/relatorio-vendas" className="navbar-link">Relatório</Link> 
+          <Link to="/login" className="navbar-link">Login</Link>
+          <Link to="/cadastro-vendedor" className="navbar-link">Cadastre-se</Link>
+
+
+        </nav>
       </header>
 
       <div className="filter-container">
