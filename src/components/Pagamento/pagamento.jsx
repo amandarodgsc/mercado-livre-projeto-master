@@ -20,11 +20,11 @@ function Pagamento() {
   const [pixKey, setPixKey] = useState('');
   const [timeLeft, setTimeLeft] = useState(30
 
-  ); // 5 minutos (300 segundos)
+  ); 
   const [timerActive, setTimerActive] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false); // Controle de redirecionamento
 
-  const shippingCost = 20.0;
+  const shippingCost = 10.0;
 
   useEffect(() => {
     if (selectedPaymentMethod === 'pix') {

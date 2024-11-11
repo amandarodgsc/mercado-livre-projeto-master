@@ -114,16 +114,21 @@
   background-color: #e7eaee; /* Cor de fundo leve */
   padding: 20px 0; /* Espaçamento vertical */
   text-align: center; /* Centraliza o conteúdo */
+  display: flex; /* Ativa o Flexbox */
+  flex-direction: column; /* Alinha os itens na coluna (verticalmente) */
+  align-items: center; /* Alinha os itens no centro */
 }
 
-.footer-container {
-  max-width: 1200px; /* Largura máxima */
-  margin: 0 auto; /* Centraliza o container */
-  display: flex; /* Flexbox para alinhar itens na mesma linha */
-  flex-direction: row; /* Alinhamento em linha */
-  justify-content: center; /* Centraliza o conteúdo */
-  align-items: center; /* Alinha verticalmente no centro */
-  gap: 15px; /* Espaçamento entre os itens */
+.copyright {
+  margin-bottom: 20px; /* Espaço entre o copyright e os links */
+  font-size: 0.875rem; /* Tamanho da fonte */
+  color: #333; /* Cor do texto */
+}
+
+.footer-links {
+  display: flex; /* Flexbox para alinhar os links */
+  flex-direction: row; /* Alinha os links na horizontal */
+  gap: 15px; /* Espaçamento entre os links */
 }
 
 .footer-link {

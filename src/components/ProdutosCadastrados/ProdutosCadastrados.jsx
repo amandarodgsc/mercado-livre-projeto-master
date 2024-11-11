@@ -178,6 +178,7 @@ function ProdutosCadastrados() {
               <p>Categoria: {product.category}</p>
               <p>{product.description}</p>
             </Link>
+            <Link to={`/produtos/${product.id}`}><button className="filter-button">Detalhes</button></Link>
 
             {editingProductId === product.id ? (
               <div>

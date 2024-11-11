@@ -27,8 +27,8 @@ function FeedbackProduto() {
     }, [productId]);
 
     const handleAddFeedback = () => {
-        if (newFeedback.trim().length < 1002) {
-            alert('O comentário precisa ter pelo menos 1002 caracteres.');
+        if (newFeedback.trim().length < 10) {
+            alert('O comentário precisa ter pelo menos 10 caracteres.');
             return;
         }
         if (newFeedback.trim() !== '' && stars > 0 && name && date && location) {
@@ -172,7 +172,7 @@ function FeedbackProduto() {
                         <textarea
                             value={newFeedback}
                             onChange={(e) => setNewFeedback(e.target.value)}
-                            placeholder="Deixe seu comentário (mínimo de 1002 caracteres)"
+                            placeholder="Deixe seu comentário (mínimo de 10 caracteres)"
                             className="feedback-textarea"
                         />
 

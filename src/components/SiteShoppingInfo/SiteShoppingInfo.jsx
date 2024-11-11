@@ -95,11 +95,11 @@ const SiteShoppingInfo = () => {
 
       {/* Adicionando o footer */}
       <footer className="site-footer">
-        <div className="footer-container">
-          <p>Copyright © 2024 Ebazar.com.br LTDA.</p>
-          <a href="#termos" className="footer-link">Termos e condições</a>
-          <a href="#privacidade" className="footer-link">Como cuidamos da sua privacidade</a>
-        </div>
+      <p className="copyright">Copyright © 2024 Ebazar.com.br LTDA.</p>
+      <div className="footer-links">
+      <a href="#termos" className="footer-link">Termos e condições</a>
+      <a href="#privacidade" className="footer-link">Como cuidamos da sua privacidade</a>
+      </div>
       </footer>
     </section>
   );
